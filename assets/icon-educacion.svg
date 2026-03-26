@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" role="img" aria-label="Ícono Educación">
+  <g fill="none" stroke="#C2F1FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 30 L40 16 L68 30 L40 44 Z" />
+    <path d="M24 36 V54 C24 61 33 66 40 66 C47 66 56 61 56 54 V36" />
+    <path d="M40 44 V64" />
+  </g>
+</svg>

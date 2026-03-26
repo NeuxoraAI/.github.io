@@ -1,300 +1,823 @@
-
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es-MX">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="C-MED: Consultoría especializada en arquitectura de software médico personalizado. Soluciones digitales de precisión para el sector salud.">
-    <meta name="keywords" content="software médico, consultoría digital, salud, inteligencia artificial, México">
-    <title>C-MED | Consultoría Médica Digital</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --cmed-blue: #0055ff;
-            --cmed-indigo: #6366f1;
-            --cmed-violet: #8b5cf6;
-            --cmed-zinc-950: #09090b;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEUXORA | IA aplicada para operaciones críticas</title>
+  <meta name="description" content="Hacemos lo imposible. Transformamos los problemas más complejos en soluciones con IA aplicada a salud, educación e investigación." />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:title" content="NEUXORA | IA aplicada para operaciones críticas" />
+  <meta property="og:description" content="Hacemos lo imposible, porque lo difícil lo hace cualquiera." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://neuxora.com/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      theme: {
+        extend: {
+          colors: { 'nx-blue': '#0a84ff', 'nx-cyan': '#22d4ee' }
         }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --nx-bg: #000000;
+      --nx-surface: #0a0a0a;
+      --nx-card: rgba(255,255,255,0.04);
+      --nx-border: rgba(255,255,255,0.1);
+      --nx-text: #f5f5f7;
+      --nx-muted: #a1a1a6;
+      --nx-subtle: #6e6e73;
+      --nx-blue: #0a84ff;
+      --nx-cyan: #22d4ee;
+    }
 
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #ffffff;
-            color: var(--cmed-zinc-950);
-            overflow-x: hidden;
-        }
-        
-        section {
-            scroll-margin-top: 80px;
-        }
+    body {
+      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      background-color: var(--nx-bg);
+      color: var(--nx-text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
 
-        /* ═══════════════════════════════════════════════════════════════
-           ANIMACIONES PREMIUM - APPLE STYLE
-        ═══════════════════════════════════════════════════════════════ */
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: 
-                opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* ── NAV ── */
+    #nav { transition: background 0.4s ease, border-color 0.4s ease; }
+    #nav.scrolled {
+      background: rgba(0,0,0,0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom-color: rgba(255,255,255,0.08) !important;
+    }
+    .nav-link { color: var(--nx-muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-link:hover { color: #fff; }
 
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: 
-                opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity;
-        }
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(100px);
-            transition: 
-                opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity;
-        }
-        .reveal-left.active, .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
+    /* ── HERO GLOWS ── */
+    .hero-glow {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); pointer-events: none;
+    }
+    .hero-glow-1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(10,132,255,0.14) 0%, transparent 70%);
+      top: -200px; left: -150px;
+    }
+    .hero-glow-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(34,212,238,0.1) 0%, transparent 70%);
+      top: 50px; right: -100px;
+    }
+    @keyframes glowPulse { 0%,100%{opacity:.4;transform:scale(1)} 50%{opacity:.7;transform:scale(1.06)} }
+    .glow-pulse { animation: glowPulse 9s ease-in-out infinite; }
 
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: 
-                opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-scale.active {
-            opacity: 1;
-            transform: scale(1);
-        }
+    /* ── GRID OVERLAY ── */
+    .grid-bg {
+      position: absolute; inset: 0; opacity: 0.025; pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
 
-        /* Staggered Animations */
-        .stagger-1 { transition-delay: 100ms; }
-        .stagger-2 { transition-delay: 200ms; }
-        .stagger-3 { transition-delay: 300ms; }
-        .stagger-4 { transition-delay: 400ms; }
-        .stagger-5 { transition-delay: 500ms; }
+    /* ── GRADIENT TEXT ── */
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.75) 40%, #22d4ee 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
 
-        /* ═══════════════════════════════════════════════════════════════
-           EFECTOS DE BOTONES PREMIUM
-        ═══════════════════════════════════════════════════════════════ */
+    /* ── GLASS CARD ── */
+    .glass-card {
+      background: var(--nx-card);
+      border: 1px solid var(--nx-border);
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(10,132,255,0.3);
+      background: rgba(255,255,255,0.06);
+    }
 
-        .btn-premium {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .btn-premium::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .btn-premium:hover::before {
-            opacity: 1;
-        }
-        .btn-premium:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 
-                0 20px 40px -15px rgba(0, 85, 255, 0.35),
-                0 0 0 1px rgba(0, 85, 255, 0.1);
-        }
-        .btn-premium:active {
-            transform: translateY(-1px) scale(0.98);
-            transition: all 0.1s;
-        }
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #0a84ff; color: #fff; border: none; border-radius: 980px;
+      font-family: inherit; font-weight: 600; font-size: 0.9rem; padding: 0.75rem 1.75rem;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 24px rgba(10,132,255,0.28);
+    }
+    .btn-primary:hover { background: #0071e3; transform: scale(1.01); box-shadow: 0 0 36px rgba(10,132,255,0.42); }
 
-        /* ═══════════════════════════════════════════════════════════════
-           GRADIENTES Y EFECTOS DE TEXTO
-        ═══════════════════════════════════════════════════════════════ */
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: transparent; color: var(--nx-text); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 980px; font-family: inherit; font-weight: 500; font-size: 0.9rem;
+      padding: 0.75rem 1.75rem; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.35); }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #0055ff 0%, #6366f1 50%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    /* ── STEP NUMBER ── */
+    .step-number {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(10,132,255,0.1); border: 1px solid rgba(10,132,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 700; color: #0a84ff;
+    }
 
-        .text-gradient-subtle {
-            background: linear-gradient(135deg, #3b82f6 0%, #0055ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    /* ── STAT PILL ── */
+    .stat-pill {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 1.125rem 1.375rem;
+    }
 
-        /* ═══════════════════════════════════════════════════════════════
-           EFECTOS DE IA LABS
-        ═══════════════════════════════════════════════════════════════ */
+    /* ── DEPT ACCORDION ── */
+    .dept-details summary::-webkit-details-marker,
+    .dept-details summary::marker { display: none; content: ''; }
+    .dept-details[open] { border-color: rgba(10,132,255,0.35); background: rgba(10,132,255,0.03); }
+    .dept-chevron {
+      transition: transform 0.3s ease;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.05); flex-shrink: 0;
+    }
+    .dept-details[open] .dept-chevron { transform: rotate(180deg); background: rgba(10,132,255,0.15); }
+    .dept-summary:hover .dept-name { color: var(--nx-cyan); }
 
-        @keyframes scan {
-            0% { top: 0%; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
-        .scan-line {
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--cmed-blue), var(--cmed-violet), transparent);
-            box-shadow: 
-                0 0 20px var(--cmed-blue),
-                0 0 40px var(--cmed-violet);
-            animation: scan 2.5s ease-in-out infinite;
-        }
+    /* ── FORM INPUTS ── */
+    .nx-input {
+      width: 100%; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+      padding: 0.875rem 1.125rem; color: var(--nx-text);
+      font-family: inherit; font-size: 0.925rem; outline: none;
+      transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
+    }
+    .nx-input::placeholder { color: var(--nx-subtle); }
+    .nx-input:focus { border-color: rgba(10,132,255,0.6); background: rgba(10,132,255,0.05); }
+    .nx-input option { background: #1c1c1e; color: var(--nx-text); }
 
-        @keyframes pulse-glow {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(0, 85, 255, 0.1), 
-                            0 0 40px rgba(99, 102, 241, 0.05);
-            }
-            50% { 
-                box-shadow: 0 0 30px rgba(0, 85, 255, 0.2), 
-                            0 0 60px rgba(99, 102, 241, 0.1);
-            }
-        }
-        .pulse-glow {
-            animation: pulse-glow 3s ease-in-out infinite;
-        }
+    /* ── FORM STATUS ── */
+    [data-form-status] { min-height: 1.5rem; font-size: 0.875rem; }
+    [data-form-status][data-state='success'] { color: #32d74b; }
+    [data-form-status][data-state='error']   { color: #ff453a; }
+    [data-form-status][data-state='pending'] { color: #ffd60a; }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .float {
-            animation: float 6s ease-in-out infinite;
-        }
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s cubic-bezier(.25,.46,.45,.94), transform 0.65s cubic-bezier(.25,.46,.45,.94);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
 
-        /* ═══════════════════════════════════════════════════════════════
-           GLASSMORPHISM
-        ═══════════════════════════════════════════════════════════════ */
+    /* ── SCROLL ARROW ── */
+    @keyframes scrollBounce { 0%,100%{transform:translateY(0);opacity:.5} 50%{transform:translateY(6px);opacity:1} }
+    .scroll-arrow { animation: scrollBounce 2s ease-in-out infinite; }
 
-        .glass-header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: saturate(180%) blur(30px);
-            -webkit-backdrop-filter: saturate(180%) blur(30px);
-        }
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .glow-pulse, .scroll-arrow { animation: none; }
+    }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
+    /* ── HERO WORDMARK ── */
+    .hero-wordmark {
+      font-size: clamp(5rem, 20vw, 13rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 0.9;
+      text-transform: uppercase;
+      background: linear-gradient(160deg, #ffffff 30%, rgba(255,255,255,0.55) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        .glass-dark {
-            background: rgba(9, 9, 11, 0.85);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-        }
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #444; }
 
-        /* ═══════════════════════════════════════════════════════════════
-           CARDS PREMIUM
-        ═══════════════════════════════════════════════════════════════ */
+    /* ── DOT ACCENT ── */
+    .dot-accent { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--nx-cyan); flex-shrink: 0; margin-top: 7px; }
 
-        .card-hover {
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .card-hover:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.1),
-                0 0 0 1px rgba(0, 85, 255, 0.05);
-        }
+    /* ── PROJECT CARD HOVER ── */
+    .project-card { transition: border-color 0.3s ease, transform 0.3s ease; }
+    .project-card:hover { border-color: rgba(34,212,238,0.4); transform: translateY(-2px); }
 
-        /* ═══════════════════════════════════════════════════════════════
-           SCROLLBAR MINIMALISTA
-        ═══════════════════════════════════════════════════════════════ */
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d4d4d8;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a1a1aa;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           INPUTS PREMIUM
-        ═══════════════════════════════════════════════════════════════ */
-
-        input, textarea {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        input:focus, textarea:focus {
-            box-shadow: 
-                0 0 0 4px rgba(0, 85, 255, 0.1),
-                0 10px 40px -10px rgba(0, 85, 255, 0.15) !important;
-            transform: translateY(-2px);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           ANIMACIONES PERSONALIZADAS
-        ═══════════════════════════════════════════════════════════════ */
-
-        @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-        .animate-bounce-slow {
-            animation: bounce-slow 2s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-        }
-
-        /* Selection Style */
-        ::selection {
-            background: rgba(0, 85, 255, 0.2);
-        }
-    </style>
-
-<link rel="stylesheet" href="/index.css">
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/"
-  }
-}
-</script>
-  <script type="module" crossorigin src="/assets/index-C5rxl4P4.js"></script>
+    /* ── SECTION SUBTLE BG ── */
+    .bg-surface { background-color: #050507; }
+  </style>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.0.0",
+        "react-dom/client": "https://esm.sh/react-dom@19.0.0/client"
+      }
+    }
+  </script>
+  <script defer src="assets/index-C5rxl4P4.js"></script>
 </head>
+
 <body>
-    <div id="root"></div>
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav id="nav" class="fixed top-0 z-50 w-full border-b border-transparent">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-12">
+      <a href="#" class="text-base font-bold tracking-[0.14em] text-white">NEUXORA</a>
+      <div class="hidden items-center gap-8 md:flex">
+        <a href="#nosotros"      class="nav-link">Nosotros</a>
+        <a href="#departamentos" class="nav-link">Departamentos</a>
+        <a href="#casos"         class="nav-link">Proyectos</a>
+        <a href="#contacto"      class="nav-link">Contacto</a>
+      </div>
+      <a href="#contacto" class="btn-primary px-5 py-2.5 text-sm">Agendar diagnóstico</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <header id="hero" class="relative flex min-h-screen items-center overflow-hidden">
+    <div class="hero-glow hero-glow-1 glow-pulse" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-2 glow-pulse" style="animation-delay:4s" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-36 lg:px-12">
+      <div class="max-w-5xl">
+        <div class="reveal mb-6 flex items-center gap-3">
+          <span class="h-px w-10 bg-nx-cyan opacity-80"></span>
+          <span class="text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">León, Gto. · Agencia IA</span>
+        </div>
+
+        <h1 class="reveal reveal-d1 hero-wordmark">NEUXORA</h1>
+
+        <p class="reveal reveal-d2 mt-6 text-2xl font-semibold leading-snug tracking-tight text-white md:text-3xl">
+          Hacemos lo imposible,<br>
+          <span class="gradient-text">porque lo difícil lo hace cualquiera.</span>
+        </p>
+
+        <p class="reveal reveal-d3 mt-6 max-w-xl text-lg leading-relaxed text-[#a1a1a6]">
+          Transformamos los problemas más complejos en soluciones tecnológicas con IA. Entendemos a las personas detrás del problema antes de escribir una sola línea de código.
+        </p>
+
+        <div class="reveal reveal-d4 mt-10 flex flex-wrap gap-4">
+          <a href="#contacto" data-cta-target="hero-primary" data-cta-location="hero" class="btn-primary">Agendá tu diagnóstico</a>
+          <a href="https://wa.me/524622722089" target="_blank" rel="noopener" data-cta-target="hero-whatsapp" data-cta-location="hero" class="btn-secondary">Hablar con el equipo</a>
+        </div>
+
+        <div class="reveal reveal-d4 mt-12 flex flex-wrap gap-4" style="transition-delay:0.5s">
+          <div class="stat-pill">
+            <p class="text-2xl font-bold text-white">7 días</p>
+            <p class="mt-0.5 text-xs uppercase tracking-wider text-[#6e6e73]">Diagnóstico Línea A</p>
+          </div>
+          <div class="stat-pill">
+            <p class="text-2xl font-bold text-white">&lt; 24 h</p>
+            <p class="mt-0.5 text-xs uppercase tracking-wider text-[#6e6e73]">Tiempo de respuesta</p>
+          </div>
+          <div class="stat-pill">
+            <p class="text-2xl font-bold text-white">3</p>
+            <p class="mt-0.5 text-xs uppercase tracking-wider text-[#6e6e73]">Departamentos activos</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2" aria-hidden="true">
+        <span class="text-xs uppercase tracking-widest text-[#6e6e73]">Scroll</span>
+        <svg class="scroll-arrow h-4 w-4 text-[#6e6e73]" viewBox="0 0 16 16" fill="none">
+          <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════ NOSOTROS ═══════════ -->
+    <section id="nosotros" class="border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
+      <div class="mx-auto max-w-6xl">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+
+          <div class="reveal">
+            <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Quiénes somos</p>
+            <h2 class="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+              No empezamos a programar hasta entender tu operación.
+            </h2>
+            <p class="mt-6 text-lg leading-relaxed text-[#a1a1a6]">
+              Somos una agencia tecnológica con un propósito claro: transformar los problemas más complejos en soluciones inteligentes. No somos consultores de slides. Escuchamos, auditamos y diseñamos contigo.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed text-[#a1a1a6]">
+              Cada proyecto que tomamos tiene personas detrás. Niños que necesitan sillas de ruedas bien medidas. Médicos que pierden horas llenando expedientes. Investigadores que necesitan datos en tiempo real. <span class="font-medium text-white">Eso es lo que nos mueve.</span>
+            </p>
+            <p class="mt-6 text-base font-semibold text-white">Si ya te dijeron que era imposible, dejá que lo intentemos nosotros.</p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="glass-card glass-card-hover reveal reveal-d1 rounded-2xl p-6">
+              <div class="flex items-start gap-4">
+                <div class="step-number">01</div>
+                <div>
+                  <h3 class="font-semibold text-white">Diagnóstico profundo</h3>
+                  <p class="mt-1.5 text-sm leading-relaxed text-[#a1a1a6]">Mapeamos procesos, datasets sensibles y stakeholders para detectar dónde la IA genera impacto inmediato.</p>
+                </div>
+              </div>
+            </div>
+            <div class="glass-card glass-card-hover reveal reveal-d2 rounded-2xl p-6">
+              <div class="flex items-start gap-4">
+                <div class="step-number">02</div>
+                <div>
+                  <h3 class="font-semibold text-white">Prototipos brutalmente honestos</h3>
+                  <p class="mt-1.5 text-sm leading-relaxed text-[#a1a1a6]">Construimos MVPs funcionales en semanas para validar hipótesis con usuarios reales antes del despliegue masivo.</p>
+                </div>
+              </div>
+            </div>
+            <div class="glass-card glass-card-hover reveal reveal-d3 rounded-2xl p-6">
+              <div class="flex items-start gap-4">
+                <div class="step-number">03</div>
+                <div>
+                  <h3 class="font-semibold text-white">Ciclo vivo</h3>
+                  <p class="mt-1.5 text-sm leading-relaxed text-[#a1a1a6]">Operamos squads que mantienen, miden y evolucionan la solución junto con tu equipo. No desaparecemos después del handoff.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ DEPARTAMENTOS ═══════════ -->
+    <section id="departamentos" class="bg-surface border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
+      <div class="mx-auto max-w-6xl">
+
+        <div class="reveal mx-auto mb-16 max-w-2xl text-center">
+          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Departamentos</p>
+          <h2 class="text-4xl font-bold tracking-tight text-white md:text-5xl">Tres disciplinas.<br>Un solo objetivo.</h2>
+          <p class="mt-5 text-lg text-[#a1a1a6]">Armamos squads cruzando medicina, educación e investigación para mover agujas rápido y sin interrumpir tu operación.</p>
+        </div>
+
+        <div class="space-y-4">
+
+          <!-- C-MED -->
+          <details class="dept-details glass-card reveal rounded-2xl transition-all duration-300">
+            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
+              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(10,132,255,0.2)] bg-[rgba(10,132,255,0.1)]">
+                <img src="assets/icon-cmed.svg" alt="" class="h-6 w-6" />
+              </div>
+              <div class="flex-1">
+                <p class="mb-1 text-xs uppercase tracking-[0.3em] text-nx-cyan">Salud</p>
+                <h3 class="dept-name text-xl font-bold text-white transition-colors duration-200">C-MED</h3>
+                <p class="mt-0.5 text-sm text-[#6e6e73]">Transformando la atención médica con IA</p>
+              </div>
+              <div class="dept-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </summary>
+            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
+              <div class="grid gap-5 md:grid-cols-2">
+                <div>
+                  <h4 class="mb-3 text-base font-semibold text-white">Capacidades</h4>
+                  <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                      <span class="dot-accent"></span>
+                      <span class="text-sm text-[#a1a1a6]">Apps médicas con <span class="text-white">análisis de consultas por voz</span> para generar expedientes clínicos digitales automáticamente</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="dot-accent"></span>
+                      <span class="text-sm text-[#a1a1a6]">Sistemas de <span class="text-white">medición estandarizada</span> para brigadas clínicas en campo</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="dot-accent"></span>
+                      <span class="text-sm text-[#a1a1a6]">Plataformas de <span class="text-white">trazabilidad regulatoria</span> para dispositivos médicos personalizados</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="rounded-xl border border-[rgba(10,132,255,0.15)] bg-[rgba(10,132,255,0.04)] p-5">
+                  <p class="mb-3 text-xs uppercase tracking-[0.3em] text-nx-cyan">Por qué importa</p>
+                  <p class="text-sm leading-relaxed text-[#a1a1a6]">Los médicos pierden hasta el 40% de su tiempo en tareas administrativas. Nuestro objetivo: devolvérselo para que se concentren en lo que importa. <span class="text-white">Sus pacientes.</span></p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- EDU-IA -->
+          <details class="dept-details glass-card reveal reveal-d1 rounded-2xl transition-all duration-300">
+            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
+              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(34,212,238,0.15)] bg-[rgba(34,212,238,0.07)]">
+                <img src="assets/icon-educacion.svg" alt="" class="h-6 w-6" />
+              </div>
+              <div class="flex-1">
+                <p class="mb-1 text-xs uppercase tracking-[0.3em] text-nx-cyan">Educación</p>
+                <h3 class="dept-name text-xl font-bold text-white transition-colors duration-200">EDU-IA</h3>
+                <p class="mt-0.5 text-sm text-[#6e6e73]">Plataformas inteligentes para potenciar el aprendizaje</p>
+              </div>
+              <div class="dept-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </summary>
+            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
+              <div class="grid gap-5 md:grid-cols-2">
+                <div>
+                  <h4 class="mb-3 text-base font-semibold text-white">Capacidades</h4>
+                  <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                      <span class="dot-accent"></span>
+                      <span class="text-sm text-[#a1a1a6]"><span class="text-white">Plataformas adaptativas</span> con IA que personalizan el aprendizaje por alumno</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="dot-accent"></span>
+                      <span class="text-sm text-[#a1a1a6]">Herramientas de <span class="text-white">gestión educativa</span> para coordinadores e instituciones</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="dot-accent"></span>
+                      <span class="text-sm text-[#a1a1a6]">Analytics de <span class="text-white">rendimiento y deserción</span> en tiempo real</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="rounded-xl border border-[rgba(34,212,238,0.12)] bg-[rgba(34,212,238,0.04)] p-5">
+                  <p class="mb-3 text-xs uppercase tracking-[0.3em] text-nx-cyan">Por qué importa</p>
+                  <p class="text-sm leading-relaxed text-[#a1a1a6]">La tecnología educativa bien implementada puede cerrar brechas de aprendizaje que llevan décadas abiertas. <span class="text-white">La IA hace posible personalizar para cada estudiante.</span></p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- INVESTIGACIÓN -->
+          <details class="dept-details glass-card reveal reveal-d2 rounded-2xl transition-all duration-300">
+            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
+              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)]">
+                <img src="assets/icon-investigacion.svg" alt="" class="h-6 w-6" />
+              </div>
+              <div class="flex-1">
+                <p class="mb-1 text-xs uppercase tracking-[0.3em] text-nx-cyan">IA & Industria</p>
+                <h3 class="dept-name text-xl font-bold text-white transition-colors duration-200">Investigación</h3>
+                <p class="mt-0.5 text-sm text-[#6e6e73]">Modelos de ML / DL a medida para retos complejos</p>
+              </div>
+              <div class="dept-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </summary>
+            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
+              <div class="grid gap-5 md:grid-cols-2">
+                <div>
+                  <h4 class="mb-3 text-base font-semibold text-white">Capacidades</h4>
+                  <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                      <span class="dot-accent"></span>
+                      <span class="text-sm text-[#a1a1a6]">Modelos de <span class="text-white">Machine Learning y Deep Learning</span> entrenados sobre datos de tu operación</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="dot-accent"></span>
+                      <span class="text-sm text-[#a1a1a6]">Soluciones para <span class="text-white">retos industriales y manufactura</span>: visión computacional, predicción de fallas</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="dot-accent"></span>
+                      <span class="text-sm text-[#a1a1a6]"><span class="text-white">Simulaciones científicas complejas</span> y modelado de datos experimentales</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] p-5">
+                  <p class="mb-3 text-xs uppercase tracking-[0.3em] text-nx-cyan">Nuestro laboratorio</p>
+                  <p class="text-sm leading-relaxed text-[#a1a1a6]">No aplicamos modelos genéricos. <span class="text-white">Diseñamos y entrenamos modelos desde cero</span> sobre los datos de tu industria, con benchmarks reales y sin promesas vacías.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ MÉTODO ═══════════ -->
+    <section id="metodo" class="border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
+      <div class="mx-auto max-w-6xl">
+        <div class="grid gap-16 lg:grid-cols-[1fr_360px] lg:items-start">
+
+          <div>
+            <div class="reveal">
+              <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Método Línea A</p>
+              <h2 class="text-4xl font-bold tracking-tight text-white md:text-5xl">Cómo<br>trabajamos.</h2>
+              <p class="mt-5 text-lg leading-relaxed text-[#a1a1a6]">Diagnóstico obsesivo. Sprints visibles. Entregamos y nos quedamos hasta que funcione de verdad.</p>
+            </div>
+            <div class="mt-12 space-y-6">
+              <div class="reveal flex items-start gap-5">
+                <div class="step-number">01</div>
+                <div class="pt-1">
+                  <h3 class="font-semibold text-white">Diagnóstico</h3>
+                  <p class="mt-1 text-sm text-[#a1a1a6]">Mapeamos procesos, datos y stakeholders en 7 días. NDA firmado desde el día cero.</p>
+                </div>
+              </div>
+              <div class="reveal reveal-d1 flex items-start gap-5">
+                <div class="step-number">02</div>
+                <div class="pt-1">
+                  <h3 class="font-semibold text-white">Diseño de solución</h3>
+                  <p class="mt-1 text-sm text-[#a1a1a6]">Arquitectura técnica, plan de datos y roadmap validado contigo antes de escribir código.</p>
+                </div>
+              </div>
+              <div class="reveal reveal-d2 flex items-start gap-5">
+                <div class="step-number">03</div>
+                <div class="pt-1">
+                  <h3 class="font-semibold text-white">Desarrollo en sprints</h3>
+                  <p class="mt-1 text-sm text-[#a1a1a6]">Iteramos en ciclos cortos con demos reales. Sin sorpresas, sin humo.</p>
+                </div>
+              </div>
+              <div class="reveal reveal-d3 flex items-start gap-5">
+                <div class="step-number">04</div>
+                <div class="pt-1">
+                  <h3 class="font-semibold text-white">Despliegue y validación</h3>
+                  <p class="mt-1 text-sm text-[#a1a1a6]">Lanzamos en producción con monitoreo activo y criterios de éxito medibles.</p>
+                </div>
+              </div>
+              <div class="reveal reveal-d4 flex items-start gap-5">
+                <div class="step-number">05</div>
+                <div class="pt-1">
+                  <h3 class="font-semibold text-white">Mantenimiento vivo</h3>
+                  <p class="mt-1 text-sm text-[#a1a1a6]">Seguimos midiendo, ajustando y evolucionando la solución junto a tu equipo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal reveal-d2">
+            <div class="glass-card sticky top-24 rounded-2xl p-7">
+              <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">¿Qué recibís en el diagnóstico?</p>
+              <ul class="space-y-3.5">
+                <li class="flex items-start gap-3"><span class="dot-accent"></span><span class="text-sm text-[#a1a1a6]">Mapa de procesos y puntos de dolor identificados</span></li>
+                <li class="flex items-start gap-3"><span class="dot-accent"></span><span class="text-sm text-[#a1a1a6]">Propuesta de arquitectura técnica con alternativas</span></li>
+                <li class="flex items-start gap-3"><span class="dot-accent"></span><span class="text-sm text-[#a1a1a6]">Estimación de impacto y riesgos reales</span></li>
+                <li class="flex items-start gap-3"><span class="dot-accent"></span><span class="text-sm text-[#a1a1a6]">Roadmap de 90 días accionable</span></li>
+              </ul>
+              <p class="mt-6 text-xs uppercase tracking-[0.3em] text-[#6e6e73]">7 días · NDA firmado · sin costo inicial</p>
+              <div class="mt-6">
+                <a href="#contacto" data-cta-target="diagnostico" data-cta-location="metodo" class="btn-primary w-full text-center text-sm">Reservar diagnóstico</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ PROYECTOS ═══════════ -->
+    <section id="casos" class="bg-surface border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
+      <div class="mx-auto max-w-6xl">
+
+        <div class="reveal mx-auto mb-16 max-w-2xl text-center">
+          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Proyectos realizados</p>
+          <h2 class="text-4xl font-bold tracking-tight text-white md:text-5xl">Impacto real.<br>Explorá por departamento.</h2>
+          <p class="mt-5 text-lg text-[#a1a1a6]">Cada proyecto que tomamos tiene personas detrás. Esto es lo que hicimos.</p>
+        </div>
+
+        <div class="space-y-4">
+
+          <!-- C-MED projects -->
+          <details class="dept-details glass-card reveal rounded-2xl transition-all duration-300" open>
+            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
+              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(10,132,255,0.2)] bg-[rgba(10,132,255,0.1)]">
+                <img src="assets/icon-cmed.svg" alt="" class="h-6 w-6" />
+              </div>
+              <div class="flex-1">
+                <p class="mb-0.5 text-xs uppercase tracking-[0.3em] text-nx-cyan">Departamento</p>
+                <h3 class="dept-name text-xl font-bold text-white">C-MED · Salud</h3>
+                <p class="mt-0.5 text-sm text-[#6e6e73]">1 proyecto · Más en desarrollo</p>
+              </div>
+              <div class="dept-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </summary>
+            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
+              <div class="grid gap-5 md:grid-cols-2">
+                <div class="project-card glass-card rounded-xl p-6" style="background:rgba(10,132,255,0.05);border-color:rgba(10,132,255,0.2)">
+                  <div class="mb-4 flex items-center gap-2">
+                    <span class="text-xs uppercase tracking-[0.3em] text-nx-cyan">Proyecto estrella</span>
+                    <span class="h-px flex-1 bg-[rgba(10,132,255,0.2)]"></span>
+                  </div>
+                  <h4 class="text-lg font-bold text-white">Torre Vida UG</h4>
+                  <p class="mt-1 text-sm text-[#a1a1a6]">App de medición para sillas de ruedas infantiles</p>
+                  <div class="mt-4 h-px bg-[rgba(255,255,255,0.06)]"></div>
+                  <p class="mt-4 text-sm leading-relaxed text-[#a1a1a6]">
+                    Diseño e implementación de una app móvil para la captura estandarizada de medidas corporales en brigadas clínicas. <span class="text-white">200 sillas de ruedas para niños con discapacidad motriz</span>, con trazabilidad completa y cero margen de error.
+                  </p>
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    <span class="rounded-full border border-[rgba(10,132,255,0.25)] bg-[rgba(10,132,255,0.1)] px-3 py-1 text-xs text-nx-cyan">C-MED</span>
+                    <span class="rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] px-3 py-1 text-xs text-[#a1a1a6]">IA aplicada</span>
+                    <span class="rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] px-3 py-1 text-xs text-[#a1a1a6]">Impacto social</span>
+                  </div>
+                </div>
+                <div class="glass-card flex min-h-[200px] flex-col items-center justify-center rounded-xl p-6 text-center">
+                  <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(255,255,255,0.05)]">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </div>
+                  <p class="text-sm font-medium text-white">Próximos proyectos</p>
+                  <p class="mt-1 text-xs text-[#6e6e73]">en desarrollo</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- EDU-IA projects -->
+          <details class="dept-details glass-card reveal reveal-d1 rounded-2xl transition-all duration-300">
+            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
+              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(34,212,238,0.15)] bg-[rgba(34,212,238,0.07)]">
+                <img src="assets/icon-educacion.svg" alt="" class="h-6 w-6" />
+              </div>
+              <div class="flex-1">
+                <p class="mb-0.5 text-xs uppercase tracking-[0.3em] text-nx-cyan">Departamento</p>
+                <h3 class="dept-name text-xl font-bold text-white">EDU-IA · Educación</h3>
+                <p class="mt-0.5 text-sm text-[#6e6e73]">Proyectos de impacto en desarrollo</p>
+              </div>
+              <div class="dept-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </summary>
+            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
+              <div class="rounded-xl border border-[rgba(34,212,238,0.1)] bg-[rgba(34,212,238,0.03)] p-6 text-center">
+                <p class="text-sm font-medium text-white">Próximos proyectos de impacto en desarrollo</p>
+                <p class="mt-2 text-sm text-[#6e6e73]">Estamos trabajando en soluciones para instituciones educativas. Si tenés un proyecto, contanos.</p>
+                <a href="#contacto" class="btn-secondary mt-5 inline-flex px-5 py-2.5 text-xs">Trabajar con nosotros</a>
+              </div>
+            </div>
+          </details>
+
+          <!-- INVESTIGACIÓN projects -->
+          <details class="dept-details glass-card reveal reveal-d2 rounded-2xl transition-all duration-300">
+            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
+              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)]">
+                <img src="assets/icon-investigacion.svg" alt="" class="h-6 w-6" />
+              </div>
+              <div class="flex-1">
+                <p class="mb-0.5 text-xs uppercase tracking-[0.3em] text-nx-cyan">Departamento</p>
+                <h3 class="dept-name text-xl font-bold text-white">Investigación · IA & Industria</h3>
+                <p class="mt-0.5 text-sm text-[#6e6e73]">Proyectos de impacto en desarrollo</p>
+              </div>
+              <div class="dept-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </summary>
+            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
+              <div class="glass-card rounded-xl p-6 text-center">
+                <p class="text-sm font-medium text-white">Próximos proyectos de impacto en desarrollo</p>
+                <p class="mt-2 text-sm text-[#6e6e73]">Laboratorio activo en modelos de ML/DL para industria. ¿Tenés un reto que nadie pudo resolver? Ese es nuestro trabajo.</p>
+                <a href="#contacto" class="btn-secondary mt-5 inline-flex px-5 py-2.5 text-xs">Presentar tu reto</a>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ CONTACTO ═══════════ -->
+    <section id="contacto" class="border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
+      <div class="mx-auto max-w-6xl">
+
+        <div class="reveal mx-auto mb-16 max-w-xl text-center">
+          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Contacto</p>
+          <h2 class="text-4xl font-bold tracking-tight text-white md:text-5xl">¿Listo para destrabar tu proyecto imposible?</h2>
+          <p class="mt-5 text-lg text-[#a1a1a6]">Te respondemos en menos de 24 horas con un plan de diagnóstico, entregables y riesgos claros.</p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[1fr_340px] lg:items-start">
+
+          <!-- FORM -->
+          <div class="reveal glass-card rounded-2xl p-8">
+            <h3 class="mb-6 text-xl font-bold text-white">Mandanos tu brief</h3>
+            <form id="contacto-form" name="contacto-linea-a" method="POST"
+              action="https://formspree.io/f/REEMPLAZAR_FORM_ID"
+              data-form-name="contacto-linea-a" data-form-provider="formspree"
+              data-netlify="true" netlify-honeypot="bot-field"
+              class="space-y-5">
+              <input type="hidden" name="form-name" value="contacto-linea-a" />
+              <input type="hidden" name="provider" value="formspree" data-form-provider-field />
+              <div class="sr-only" aria-hidden="true">
+                <label>No completes este campo<input type="text" name="bot-field" tabindex="-1" autocomplete="off" data-honeypot /></label>
+              </div>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="contacto-nombre" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Nombre completo</label>
+                  <input id="contacto-nombre" name="nombre" type="text" required class="nx-input" placeholder="Ej. Ana Torres" />
+                </div>
+                <div>
+                  <label for="contacto-email" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Email laboral</label>
+                  <input id="contacto-email" name="email" type="email" required class="nx-input" placeholder="nombre@empresa.com" />
+                </div>
+              </div>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="contacto-telefono" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Teléfono / WhatsApp</label>
+                  <input id="contacto-telefono" name="telefono" type="tel" required class="nx-input" placeholder="+52 462 000 0000" />
+                </div>
+                <div>
+                  <label for="contacto-sector" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Sector / Industria</label>
+                  <select id="contacto-sector" name="sector" required data-sector-select class="nx-input"></select>
+                </div>
+              </div>
+              <div>
+                <label for="contacto-mensaje" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Mensaje</label>
+                <textarea id="contacto-mensaje" name="mensaje" rows="4" required class="nx-input" placeholder="Contanos qué necesitás destrabar"></textarea>
+              </div>
+              <div class="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
+                <button type="submit" data-form-submit class="btn-primary sm:w-auto">Enviar brief</button>
+                <p class="text-sm" data-form-status role="status"></p>
+              </div>
+            </form>
+            <p class="mt-5 text-xs text-[#6e6e73]">Firmamos NDA antes de ver tus datos sensibles.</p>
+          </div>
+
+          <!-- INFO -->
+          <div class="reveal reveal-d1 space-y-4">
+            <div class="glass-card rounded-2xl p-6">
+              <div class="space-y-4">
+                <div>
+                  <p class="mb-1 text-xs uppercase tracking-[0.3em] text-[#6e6e73]">Teléfono</p>
+                  <a href="tel:+524622722089" class="text-lg font-semibold text-white transition-colors hover:text-nx-cyan">+52 462 272 2089</a>
+                </div>
+                <div class="h-px bg-[rgba(255,255,255,0.06)]"></div>
+                <div>
+                  <p class="mb-1 text-xs uppercase tracking-[0.3em] text-[#6e6e73]">Email</p>
+                  <a href="mailto:cmed.beta@gmail.com" class="text-base font-semibold text-white transition-colors hover:text-nx-cyan">cmed.beta@gmail.com</a>
+                </div>
+                <div class="h-px bg-[rgba(255,255,255,0.06)]"></div>
+                <div>
+                  <p class="mb-1 text-xs uppercase tracking-[0.3em] text-[#6e6e73]">Horario</p>
+                  <p class="text-base font-semibold text-white">Lun–Sáb · 09:00–20:00 h</p>
+                </div>
+              </div>
+              <div class="mt-6 grid gap-3">
+                <a href="https://wa.me/524622722089" target="_blank" rel="noopener"
+                  data-cta-target="contact-whatsapp" data-cta-location="contacto"
+                  class="btn-primary text-center text-sm">Hablar por WhatsApp</a>
+                <a href="mailto:cmed.beta@gmail.com"
+                  data-cta-target="contact-email" data-cta-location="contacto"
+                  class="btn-secondary text-center text-sm">Enviar correo directo</a>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+              <p class="mb-4 text-sm font-semibold text-white">¿Sin tiempo? Escaneá el QR.</p>
+              <div class="flex items-center gap-4">
+                <img src="assets/qr-whatsapp.svg" alt="QR para WhatsApp de NEUXORA"
+                  class="h-24 w-24 flex-shrink-0 rounded-xl border border-[rgba(255,255,255,0.1)] bg-white/5 p-1.5" loading="lazy" />
+                <p class="text-xs text-[#6e6e73]">Abrí WhatsApp directamente escaneando este código.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Asset preloads (hidden, for JS bundle) -->
+  <div class="hidden" aria-hidden="true" id="asset-preloads">
+    <img data-asset-key="iconAgencia"      src="assets/icon-agencia.svg"      data-placeholder="icon-agencia"      alt="" />
+    <img data-asset-key="iconCmed"         src="assets/icon-cmed.svg"         data-placeholder="icon-cmed"         alt="" />
+    <img data-asset-key="iconEducacion"    src="assets/icon-educacion.svg"    data-placeholder="icon-educacion"    alt="" />
+    <img data-asset-key="iconInvestigacion" src="assets/icon-investigacion.svg" data-placeholder="icon-investigacion" alt="" />
+    <img data-asset-key="qrWhatsapp"       src="assets/qr-whatsapp.svg"       data-placeholder="qr-whatsapp"       alt="" />
+  </div>
+
+  <footer class="border-t border-[rgba(255,255,255,0.06)] px-6 py-10">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
+      <span class="text-base font-bold tracking-[0.14em] text-white">NEUXORA</span>
+      <p class="text-xs text-[#6e6e73]">© <span id="year">2026</span> NEUXORA · Todos los derechos reservados.</p>
+      <div class="flex gap-6">
+        <a href="#nosotros"      class="text-xs text-[#6e6e73] transition-colors hover:text-white">Nosotros</a>
+        <a href="#departamentos" class="text-xs text-[#6e6e73] transition-colors hover:text-white">Departamentos</a>
+        <a href="#contacto"      class="text-xs text-[#6e6e73] transition-colors hover:text-white">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Nav scroll effect
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Scroll reveal
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
