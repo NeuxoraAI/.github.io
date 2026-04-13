@@ -3,1197 +3,291 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Neuxora — IA aplicada para operaciones críticas</title>
-  <meta name="description" content="Neuxora construye soluciones de IA a medida para salud, educación e investigación. Hacemos lo imposible, porque lo difícil lo hace cualquiera." />
-  <meta name="theme-color" content="#F0EEE6" />
-  <meta property="og:title" content="Neuxora — IA aplicada para operaciones críticas" />
-  <meta property="og:description" content="Hacemos lo imposible, porque lo difícil lo hace cualquiera." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://neuxora.com/" />
-
+  <title>Neuxora — IA al servicio de la salud, la educación y el conocimiento</title>
+  <meta name="description" content="Neuxora diseña IA y software a medida para salud, educación e investigación. IA al servicio de la salud, la educación y el conocimiento." />
+  <meta name="theme-color" content="#fcf9f3" />
+  <meta property="og:title"       content="Neuxora — IA al servicio de la salud, la educación y el conocimiento" />
+  <meta property="og:description" content="IA al servicio de la salud, la educación y el conocimiento." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://neuxora.com/" />
   <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap" rel="stylesheet" />
 
-  <script>
-    window.tailwind = window.tailwind || {};
-    window.tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'nx-bg':      '#F0EEE6',
-            'nx-surface': '#FAF9F5',
-            'nx-alt':     '#E8E4D6',
-            'nx-warm':    '#DAD5C3',
-            'nx-border':  '#D9D6C9',
-            'nx-text':    '#141413',
-            'nx-muted':   '#6B6A63',
-            'nx-subtle':  '#8C8B82',
-            'nx-accent':  '#CC785C',
-            'nx-accent-hover': '#B5654A',
-            'nx-accent-soft':  '#EBD5C8'
-          },
-          fontFamily: {
-            display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
-            sans:    ['Inter', 'system-ui', '-apple-system', 'sans-serif']
-          }
-        }
-      }
-    };
-  </script>
+  <link rel="stylesheet" href="assets/neuxora.css" />
 
-  <style>
-    :root {
-      color-scheme: light;
-      --nx-bg:            #F0EEE6;
-      --nx-surface:       #FAF9F5;
-      --nx-alt:           #E8E4D6;
-      --nx-warm:          #DAD5C3;
-      --nx-border:        #D9D6C9;
-      --nx-border-strong: #C4C0B0;
-      --nx-text:          #141413;
-      --nx-muted:         #6B6A63;
-      --nx-subtle:        #8C8B82;
-      --nx-accent:        #CC785C;
-      --nx-accent-hover:  #B5654A;
-      --nx-accent-soft:   #EBD5C8;
-      --nx-ease:          cubic-bezier(.25,.46,.45,.94);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: var(--nx-bg);
-      color: var(--nx-text);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      line-height: 1.55;
-      font-feature-settings: 'ss01', 'cv11';
-      overflow-x: hidden;
-    }
-
-    .font-display { font-family: 'Fraunces', ui-serif, Georgia, serif; font-feature-settings: 'ss01'; }
-
-    ::selection { background: var(--nx-accent); color: #fff; }
-
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: var(--nx-bg); }
-    ::-webkit-scrollbar-thumb { background: var(--nx-border); border: 2px solid var(--nx-bg); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--nx-subtle); }
-
-    /* ── NAV ── */
-    #nav { transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease; }
-    #nav.scrolled {
-      background: rgba(240, 238, 230, 0.82);
-      backdrop-filter: blur(16px) saturate(140%);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      border-bottom: 1px solid var(--nx-border);
-    }
-    .nav-link {
-      color: var(--nx-text); text-decoration: none;
-      font-size: 0.92rem; font-weight: 450;
-      position: relative; padding: 0.25rem 0;
-      transition: color 0.2s ease;
-    }
-    .nav-link::after {
-      content: ''; position: absolute; left: 0; right: 100%; bottom: -2px;
-      height: 1px; background: var(--nx-text);
-      transition: right 0.35s var(--nx-ease);
-    }
-    .nav-link:hover::after { right: 0; }
-
-    /* ── LOGO ── */
-    .brand-mark { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--nx-text); text-decoration: none; }
-    .brand-mark svg { height: 26px; width: 26px; transition: transform 0.4s var(--nx-ease); }
-    .brand-mark:hover svg { transform: rotate(-6deg) scale(1.04); }
-    .brand-wordmark { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.15rem; letter-spacing: -0.01em; }
-
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-      font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.925rem;
-      padding: 0.75rem 1.4rem; border-radius: 999px;
-      cursor: pointer; text-decoration: none;
-      border: 1px solid transparent;
-      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-      white-space: nowrap;
-    }
-    .btn-primary { background: var(--nx-text); color: var(--nx-bg); }
-    .btn-primary:hover { background: var(--nx-accent); color: #fff; }
-    .btn-primary .arrow { transition: transform 0.3s var(--nx-ease); }
-    .btn-primary:hover .arrow { transform: translateX(3px); }
-
-    .btn-secondary { background: transparent; color: var(--nx-text); border-color: var(--nx-border-strong); }
-    .btn-secondary:hover { border-color: var(--nx-text); background: var(--nx-text); color: var(--nx-bg); }
-
-    .btn-ghost { background: transparent; color: var(--nx-text); padding: 0.4rem 0; border-radius: 0; position: relative; }
-    .btn-ghost::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: 0;
-      height: 1px; background: currentColor; transform-origin: right;
-      transition: transform 0.35s var(--nx-ease);
-    }
-    .btn-ghost:hover { color: var(--nx-accent); }
-    .btn-ghost:hover::after { transform: scaleX(0.5); transform-origin: left; }
-
-    /* ── EYEBROW ── */
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 0.65rem;
-      font-size: 0.78rem; font-weight: 500; color: var(--nx-muted);
-      letter-spacing: 0.01em;
-    }
-    .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--nx-muted); }
-
-    /* ── HEADINGS ── */
-    .hero-title {
-      font-family: 'Fraunces', serif;
-      font-weight: 300;
-      font-size: clamp(2.8rem, 7vw, 6rem);
-      line-height: 0.98;
-      letter-spacing: -0.035em;
-      font-variation-settings: 'opsz' 144;
-    }
-    .hero-title em { font-style: italic; font-weight: 400; color: var(--nx-accent); }
-
-    .section-title {
-      font-family: 'Fraunces', serif;
-      font-weight: 400;
-      font-size: clamp(2.1rem, 4.5vw, 3.6rem);
-      line-height: 1.04;
-      letter-spacing: -0.025em;
-      color: var(--nx-text);
-      font-variation-settings: 'opsz' 144;
-    }
-    .section-title em { font-style: italic; color: var(--nx-accent); }
-
-    /* ── CARDS ── */
-    .card {
-      background: var(--nx-surface);
-      border: 1px solid var(--nx-border);
-      border-radius: 20px;
-      transition: border-color 0.3s ease, transform 0.4s var(--nx-ease), box-shadow 0.4s ease, background 0.3s ease;
-    }
-    .card-hover:hover {
-      border-color: var(--nx-border-strong);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px -20px rgba(20, 20, 19, 0.2);
-    }
-
-    /* ── FEATURE CARD (hero) ── */
-    .feature-card {
-      position: relative; overflow: hidden;
-      background: var(--nx-text); color: var(--nx-bg);
-      border-radius: 24px; padding: 2rem;
-      display: flex; flex-direction: column; justify-content: space-between;
-      min-height: 420px;
-      transition: transform 0.5s var(--nx-ease);
-    }
-    .feature-card:hover { transform: translateY(-3px); }
-    .feature-card::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(80% 60% at 90% 110%, rgba(204,120,92,0.35), transparent 60%);
-      pointer-events: none;
-    }
-    .feature-card .ui-preview {
-      position: relative; background: var(--nx-bg);
-      border-radius: 14px; padding: 1rem 1.1rem;
-      color: var(--nx-text);
-    }
-    .ui-row { height: 8px; border-radius: 3px; background: var(--nx-warm); margin-bottom: 8px; }
-    .ui-row-hl { background: var(--nx-accent); width: 55%; }
-    .ui-row-sm { width: 70%; }
-    .ui-row-xs { width: 45%; }
-    .ui-chip {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.68rem; font-weight: 500;
-      padding: 0.25rem 0.55rem; border-radius: 999px;
-      background: var(--nx-accent-soft); color: var(--nx-accent);
-    }
-    .ui-chip-dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
-
-    /* ── DEPT/ACCORDION ── */
-    .dept-details { overflow: hidden; }
-    .dept-details summary::-webkit-details-marker,
-    .dept-details summary::marker { display: none; content: ''; }
-    .dept-details summary { list-style: none; }
-    .dept-details[open] { border-color: var(--nx-text); }
-    .dept-chevron {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 36px; height: 36px; border-radius: 999px;
-      background: transparent; border: 1px solid var(--nx-border);
-      transition: transform 0.35s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-      flex-shrink: 0; color: var(--nx-text);
-    }
-    .dept-details[open] .dept-chevron {
-      transform: rotate(180deg);
-      background: var(--nx-text); border-color: var(--nx-text); color: var(--nx-bg);
-    }
-    .dept-summary:hover .dept-chevron { border-color: var(--nx-text); }
-    .dept-name { transition: color 0.25s ease; }
-    .dept-summary:hover .dept-name { color: var(--nx-accent); }
-    .dept-tile {
-      width: 56px; height: 56px; border-radius: 14px;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--nx-alt); color: var(--nx-text);
-      flex-shrink: 0; transition: background 0.3s ease, color 0.3s ease;
-    }
-    .dept-details[open] .dept-tile { background: var(--nx-text); color: var(--nx-bg); }
-
-    /* ── REPO CARD ── */
-    .repo-card {
-      background: var(--nx-surface);
-      border: 1px solid var(--nx-border);
-      border-radius: 18px;
-      padding: 1.7rem;
-      transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
-      display: flex; flex-direction: column; gap: 0.9rem;
-      position: relative; overflow: hidden;
-    }
-    .repo-card::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
-      background: var(--nx-accent);
-      transform: scaleY(0); transform-origin: top;
-      transition: transform 0.45s var(--nx-ease);
-    }
-    .repo-card:hover { border-color: var(--nx-text); transform: translateY(-2px); }
-    .repo-card:hover::before { transform: scaleY(1); }
-    .repo-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.28rem; letter-spacing: -0.01em; color: var(--nx-text); }
-    .repo-link { color: var(--nx-muted); font-size: 0.82rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; transition: color 0.2s ease; text-decoration: none; }
-    .repo-link:hover { color: var(--nx-accent); }
-
-    /* ── TAGS ── */
-    .tag {
-      display: inline-flex; align-items: center; padding: 0.25rem 0.7rem;
-      border-radius: 999px; font-size: 0.72rem; font-weight: 500;
-      background: var(--nx-alt); color: var(--nx-muted);
-      border: 1px solid var(--nx-border);
-    }
-    .tag.tag-accent { background: var(--nx-accent-soft); color: var(--nx-accent-hover); border-color: transparent; }
-
-    /* ── STEP NUMBER ── */
-    .step-number {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 44px; height: 44px; border-radius: 999px;
-      background: var(--nx-bg); border: 1px solid var(--nx-border-strong);
-      font-family: 'Fraunces', serif; font-weight: 400; font-size: 0.95rem;
-      color: var(--nx-text); flex-shrink: 0;
-    }
-
-    /* ── FORM ── */
-    .nx-input {
-      width: 100%; background: var(--nx-bg);
-      border: 1px solid var(--nx-border); border-radius: 12px;
-      padding: 0.85rem 1.1rem; color: var(--nx-text);
-      font-family: 'Inter', sans-serif; font-size: 0.95rem;
-      outline: none; -webkit-appearance: none;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-    .nx-input::placeholder { color: var(--nx-subtle); }
-    .nx-input:focus { border-color: var(--nx-text); background: var(--nx-surface); }
-
-    [data-form-status] { min-height: 1.5rem; font-size: 0.88rem; color: var(--nx-muted); }
-    [data-form-status][data-state='success'] { color: #2F7D3A; }
-    [data-form-status][data-state='error']   { color: #A4372F; }
-    [data-form-status][data-state='pending'] { color: var(--nx-accent); }
-
-    /* ── REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.85s var(--nx-ease), transform 0.85s var(--nx-ease); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 0.08s; }
-    .reveal-d2 { transition-delay: 0.16s; }
-    .reveal-d3 { transition-delay: 0.24s; }
-    .reveal-d4 { transition-delay: 0.32s; }
-
-    /* ── HERO ENTRANCE (immediate for above-the-fold) ── */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-in { opacity: 0; animation: fadeUp 0.95s var(--nx-ease) forwards; }
-    .hero-in-1 { animation-delay: 0.05s; }
-    .hero-in-2 { animation-delay: 0.18s; }
-    .hero-in-3 { animation-delay: 0.32s; }
-    .hero-in-4 { animation-delay: 0.46s; }
-    .hero-in-5 { animation-delay: 0.6s; }
-
-    /* ── MARQUEE ── */
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .marquee-track { display: inline-flex; gap: 3rem; white-space: nowrap; animation: marquee 42s linear infinite; will-change: transform; }
-    .marquee-item {
-      font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(1.8rem, 4vw, 3rem);
-      color: var(--nx-text); letter-spacing: -0.02em;
-      display: inline-flex; align-items: center; gap: 2.5rem;
-    }
-    .marquee-dot { color: var(--nx-accent); font-size: 1.2rem; }
-
-    /* ── NEWS / ROW LINK ── */
-    .row-link {
-      display: grid; grid-template-columns: 180px 1fr auto;
-      gap: 2rem; align-items: start;
-      padding: 2rem 0;
-      border-top: 1px solid var(--nx-border);
-      text-decoration: none; color: var(--nx-text);
-      transition: padding 0.3s ease;
-    }
-    @media (max-width: 768px) { .row-link { grid-template-columns: 1fr auto; } .row-link .row-meta { grid-column: 1 / -1; } }
-    .row-link:hover { padding-left: 0.75rem; }
-    .row-link .row-arrow { transition: transform 0.35s var(--nx-ease); color: var(--nx-muted); align-self: center; }
-    .row-link:hover .row-arrow { transform: translate(4px, -4px); color: var(--nx-accent); }
-    .row-meta { color: var(--nx-muted); font-size: 0.83rem; }
-
-    /* ── PRINCIPLE CARD ── */
-    .principle {
-      padding: 2rem 2rem 2.25rem;
-      border: 1px solid var(--nx-border);
-      border-radius: 20px;
-      background: var(--nx-surface);
-      transition: background 0.3s ease, border-color 0.3s ease;
-      position: relative; overflow: hidden;
-    }
-    .principle:hover { background: var(--nx-bg); border-color: var(--nx-text); }
-    .principle-num {
-      font-family: 'Fraunces', serif; font-weight: 300;
-      font-size: 3.4rem; line-height: 1; color: var(--nx-accent);
-      font-variation-settings: 'opsz' 144;
-    }
-
-    /* ── PARTNER TILE ── */
-    .partner {
-      height: 88px; border: 1px solid var(--nx-border); border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Fraunces', serif; font-size: 1.15rem; letter-spacing: -0.01em;
-      color: var(--nx-muted); background: var(--nx-surface);
-      transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-      text-align: center; padding: 0 1rem;
-    }
-    .partner:hover { color: var(--nx-text); border-color: var(--nx-text); background: var(--nx-bg); }
-
-    /* ── CTA BAND ── */
-    .cta-band {
-      background: var(--nx-text); color: var(--nx-bg);
-      border-radius: 28px;
-      padding: clamp(2.5rem, 6vw, 5rem);
-      position: relative; overflow: hidden;
-    }
-    .cta-band::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(60% 80% at 100% 0%, rgba(204,120,92,0.3), transparent 60%),
-        radial-gradient(50% 80% at 0% 100%, rgba(204,120,92,0.18), transparent 60%);
-      pointer-events: none;
-    }
-
-    /* ── LINK UNDERLINE ── */
-    .link-underline { position: relative; color: var(--nx-text); text-decoration: none; font-weight: 500; }
-    .link-underline::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: -2px;
-      height: 1px; background: currentColor;
-      transform: scaleX(1); transform-origin: right;
-      transition: transform 0.4s var(--nx-ease);
-    }
-    .link-underline:hover::after { transform: scaleX(0); transform-origin: left; }
-
-    /* ── STAT ── */
-    .stat-big {
-      font-family: 'Fraunces', serif; font-weight: 300;
-      font-size: clamp(2.6rem, 5vw, 4rem); line-height: 1;
-      letter-spacing: -0.03em; color: var(--nx-text);
-      font-variation-settings: 'opsz' 144;
-    }
-
-    /* ── REDUCED MOTION ── */
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .hero-in { opacity: 1; transform: none; transition: none; animation: none; }
-      .marquee-track { animation: none; }
-    }
-  </style>
-
-  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
   <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@19.0.0",
-        "react-dom/client": "https://esm.sh/react-dom@19.0.0/client"
-      }
-    }
+    { "imports": { "react": "https://esm.sh/react@19.0.0", "react-dom/client": "https://esm.sh/react-dom@19.0.0/client" } }
   </script>
   <script defer src="assets/index-C5rxl4P4.js"></script>
 </head>
+<body>
 
-<body class="bg-nx-bg text-nx-text">
-
-  <!-- ═══════════ NAV ═══════════ -->
-  <nav id="nav" class="fixed top-0 z-50 w-full">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 lg:px-10">
-      <a href="#" class="brand-mark" aria-label="Neuxora">
-        <svg viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/></svg>
-        <span class="brand-wordmark">Neuxora</span>
-      </a>
-      <div class="hidden items-center gap-9 md:flex">
-        <a href="#nosotros"      class="nav-link">Nosotros</a>
-        <a href="#proyectos"     class="nav-link">Proyectos</a>
-        <a href="#metodo"        class="nav-link">Método</a>
-        <a href="#noticias"      class="nav-link">Noticias</a>
-        <a href="#carreras"      class="nav-link">Carreras</a>
-      </div>
-      <a href="#contacto" class="btn btn-primary">
-        Contactar
-        <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand-mark" aria-label="Neuxora inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/></svg>
+      <span class="brand-wordmark">Neuxora</span>
+    </a>
+    <div class="nav-links">
+      <a href="areas.html"         class="nav-link">Áreas</a>
+      <a href="investigacion.html" class="nav-link">Investigación</a>
+      <a href="noticias.html"      class="nav-link">Noticias</a>
     </div>
-  </nav>
-
-  <!-- ═══════════ HERO ═══════════ -->
-  <header id="hero" class="relative overflow-hidden pt-28 lg:pt-36">
-    <div class="mx-auto max-w-6xl px-6 lg:px-10">
-
-      <div class="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:items-end pb-20 lg:pb-28">
-
-        <!-- Left: text -->
-        <div>
-          <div class="hero-in hero-in-1 mb-8">
-            <span class="eyebrow">León, Gto. · Agencia de IA</span>
-          </div>
-          <h1 class="hero-in hero-in-2 hero-title">
-            Hacemos lo imposible,<br>
-            porque lo difícil<br>
-            <em>lo hace cualquiera.</em>
-          </h1>
-          <p class="hero-in hero-in-3 mt-8 max-w-xl text-lg leading-relaxed text-nx-text/80">
-            Neuxora diseña IA y software a medida para salud, educación e investigación. Entendemos a las personas detrás del problema antes de escribir una sola línea de código.
-          </p>
-          <div class="hero-in hero-in-4 mt-10 flex flex-wrap gap-3">
-            <a href="#nosotros" class="btn btn-primary">
-              Conocé a Neuxora
-              <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="#proyectos" class="btn btn-secondary">Ver proyectos</a>
-          </div>
-        </div>
-
-        <!-- Right: featured project card -->
-        <a href="#proyectos" class="hero-in hero-in-5 feature-card group block" aria-label="Proyecto estrella — Expediente Inteligente">
-          <div class="relative z-10">
-            <span class="ui-chip"><span class="ui-chip-dot"></span> Proyecto estrella</span>
-            <h2 class="mt-5 font-display text-3xl font-medium leading-tight tracking-tight md:text-4xl">
-              Expediente<br>Inteligente
-            </h2>
-            <p class="mt-3 text-sm text-nx-bg/75 max-w-sm">Consulta médica por voz que se transforma en expediente clínico digital, con IA y trazabilidad integral.</p>
-          </div>
-
-          <div class="ui-preview relative z-10 mt-8">
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-nx-accent"></span>
-                <span class="text-[10px] font-medium uppercase tracking-wider text-nx-muted">Consulta #0218</span>
-              </div>
-              <span class="text-[10px] text-nx-muted">09:42</span>
-            </div>
-            <div class="ui-row ui-row-sm"></div>
-            <div class="ui-row ui-row-hl"></div>
-            <div class="ui-row"></div>
-            <div class="ui-row ui-row-xs"></div>
-            <div class="mt-3 flex gap-2">
-              <span class="ui-chip" style="background: var(--nx-alt); color: var(--nx-text);">dx: cefalea</span>
-              <span class="ui-chip" style="background: var(--nx-alt); color: var(--nx-text);">rx: ibuprofeno</span>
-            </div>
-          </div>
-
-          <div class="relative z-10 mt-6 flex items-center justify-between text-sm">
-            <span class="text-nx-bg/70">github.com/NeuxoraAI</span>
-            <svg class="transition-transform duration-500 group-hover:translate-x-1" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- Marquee strip -->
-    <div class="overflow-hidden border-y border-nx-border py-5 bg-nx-surface/60">
-      <div class="marquee-track">
-        <span class="marquee-item">Salud <span class="marquee-dot">✦</span> Educación <span class="marquee-dot">✦</span> Investigación <span class="marquee-dot">✦</span> IA aplicada <span class="marquee-dot">✦</span> Software a medida <span class="marquee-dot">✦</span> Impacto social <span class="marquee-dot">✦</span></span>
-        <span class="marquee-item">Salud <span class="marquee-dot">✦</span> Educación <span class="marquee-dot">✦</span> Investigación <span class="marquee-dot">✦</span> IA aplicada <span class="marquee-dot">✦</span> Software a medida <span class="marquee-dot">✦</span> Impacto social <span class="marquee-dot">✦</span></span>
-      </div>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- ═══════════ STATS BAND ═══════════ -->
-    <section class="px-6 py-20 lg:px-10 lg:py-24">
-      <div class="mx-auto max-w-6xl">
-        <div class="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-6">
-          <div class="reveal">
-            <p class="stat-big">7<span class="text-nx-accent">·</span>días</p>
-            <p class="mt-3 text-sm text-nx-muted">Diagnóstico profundo</p>
-          </div>
-          <div class="reveal reveal-d1">
-            <p class="stat-big">&lt;24h</p>
-            <p class="mt-3 text-sm text-nx-muted">Tiempo de respuesta</p>
-          </div>
-          <div class="reveal reveal-d2">
-            <p class="stat-big">200<span class="text-nx-accent">+</span></p>
-            <p class="mt-3 text-sm text-nx-muted">Sillas medidas · Torre Vida</p>
-          </div>
-          <div class="reveal reveal-d3">
-            <p class="stat-big">03</p>
-            <p class="mt-3 text-sm text-nx-muted">Departamentos activos</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════ SOBRE NOSOTROS ═══════════ -->
-    <section id="nosotros" class="px-6 py-24 lg:px-10 lg:py-32 border-t border-nx-border">
-      <div class="mx-auto max-w-6xl">
-
-        <div class="grid gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-24">
-          <div class="reveal">
-            <span class="eyebrow">Sobre nosotros</span>
-            <h2 class="section-title mt-6">
-              Construimos IA<br>con propósito,<br><em>no con modas.</em>
-            </h2>
-          </div>
-
-          <div class="reveal reveal-d1 space-y-6">
-            <p class="text-xl leading-relaxed text-nx-text/85 font-light">
-              Somos una agencia tecnológica con un propósito claro: <span class="font-medium text-nx-text">transformar los problemas más complejos en soluciones inteligentes.</span> No somos consultores de slides. Escuchamos, auditamos y diseñamos contigo.
-            </p>
-            <p class="text-lg leading-relaxed text-nx-muted">
-              Cada proyecto que tomamos tiene personas detrás. Niños que necesitan sillas de ruedas bien medidas. Médicos que pierden horas llenando expedientes. Investigadores que necesitan datos en tiempo real. Eso es lo que nos mueve.
-            </p>
-            <p class="font-display text-lg italic text-nx-text font-normal pt-1">
-              “Si ya te dijeron que era imposible, dejá que lo intentemos nosotros.”
-            </p>
-          </div>
-        </div>
-
-        <!-- Divisions -->
-        <div class="mt-24">
-          <div class="reveal mb-12 max-w-3xl">
-            <span class="eyebrow">Divisiones</span>
-            <h3 class="section-title mt-6">Tres disciplinas, <em>un objetivo.</em></h3>
-            <p class="mt-5 text-lg text-nx-muted">Armamos squads cruzando medicina, educación e investigación para mover agujas rápido y sin interrumpir tu operación.</p>
-          </div>
-
-          <div class="space-y-4">
-
-            <details class="dept-details card reveal">
-              <summary class="dept-summary flex cursor-pointer items-center gap-5 p-6 md:p-7 select-none">
-                <div class="dept-tile"><img src="assets/icon-cmed.svg" alt="" class="h-7 w-7"/></div>
-                <div class="flex-1">
-                  <p class="eyebrow mb-2">Salud</p>
-                  <h4 class="dept-name font-display text-2xl font-medium tracking-tight">C-MED</h4>
-                  <p class="mt-1 text-sm text-nx-muted">Transformando la atención médica con IA</p>
-                </div>
-                <div class="dept-chevron" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-              </summary>
-              <div class="border-t border-nx-border px-6 pb-8 pt-6 md:px-7">
-                <div class="grid gap-8 md:grid-cols-2">
-                  <div>
-                    <h5 class="mb-4 font-display text-lg">Capacidades</h5>
-                    <ul class="space-y-3 text-nx-muted">
-                      <li>— Apps médicas con <span class="text-nx-text">análisis de consultas por voz</span> para generar expedientes clínicos.</li>
-                      <li>— Sistemas de <span class="text-nx-text">medición estandarizada</span> para brigadas clínicas en campo.</li>
-                      <li>— Plataformas de <span class="text-nx-text">trazabilidad regulatoria</span> para dispositivos médicos personalizados.</li>
-                    </ul>
-                  </div>
-                  <div class="rounded-2xl bg-nx-alt p-6">
-                    <p class="eyebrow mb-4">Por qué importa</p>
-                    <p class="text-nx-muted">Los médicos pierden hasta el 40% de su tiempo en tareas administrativas. Nuestro objetivo: devolvérselo para que se concentren en <span class="text-nx-text font-medium">sus pacientes</span>.</p>
-                  </div>
-                </div>
-              </div>
-            </details>
-
-            <details class="dept-details card reveal reveal-d1">
-              <summary class="dept-summary flex cursor-pointer items-center gap-5 p-6 md:p-7 select-none">
-                <div class="dept-tile"><img src="assets/icon-educacion.svg" alt="" class="h-7 w-7"/></div>
-                <div class="flex-1">
-                  <p class="eyebrow mb-2">Educación</p>
-                  <h4 class="dept-name font-display text-2xl font-medium tracking-tight">EDU</h4>
-                  <p class="mt-1 text-sm text-nx-muted">Plataformas inteligentes para potenciar el aprendizaje</p>
-                </div>
-                <div class="dept-chevron" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-              </summary>
-              <div class="border-t border-nx-border px-6 pb-8 pt-6 md:px-7">
-                <div class="grid gap-8 md:grid-cols-2">
-                  <div>
-                    <h5 class="mb-4 font-display text-lg">Capacidades</h5>
-                    <ul class="space-y-3 text-nx-muted">
-                      <li>— <span class="text-nx-text">Plataformas adaptativas</span> con IA que personalizan el aprendizaje por alumno.</li>
-                      <li>— Herramientas de <span class="text-nx-text">gestión educativa</span> para coordinadores e instituciones.</li>
-                      <li>— Analytics de <span class="text-nx-text">rendimiento y deserción</span> en tiempo real.</li>
-                    </ul>
-                  </div>
-                  <div class="rounded-2xl bg-nx-alt p-6">
-                    <p class="eyebrow mb-4">Por qué importa</p>
-                    <p class="text-nx-muted">La tecnología educativa bien implementada cierra brechas de aprendizaje que llevan décadas abiertas. <span class="text-nx-text font-medium">La IA hace posible personalizar para cada estudiante.</span></p>
-                  </div>
-                </div>
-              </div>
-            </details>
-
-            <details class="dept-details card reveal reveal-d2">
-              <summary class="dept-summary flex cursor-pointer items-center gap-5 p-6 md:p-7 select-none">
-                <div class="dept-tile"><img src="assets/icon-investigacion.svg" alt="" class="h-7 w-7"/></div>
-                <div class="flex-1">
-                  <p class="eyebrow mb-2">IA & Industria</p>
-                  <h4 class="dept-name font-display text-2xl font-medium tracking-tight">Investigación</h4>
-                  <p class="mt-1 text-sm text-nx-muted">Modelos de ML / DL a medida para retos complejos</p>
-                </div>
-                <div class="dept-chevron" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-              </summary>
-              <div class="border-t border-nx-border px-6 pb-8 pt-6 md:px-7">
-                <div class="grid gap-8 md:grid-cols-2">
-                  <div>
-                    <h5 class="mb-4 font-display text-lg">Capacidades</h5>
-                    <ul class="space-y-3 text-nx-muted">
-                      <li>— Modelos de <span class="text-nx-text">Machine Learning y Deep Learning</span> entrenados sobre tus datos.</li>
-                      <li>— Soluciones para <span class="text-nx-text">retos industriales</span>: visión computacional, predicción de fallas.</li>
-                      <li>— <span class="text-nx-text">Simulaciones científicas</span> y modelado de datos experimentales.</li>
-                    </ul>
-                  </div>
-                  <div class="rounded-2xl bg-nx-alt p-6">
-                    <p class="eyebrow mb-4">Nuestro laboratorio</p>
-                    <p class="text-nx-muted">No aplicamos modelos genéricos. <span class="text-nx-text font-medium">Diseñamos y entrenamos desde cero</span> sobre los datos de tu industria, con benchmarks reales.</p>
-                  </div>
-                </div>
-              </div>
-            </details>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══════════ PROYECTOS ═══════════ -->
-    <section id="proyectos" class="bg-nx-alt px-6 py-24 lg:px-10 lg:py-32">
-      <div class="mx-auto max-w-6xl">
-
-        <div class="grid gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-24 items-end">
-          <div class="reveal">
-            <span class="eyebrow">Proyectos</span>
-            <h2 class="section-title mt-6">Código <em>abierto,</em><br>impacto real.</h2>
-          </div>
-          <div class="reveal reveal-d1">
-            <p class="text-xl leading-relaxed text-nx-text/85 font-light">
-              Nuestros proyectos viven en <a href="https://github.com/NeuxoraAI" target="_blank" rel="noopener" class="link-underline">github.com/NeuxoraAI</a>. Están organizados por departamento — salud, educación e investigación — y cada uno responde a un problema real planteado por una persona real.
-            </p>
-          </div>
-        </div>
-
-        <!-- C-MED -->
-        <div class="mt-20 reveal">
-          <div class="mb-7 flex items-center gap-4">
-            <div class="dept-tile"><img src="assets/icon-cmed.svg" alt="" class="h-7 w-7"/></div>
-            <div>
-              <p class="eyebrow">Salud</p>
-              <h3 class="font-display text-3xl font-medium tracking-tight mt-1">C-MED</h3>
-            </div>
-          </div>
-
-          <div class="grid gap-5 md:grid-cols-3">
-
-            <article class="repo-card">
-              <div class="flex items-start justify-between gap-3">
-                <h4 class="repo-title">Expediente Inteligente</h4>
-                <svg class="text-nx-muted" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3h8v8m0-8L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </div>
-              <p class="text-sm leading-relaxed text-nx-muted">Expediente clínico digital con IA: captura por voz, resúmenes automáticos y trazabilidad integral para consultorios y clínicas.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tag tag-accent">Proyecto estrella</span>
-                <span class="tag">IA · Voz</span>
-                <span class="tag">Salud</span>
-              </div>
-              <a href="https://github.com/NeuxoraAI/Expediente-Inteligente" target="_blank" rel="noopener" class="repo-link mt-auto">github.com/NeuxoraAI/Expediente-Inteligente ↗</a>
-            </article>
-
-            <article class="repo-card">
-              <div class="flex items-start justify-between gap-3">
-                <h4 class="repo-title">medscan-CLI</h4>
-                <svg class="text-nx-muted" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3h8v8m0-8L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </div>
-              <p class="text-sm leading-relaxed text-nx-muted">Herramienta de línea de comandos para análisis y procesamiento de documentos médicos con modelos de lenguaje especializados.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tag">CLI</span>
-                <span class="tag">NLP médico</span>
-              </div>
-              <a href="https://github.com/NeuxoraAI/medscan-CLI" target="_blank" rel="noopener" class="repo-link mt-auto">github.com/NeuxoraAI/medscan-CLI ↗</a>
-            </article>
-
-            <article class="repo-card">
-              <div class="flex items-start justify-between gap-3">
-                <h4 class="repo-title">Sillas Rotary</h4>
-                <svg class="text-nx-muted" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3h8v8m0-8L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </div>
-              <p class="text-sm leading-relaxed text-nx-muted">App de medición estandarizada para brigadas clínicas — captura antropométrica para fabricación de sillas de ruedas infantiles con trazabilidad completa.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tag">Impacto social</span>
-                <span class="tag">Brigadas</span>
-              </div>
-              <a href="https://github.com/NeuxoraAI/Sillas-Rotary" target="_blank" rel="noopener" class="repo-link mt-auto">github.com/NeuxoraAI/Sillas-Rotary ↗</a>
-            </article>
-
-          </div>
-        </div>
-
-        <!-- Educación -->
-        <div class="mt-16 reveal">
-          <div class="mb-7 flex items-center gap-4">
-            <div class="dept-tile"><img src="assets/icon-educacion.svg" alt="" class="h-7 w-7"/></div>
-            <div>
-              <p class="eyebrow">Educación</p>
-              <h3 class="font-display text-3xl font-medium tracking-tight mt-1">EDU</h3>
-            </div>
-          </div>
-
-          <div class="grid gap-5 md:grid-cols-3">
-
-            <article class="repo-card md:col-span-2">
-              <div class="flex items-start justify-between gap-3">
-                <h4 class="repo-title">openstudy</h4>
-                <svg class="text-nx-muted" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3h8v8m0-8L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </div>
-              <p class="text-sm leading-relaxed text-nx-muted">Plataforma abierta de estudio asistida por IA: generación de material, seguimiento adaptativo y analytics para estudiantes e instituciones.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tag tag-accent">Proyecto estrella</span>
-                <span class="tag">Open Source</span>
-                <span class="tag">IA educativa</span>
-              </div>
-              <a href="https://github.com/NeuxoraAI/openstudy" target="_blank" rel="noopener" class="repo-link mt-auto">github.com/NeuxoraAI/openstudy ↗</a>
-            </article>
-
-            <article class="repo-card items-center justify-center text-center">
-              <svg class="mx-auto text-nx-subtle" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 4v20M4 14h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <p class="font-display text-lg text-nx-text">Próximos proyectos</p>
-              <p class="text-xs text-nx-muted">En desarrollo activo</p>
-            </article>
-
-          </div>
-        </div>
-
-        <!-- Investigación -->
-        <div class="mt-16 reveal">
-          <div class="mb-7 flex items-center gap-4">
-            <div class="dept-tile"><img src="assets/icon-investigacion.svg" alt="" class="h-7 w-7"/></div>
-            <div>
-              <p class="eyebrow">IA & Industria</p>
-              <h3 class="font-display text-3xl font-medium tracking-tight mt-1">Investigación</h3>
-            </div>
-          </div>
-
-          <div class="repo-card">
-            <p class="text-base leading-relaxed text-nx-muted max-w-2xl">Laboratorio activo en modelos de ML/DL para industria y ciencia. ¿Tenés un reto que nadie pudo resolver? Ese es nuestro trabajo.</p>
-            <a href="#contacto" class="btn-ghost self-start text-sm mt-2">Presentar tu reto</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══════════ MÉTODO LÍNEA A ═══════════ -->
-    <section id="metodo" class="px-6 py-24 lg:px-10 lg:py-32">
-      <div class="mx-auto max-w-6xl">
-
-        <div class="grid gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-24">
-          <div class="reveal">
-            <span class="eyebrow">Método Línea A</span>
-            <h2 class="section-title mt-6">Hipótesis primero,<br><em>código después.</em></h2>
-            <p class="mt-6 text-lg text-nx-muted">Diagnóstico obsesivo. Sprints visibles. Entregamos y nos quedamos hasta que funcione de verdad.</p>
-          </div>
-
-          <div class="reveal reveal-d1 space-y-6">
-            <div class="flex items-start gap-6 card card-hover p-7">
-              <div class="step-number">01</div>
-              <div class="pt-1">
-                <h3 class="font-display text-xl font-medium tracking-tight">Diagnóstico</h3>
-                <p class="mt-2 text-sm text-nx-muted">Mapeamos procesos, datos y stakeholders en 7 días. NDA firmado desde el día cero.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-6 card card-hover p-7">
-              <div class="step-number">02</div>
-              <div class="pt-1">
-                <h3 class="font-display text-xl font-medium tracking-tight">Diseño de solución</h3>
-                <p class="mt-2 text-sm text-nx-muted">Arquitectura técnica, plan de datos y roadmap validado contigo antes de escribir código.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-6 card card-hover p-7">
-              <div class="step-number">03</div>
-              <div class="pt-1">
-                <h3 class="font-display text-xl font-medium tracking-tight">Desarrollo en sprints</h3>
-                <p class="mt-2 text-sm text-nx-muted">Iteramos en ciclos cortos con demos reales. Sin sorpresas, sin humo.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-6 card card-hover p-7">
-              <div class="step-number">04</div>
-              <div class="pt-1">
-                <h3 class="font-display text-xl font-medium tracking-tight">Despliegue y validación</h3>
-                <p class="mt-2 text-sm text-nx-muted">Lanzamos en producción con monitoreo activo y criterios de éxito medibles.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-6 card card-hover p-7">
-              <div class="step-number">05</div>
-              <div class="pt-1">
-                <h3 class="font-display text-xl font-medium tracking-tight">Mantenimiento vivo</h3>
-                <p class="mt-2 text-sm text-nx-muted">Seguimos midiendo, ajustando y evolucionando la solución junto a tu equipo.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══════════ PRINCIPIOS ═══════════ -->
-    <section id="principios" class="bg-nx-alt px-6 py-24 lg:px-10 lg:py-32">
-      <div class="mx-auto max-w-6xl">
-
-        <div class="reveal mb-14 max-w-3xl">
-          <span class="eyebrow">Principios</span>
-          <h2 class="section-title mt-6">Cómo pensamos<br><em>la tecnología.</em></h2>
-        </div>
-
-        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-
-          <div class="principle reveal">
-            <p class="principle-num">01</p>
-            <h3 class="mt-6 font-display text-xl font-medium tracking-tight">Concepto sobre código</h3>
-            <p class="mt-3 text-sm leading-relaxed text-nx-muted">No tocamos una línea hasta entender el problema. El código sin concepto es deuda técnica vestida de progreso.</p>
-          </div>
-
-          <div class="principle reveal reveal-d1">
-            <p class="principle-num">02</p>
-            <h3 class="mt-6 font-display text-xl font-medium tracking-tight">Impacto antes que hype</h3>
-            <p class="mt-3 text-sm leading-relaxed text-nx-muted">No hacemos IA para parecer modernos. Hacemos IA cuando resuelve un problema real que justifique su complejidad.</p>
-          </div>
-
-          <div class="principle reveal reveal-d2">
-            <p class="principle-num">03</p>
-            <h3 class="mt-6 font-display text-xl font-medium tracking-tight">Humanos primero</h3>
-            <p class="mt-3 text-sm leading-relaxed text-nx-muted">Detrás de cada brief hay una persona tratando de hacer su trabajo mejor. Diseñamos para esa persona, no para la métrica.</p>
-          </div>
-
-          <div class="principle reveal reveal-d3">
-            <p class="principle-num">04</p>
-            <h3 class="mt-6 font-display text-xl font-medium tracking-tight">Operación viva</h3>
-            <p class="mt-3 text-sm leading-relaxed text-nx-muted">No desaparecemos después del handoff. Medimos, ajustamos y evolucionamos junto con tu equipo durante todo el ciclo.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════ ALIADOS ═══════════ -->
-    <section class="px-6 py-20 lg:px-10 lg:py-24 border-t border-nx-border">
-      <div class="mx-auto max-w-6xl">
-        <div class="reveal mb-10 flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <span class="eyebrow">Aliados</span>
-            <h2 class="section-title mt-5">Construimos <em>con ellos.</em></h2>
-          </div>
-          <p class="text-sm text-nx-muted max-w-sm">Colaboramos con instituciones de salud, educación y ciencia en México.</p>
-        </div>
-
-        <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 reveal">
-          <div class="partner">Rotary Club</div>
-          <div class="partner">Ecosistema VIDA-UG</div>
-          <div class="partner">C-MED</div>
-          <div class="partner">Universidad de Gto.</div>
-          <div class="partner">Brigadas Clínicas</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════ NOTICIAS ═══════════ -->
-    <section id="noticias" class="px-6 py-24 lg:px-10 lg:py-32 bg-nx-surface">
-      <div class="mx-auto max-w-6xl">
-
-        <div class="reveal mb-12 flex flex-wrap items-end justify-between gap-6">
-          <div class="max-w-2xl">
-            <span class="eyebrow">Noticias</span>
-            <h2 class="section-title mt-6">Lo último desde <em>Neuxora.</em></h2>
-          </div>
-          <a href="#contacto" class="btn-ghost text-sm">Recibir novedades</a>
-        </div>
-
-        <div class="border-b border-nx-border reveal">
-
-          <a href="https://github.com/NeuxoraAI/Expediente-Inteligente" target="_blank" rel="noopener" class="row-link">
-            <div class="row-meta flex flex-col gap-1">
-              <span class="tag self-start">Producto</span>
-              <span>Abril · 2026</span>
-            </div>
-            <div>
-              <h3 class="font-display text-2xl font-normal tracking-tight md:text-[1.8rem] leading-tight">Expediente Inteligente entra a pruebas con C-MED</h3>
-              <p class="mt-3 text-nx-muted">Arranca la fase piloto del expediente clínico con IA: captura por voz, resúmenes automáticos y trazabilidad integral para la práctica médica.</p>
-            </div>
-            <svg class="row-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M6 5h11v11m0-11L5 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-          </a>
-
-          <a href="https://github.com/NeuxoraAI/Sillas-Rotary" target="_blank" rel="noopener" class="row-link">
-            <div class="row-meta flex flex-col gap-1">
-              <span class="tag self-start">Impacto</span>
-              <span>Marzo · 2026</span>
-            </div>
-            <div>
-              <h3 class="font-display text-2xl font-normal tracking-tight md:text-[1.8rem] leading-tight">Torre Vida UG: 200 sillas de ruedas con medición estandarizada</h3>
-              <p class="mt-3 text-nx-muted">Colaboración con Rotary y el Ecosistema VIDA-UG: la app de brigadas clínicas lleva captura antropométrica y trazabilidad a niños con discapacidad motriz.</p>
-            </div>
-            <svg class="row-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M6 5h11v11m0-11L5 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-          </a>
-
-          <a href="https://github.com/NeuxoraAI/openstudy" target="_blank" rel="noopener" class="row-link">
-            <div class="row-meta flex flex-col gap-1">
-              <span class="tag self-start">Open Source</span>
-              <span>Febrero · 2026</span>
-            </div>
-            <div>
-              <h3 class="font-display text-2xl font-normal tracking-tight md:text-[1.8rem] leading-tight">openstudy es ahora público en GitHub</h3>
-              <p class="mt-3 text-nx-muted">Liberamos la base de nuestra plataforma de estudio asistida por IA: generación de material, seguimiento adaptativo y contribución abierta.</p>
-            </div>
-            <svg class="row-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M6 5h11v11m0-11L5 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════ CARRERAS ═══════════ -->
-    <section id="carreras" class="px-6 py-24 lg:px-10 lg:py-32">
-      <div class="mx-auto max-w-6xl">
-
-        <div class="grid gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-24">
-          <div class="reveal">
-            <span class="eyebrow">Carreras</span>
-            <h2 class="section-title mt-6">Trabajá en<br>lo que <em>importa.</em></h2>
-          </div>
-          <div class="reveal reveal-d1 space-y-6">
-            <p class="text-xl leading-relaxed text-nx-text/85 font-light">
-              Neuxora es un equipo chico, técnico y obsesionado con resolver problemas reales. Buscamos gente que entienda la diferencia entre un demo y un sistema que funciona en producción para un médico, un profesor o un investigador.
-            </p>
-            <p class="text-lg leading-relaxed text-nx-muted">
-              Si te interesa IA aplicada con impacto social y querés crecer al lado de un equipo que no suelta el problema hasta resolverlo — hablá con nosotros.
-            </p>
-            <div class="pt-2">
-              <a href="mailto:cmed.beta@gmail.com?subject=Quiero%20unirme%20a%20Neuxora" class="btn btn-primary">
-                Enviar tu interés
-                <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════ CTA BAND ═══════════ -->
-    <section class="px-6 pb-20 lg:px-10">
-      <div class="mx-auto max-w-6xl">
-        <div class="cta-band reveal">
-          <div class="relative z-10 grid gap-10 md:grid-cols-[1.5fr_1fr] md:items-end">
-            <h2 class="font-display font-light tracking-tight text-nx-bg" style="font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.02;">
-              ¿Listo para destrabar<br>tu proyecto <em style="color: #E7A78C; font-style: italic;">imposible?</em>
-            </h2>
-            <div class="flex flex-wrap gap-3 md:justify-end">
-              <a href="#contacto" class="btn btn-secondary !bg-nx-bg !text-nx-text !border-nx-bg hover:!bg-nx-accent hover:!border-nx-accent hover:!text-nx-bg">
-                Agendar diagnóstico
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-              <a href="https://wa.me/524622722089" target="_blank" rel="noopener" class="btn btn-secondary !border-nx-bg/40 !text-nx-bg hover:!bg-nx-bg hover:!text-nx-text">WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════ CONTACTO ═══════════ -->
-    <section id="contacto" class="px-6 py-24 lg:px-10 lg:py-32 bg-nx-alt">
-      <div class="mx-auto max-w-6xl">
-
-        <div class="reveal mb-14 max-w-3xl">
-          <span class="eyebrow">Contacto</span>
-          <h2 class="section-title mt-6">Mandanos tu brief.<br>Te respondemos <em>en 24h.</em></h2>
-          <p class="mt-5 text-lg text-nx-muted">Firmamos NDA antes de ver tus datos sensibles. Diagnóstico inicial sin costo.</p>
-        </div>
-
-        <div class="grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-start">
-
-          <!-- FORM -->
-          <div class="reveal card p-7 lg:p-10 !rounded-3xl">
-            <form id="contacto-form" name="contacto-linea-a" method="POST"
-              action="https://formspree.io/f/REEMPLAZAR_FORM_ID"
-              data-form-name="contacto-linea-a" data-form-provider="formspree"
-              data-netlify="true" netlify-honeypot="bot-field"
-              class="space-y-5">
-              <input type="hidden" name="form-name" value="contacto-linea-a" />
-              <input type="hidden" name="provider" value="formspree" data-form-provider-field />
-              <div class="sr-only" aria-hidden="true">
-                <label>No completes este campo<input type="text" name="bot-field" tabindex="-1" autocomplete="off" data-honeypot /></label>
-              </div>
-              <div class="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label for="contacto-nombre" class="mb-2 block text-sm font-medium text-nx-text">Nombre completo</label>
-                  <input id="contacto-nombre" name="nombre" type="text" required class="nx-input" placeholder="Ej. Ana Torres" />
-                </div>
-                <div>
-                  <label for="contacto-email" class="mb-2 block text-sm font-medium text-nx-text">Email laboral</label>
-                  <input id="contacto-email" name="email" type="email" required class="nx-input" placeholder="nombre@empresa.com" />
-                </div>
-              </div>
-              <div class="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label for="contacto-telefono" class="mb-2 block text-sm font-medium text-nx-text">Teléfono / WhatsApp</label>
-                  <input id="contacto-telefono" name="telefono" type="tel" required class="nx-input" placeholder="+52 462 000 0000" />
-                </div>
-                <div>
-                  <label for="contacto-sector" class="mb-2 block text-sm font-medium text-nx-text">Sector / Industria</label>
-                  <select id="contacto-sector" name="sector" required data-sector-select class="nx-input"></select>
-                </div>
-              </div>
-              <div>
-                <label for="contacto-mensaje" class="mb-2 block text-sm font-medium text-nx-text">Mensaje</label>
-                <textarea id="contacto-mensaje" name="mensaje" rows="4" required class="nx-input" placeholder="Contanos qué necesitás destrabar"></textarea>
-              </div>
-              <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
-                <button type="submit" data-form-submit class="btn btn-primary">
-                  Enviar brief
-                  <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-                <p class="text-sm" data-form-status role="status"></p>
-              </div>
-            </form>
-          </div>
-
-          <!-- INFO -->
-          <div class="reveal reveal-d1 space-y-4">
-            <div class="card p-6 lg:p-7 !rounded-3xl">
-              <div class="space-y-5">
-                <div>
-                  <p class="mb-1 text-xs uppercase tracking-[0.15em] text-nx-muted">Teléfono</p>
-                  <a href="tel:+524622722089" class="font-display text-2xl font-medium text-nx-text transition-colors hover:text-nx-accent">+52 462 272 2089</a>
-                </div>
-                <div style="height:1px;background:var(--nx-border)"></div>
-                <div>
-                  <p class="mb-1 text-xs uppercase tracking-[0.15em] text-nx-muted">Email</p>
-                  <a href="mailto:cmed.beta@gmail.com" class="text-base font-medium text-nx-text transition-colors hover:text-nx-accent">cmed.beta@gmail.com</a>
-                </div>
-                <div style="height:1px;background:var(--nx-border)"></div>
-                <div>
-                  <p class="mb-1 text-xs uppercase tracking-[0.15em] text-nx-muted">Horario</p>
-                  <p class="text-base font-medium text-nx-text">Lun – Sáb · 09:00–20:00</p>
-                </div>
-              </div>
-              <a href="https://wa.me/524622722089" target="_blank" rel="noopener" class="btn btn-primary mt-6 w-full">Hablar por WhatsApp</a>
-            </div>
-
-            <div class="card p-6 !rounded-3xl">
-              <p class="mb-4 text-sm font-medium text-nx-text">¿Sin tiempo? Escaneá el QR.</p>
-              <div class="flex items-center gap-4">
-                <img src="assets/qr-whatsapp.svg" alt="QR para WhatsApp de Neuxora"
-                  class="h-24 w-24 flex-shrink-0 rounded-xl border border-nx-border bg-nx-bg p-1.5" loading="lazy" />
-                <p class="text-xs text-nx-muted">Abrí WhatsApp directamente escaneando este código.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Asset preloads (hidden, for JS bundle) -->
-  <div class="hidden" aria-hidden="true" id="asset-preloads">
-    <img data-asset-key="iconAgencia"      src="assets/icon-agencia.svg"      data-placeholder="icon-agencia"      alt="" />
-    <img data-asset-key="iconCmed"         src="assets/icon-cmed.svg"         data-placeholder="icon-cmed"         alt="" />
-    <img data-asset-key="iconEducacion"    src="assets/icon-educacion.svg"    data-placeholder="icon-educacion"    alt="" />
-    <img data-asset-key="iconInvestigacion" src="assets/icon-investigacion.svg" data-placeholder="icon-investigacion" alt="" />
-    <img data-asset-key="qrWhatsapp"       src="assets/qr-whatsapp.svg"       data-placeholder="qr-whatsapp"       alt="" />
   </div>
+</nav>
 
-  <!-- ═══════════ FOOTER ═══════════ -->
-  <footer class="border-t border-nx-border px-6 py-16 lg:px-10">
-    <div class="mx-auto max-w-6xl">
-      <div class="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+<!-- ═══════════ HERO ═══════════ -->
+<header style="padding-top: clamp(8rem, 18vw, 14rem); padding-bottom: clamp(4rem, 8vw, 7rem); border-bottom:1px solid var(--nx-border);">
+  <div class="u-container">
+    <div class="grid-hero">
 
-        <div>
-          <a href="#" class="brand-mark">
-            <svg viewBox="0 0 40 40" aria-hidden="true" style="height:32px;width:32px;"><path fill="currentColor" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/></svg>
-            <span class="brand-wordmark" style="font-size:1.3rem">Neuxora</span>
-          </a>
-          <p class="mt-4 max-w-xs text-sm text-nx-muted">IA aplicada para operaciones críticas. León, Gto. · México.</p>
-        </div>
-
-        <div>
-          <p class="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-nx-muted">Navegación</p>
-          <ul class="space-y-2.5 text-sm">
-            <li><a href="#nosotros" class="text-nx-text hover:text-nx-accent transition-colors">Nosotros</a></li>
-            <li><a href="#proyectos" class="text-nx-text hover:text-nx-accent transition-colors">Proyectos</a></li>
-            <li><a href="#metodo" class="text-nx-text hover:text-nx-accent transition-colors">Método</a></li>
-            <li><a href="#noticias" class="text-nx-text hover:text-nx-accent transition-colors">Noticias</a></li>
-            <li><a href="#carreras" class="text-nx-text hover:text-nx-accent transition-colors">Carreras</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-nx-muted">Proyectos</p>
-          <ul class="space-y-2.5 text-sm">
-            <li><a href="https://github.com/NeuxoraAI/Expediente-Inteligente" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">Expediente Inteligente</a></li>
-            <li><a href="https://github.com/NeuxoraAI/medscan-CLI" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">medscan-CLI</a></li>
-            <li><a href="https://github.com/NeuxoraAI/Sillas-Rotary" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">Sillas Rotary</a></li>
-            <li><a href="https://github.com/NeuxoraAI/openstudy" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">openstudy</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-nx-muted">Contacto</p>
-          <ul class="space-y-2.5 text-sm">
-            <li><a href="tel:+524622722089" class="text-nx-text hover:text-nx-accent transition-colors">+52 462 272 2089</a></li>
-            <li><a href="mailto:cmed.beta@gmail.com" class="text-nx-text hover:text-nx-accent transition-colors">cmed.beta@gmail.com</a></li>
-            <li><a href="https://github.com/NeuxoraAI" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">github.com/NeuxoraAI</a></li>
-          </ul>
-        </div>
+      <div class="hero-in hero-in-1">
+        <h1 class="hero-title" style="font-size:clamp(2.55rem, 6.2vw, 5.4rem);">
+          IA al servicio de la salud, la educación y el conocimiento
+        </h1>
       </div>
 
-      <div class="mt-12" style="height:1px;background:var(--nx-border)"></div>
-      <div class="mt-6 flex flex-col items-start justify-between gap-3 text-xs text-nx-muted sm:flex-row sm:items-center">
-        <p>© <span id="year">2026</span> Neuxora · Todos los derechos reservados.</p>
-        <p class="font-display italic">Hacemos lo imposible, porque lo difícil lo hace cualquiera.</p>
+      <div class="hero-in hero-in-2" style="align-self:end;">
+        <p style="font-size:clamp(1.05rem,1.8vw,1.2rem); line-height:1.7; color:var(--nx-muted); max-width:36ch;">
+          La IA está transformando la manera en que diagnosticamos, enseñamos e investigamos. Estamos aquí para que esa transformación llegue donde más importa — con rigor, ética y resultados concretos.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════ PROYECTO DESTACADO ═══════════ -->
+<section style="margin: clamp(4rem, 8vw, 7rem) 0;">
+  <div class="u-container">
+    <div class="os-wrap" id="os-clean">
+      <div class="featured-project">
+        <div class="featured-project-copy">
+          <span class="featured-project-eyebrow">Proyecto destacado</span>
+          <h2 class="featured-project-title">OPENSTUDY</h2>
+          <p class="featured-project-subtitle">Plataforma multiagente para el estudio activo y el aprendizaje adaptativo. Generación de material, seguimiento personalizado y tablero docente.</p>
+          <a href="https://github.com/NeuxoraAI/openstudy" target="_blank" rel="noopener" class="featured-project-btn">
+            Ver proyecto →
+          </a>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+<!-- ═══════════ NOVEDADES ═══════════ -->
+<section class="u-section" style="border-top:1px solid var(--nx-border);">
+  <div class="u-container">
 
-    // Nav scroll effect
-    var nav = document.getElementById('nav');
-    window.addEventListener('scroll', function () {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
+    <div style="margin-bottom:2.5rem;" class="reveal">
+      <span class="eyebrow">Novedades</span>
+      <h2 class="section-title" style="margin-top:1rem;">Últimos <em>lanzamientos</em></h2>
+    </div>
 
-    // Scroll reveal (for below-the-fold elements)
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
+    <div class="release-grid">
 
-    document.querySelectorAll('.reveal').forEach(function (el) {
-      observer.observe(el);
+      <!-- openstudy v0.4 -->
+      <a href="https://github.com/NeuxoraAI/openstudy" target="_blank" rel="noopener" class="release-card reveal">
+        <div class="release-card-header">
+          <h3 class="release-card-title">openstudy v0.4</h3>
+        </div>
+        <p class="release-card-desc">Sistema multiagente para estudios. Generación de material, seguimiento adaptativo y tablero docente renovado.</p>
+        <div class="release-card-meta">
+          <div class="release-meta-row">
+            <span class="release-meta-label">FECHA</span>
+            <span class="release-meta-value">Enero 2026</span>
+          </div>
+          <div class="release-meta-row">
+            <span class="release-meta-label">CATEGORÍA</span>
+            <span class="release-meta-value">EDU · Open Source</span>
+          </div>
+        </div>
+        <div class="release-card-footer">
+          <span class="release-card-link">Ver repositorio</span>
+        </div>
+      </a>
+
+      <!-- Expediente Inteligente -->
+      <a href="https://github.com/NeuxoraAI/Expediente-Inteligente" target="_blank" rel="noopener" class="release-card reveal reveal-d1">
+        <div class="release-card-header">
+          <h3 class="release-card-title">Expediente Inteligente</h3>
+        </div>
+        <p class="release-card-desc">Expediente clínico con IA: captura por voz, resúmenes automáticos y trazabilidad integral para consultorios.</p>
+        <div class="release-card-meta">
+          <div class="release-meta-row">
+            <span class="release-meta-label">FECHA</span>
+            <span class="release-meta-value">Diciembre 2025</span>
+          </div>
+          <div class="release-meta-row">
+            <span class="release-meta-label">CATEGORÍA</span>
+            <span class="release-meta-value">C-MED · Salud</span>
+          </div>
+        </div>
+        <div class="release-card-footer">
+          <span class="release-card-link">Ver repositorio</span>
+        </div>
+      </a>
+
+      <!-- Sillas Rotary -->
+      <a href="https://github.com/NeuxoraAI/Sillas-Rotary" target="_blank" rel="noopener" class="release-card reveal reveal-d2">
+        <div class="release-card-header">
+          <h3 class="release-card-title">Sillas Rotary</h3>
+        </div>
+        <p class="release-card-desc">App de brigadas clínicas con medición estandarizada y trazabilidad antropométrica para niños con discapacidad motriz.</p>
+        <div class="release-card-meta">
+          <div class="release-meta-row">
+            <span class="release-meta-label">FECHA</span>
+            <span class="release-meta-value">Noviembre 2025</span>
+          </div>
+          <div class="release-meta-row">
+            <span class="release-meta-label">CATEGORÍA</span>
+            <span class="release-meta-value">Impacto Social</span>
+          </div>
+        </div>
+        <div class="release-card-footer">
+          <span class="release-card-link">Ver repositorio</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MISIÓN + LINKS ═══════════ -->
+<section class="u-section" style="border-top:1px solid var(--nx-border);">
+  <div class="u-container">
+    <div class="grid-mission">
+
+      <div class="reveal">
+        <p class="mission-quote">
+          En Neuxora, construimos IA que resuelve problemas reales en salud, educación e investigación — porque lo que importa no es la tecnología, sino lo que <em>logra.</em>
+        </p>
+      </div>
+
+      <div class="reveal reveal-d1">
+        <div class="mission-links">
+          <a href="investigacion.html" class="mission-link">
+            <span class="mission-link-label">Investigación</span>
+            <span class="mission-link-title">Investigación aplicada</span>
+          </a>
+          <a href="investigacion.html#team-salud" class="mission-link">
+            <span class="mission-link-label">Salud</span>
+            <span class="mission-link-title">Principios de IA médica</span>
+          </a>
+          <a href="https://github.com/NeuxoraAI/openstudy" target="_blank" rel="noopener" class="mission-link">
+            <span class="mission-link-label">Educación</span>
+            <span class="mission-link-title">openstudy: sistema multiagente</span>
+          </a>
+          <a href="investigacion.html#team-impacto" class="mission-link">
+            <span class="mission-link-label">Impacto social</span>
+            <span class="mission-link-title">IA con propósito, no con modas</span>
+          </a>
+          <a href="areas.html" class="mission-link">
+            <span class="mission-link-label">Anuncios</span>
+            <span class="mission-link-title">Áreas de trabajo</span>
+          </a>
+
+          <a href="https://github.com/NeuxoraAI" target="_blank" rel="noopener" class="mission-link">
+            <span class="mission-link-label">Código abierto</span>
+            <span class="mission-link-title">Proyectos en GitHub</span>
+          </a>
+          <a href="investigacion.html" class="mission-link">
+            <span class="mission-link-label">Publicaciones</span>
+            <span class="mission-link-title">Papers y reportes</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer-dark" style="padding:clamp(3rem,6vw,5rem) 0 2.5rem;">
+  <div class="u-container">
+    <div class="grid-footer">
+      <div>
+        <a href="index.html" class="brand-mark footer-logo" style="margin-bottom:1rem;display:inline-flex;">
+          <svg viewBox="0 0 40 40" aria-hidden="true" style="height:26px;width:26px;"><path fill="currentColor" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/></svg>
+          <span class="brand-wordmark">Neuxora</span>
+        </a>
+        <p style="font-size:0.875rem;max-width:22ch;line-height:1.6;margin-top:0.75rem;">IA al servicio de la salud, la educación y el conocimiento.<br>León, Gto. · México.</p>
+      </div>
+      <div>
+        <span class="footer-col-label">Navegación</span>
+        <a href="areas.html"         class="footer-link">Áreas</a>
+        <a href="investigacion.html" class="footer-link">Investigación</a>
+        <a href="noticias.html"      class="footer-link">Noticias</a>
+      </div>
+      <div>
+        <span class="footer-col-label">Proyectos</span>
+        <a href="https://github.com/NeuxoraAI/Expediente-Inteligente" target="_blank" rel="noopener" class="footer-link">Expediente Inteligente</a>
+        <a href="https://github.com/NeuxoraAI/medscan-CLI"            target="_blank" rel="noopener" class="footer-link">medscan-CLI</a>
+        <a href="https://github.com/NeuxoraAI/Sillas-Rotary"          target="_blank" rel="noopener" class="footer-link">Sillas Rotary</a>
+        <a href="https://github.com/NeuxoraAI/openstudy"              target="_blank" rel="noopener" class="footer-link">openstudy</a>
+      </div>
+      <div>
+        <span class="footer-col-label">Contacto</span>
+        <a href="tel:+524622722089"         class="footer-link">+52 462 272 2089</a>
+        <a href="mailto:cmed.beta@gmail.com" class="footer-link">cmed.beta@gmail.com</a>
+        <a href="https://github.com/NeuxoraAI" target="_blank" rel="noopener" class="footer-link">github.com/NeuxoraAI</a>
+        <a href="https://wa.me/524622722089"   target="_blank" rel="noopener" class="footer-link">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-divider" style="margin:2.5rem 0 1.5rem;"></div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;">
+      <p style="font-size:0.8rem;">© <span id="year">2026</span> Neuxora · Todos los derechos reservados.</p>
+      <p class="footer-tagline">Hacemos lo imposible, porque lo difícil lo hace cualquiera.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Asset preloads for React bundle -->
+<div hidden aria-hidden="true">
+  <img data-asset-key="iconAgencia"      src="assets/icon-agencia.svg"      data-placeholder="icon-agencia"      alt="" />
+  <img data-asset-key="iconCmed"         src="assets/icon-cmed.svg"         data-placeholder="icon-cmed"         alt="" />
+  <img data-asset-key="iconEducacion"    src="assets/icon-educacion.svg"    data-placeholder="icon-educacion"    alt="" />
+  <img data-asset-key="iconInvestigacion" src="assets/icon-investigacion.svg" data-placeholder="icon-investigacion" alt="" />
+  <img data-asset-key="qrWhatsapp"       src="assets/qr-whatsapp.svg"       data-placeholder="qr-whatsapp"       alt="" />
+</div>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Nav scroll
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Scroll reveal
+  var revealObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
     });
-  </script>
+  }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
+
+  // Featured project scroll expansion
+  var osWrap = document.getElementById('os-clean');
+  if (osWrap) {
+    var osObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { osWrap.classList.add('in-view'); osObs.unobserve(osWrap); }
+      });
+    }, { threshold: 0.15 });
+    osObs.observe(osWrap);
+  }
+</script>
+
 </body>
 </html>
