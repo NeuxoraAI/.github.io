@@ -3,220 +3,354 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NEUXORA | IA aplicada para operaciones críticas</title>
-  <meta name="description" content="Hacemos lo imposible. Transformamos los problemas más complejos en soluciones con IA aplicada a salud, educación e investigación." />
-  <meta name="theme-color" content="#000000" />
-  <meta property="og:title" content="NEUXORA | IA aplicada para operaciones críticas" />
+  <title>Neuxora — IA aplicada para operaciones críticas</title>
+  <meta name="description" content="Neuxora construye soluciones de IA a medida para salud, educación e investigación. Hacemos lo imposible, porque lo difícil lo hace cualquiera." />
+  <meta name="theme-color" content="#F0EEE6" />
+  <meta property="og:title" content="Neuxora — IA aplicada para operaciones críticas" />
   <meta property="og:description" content="Hacemos lo imposible, porque lo difícil lo hace cualquiera." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://neuxora.com/" />
+
+  <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
   <script>
     window.tailwind = window.tailwind || {};
     window.tailwind.config = {
       theme: {
         extend: {
-          colors: { 'nx-blue': '#0a84ff', 'nx-cyan': '#22d4ee' }
+          colors: {
+            'nx-bg':      '#F0EEE6',
+            'nx-surface': '#FAF9F5',
+            'nx-alt':     '#E8E4D6',
+            'nx-border':  '#D9D6C9',
+            'nx-text':    '#141413',
+            'nx-muted':   '#6B6A63',
+            'nx-subtle':  '#8C8B82',
+            'nx-accent':  '#CC785C',
+            'nx-accent-hover': '#B5654A'
+          },
+          fontFamily: {
+            display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+            sans:    ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+          }
         }
       }
     };
   </script>
+
   <style>
     :root {
-      color-scheme: dark;
-      --nx-bg: #000000;
-      --nx-surface: #0a0a0a;
-      --nx-card: rgba(255,255,255,0.04);
-      --nx-border: rgba(255,255,255,0.1);
-      --nx-text: #f5f5f7;
-      --nx-muted: #a1a1a6;
-      --nx-subtle: #6e6e73;
-      --nx-blue: #0a84ff;
-      --nx-cyan: #22d4ee;
+      color-scheme: light;
+      --nx-bg:            #F0EEE6;
+      --nx-surface:       #FAF9F5;
+      --nx-alt:           #E8E4D6;
+      --nx-border:        #D9D6C9;
+      --nx-border-strong: #C4C0B0;
+      --nx-text:          #141413;
+      --nx-muted:         #6B6A63;
+      --nx-subtle:        #8C8B82;
+      --nx-accent:        #CC785C;
+      --nx-accent-hover:  #B5654A;
+      --nx-accent-soft:   rgba(204, 120, 92, 0.08);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background-color: var(--nx-bg);
       color: var(--nx-text);
       -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.55;
+      font-feature-settings: 'ss01', 'cv11';
     }
+
+    .font-display { font-family: 'Fraunces', ui-serif, Georgia, serif; font-feature-settings: 'ss01'; }
+
+    /* ── SELECTION ── */
+    ::selection { background: var(--nx-accent); color: #fff; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--nx-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--nx-border); border: 2px solid var(--nx-bg); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--nx-subtle); }
 
     /* ── NAV ── */
-    #nav { transition: background 0.4s ease, border-color 0.4s ease; }
+    #nav { transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease; }
     #nav.scrolled {
-      background: rgba(0,0,0,0.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom-color: rgba(255,255,255,0.08) !important;
+      background: rgba(240, 238, 230, 0.82);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border-bottom: 1px solid var(--nx-border);
     }
-    .nav-link { color: var(--nx-muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
-    .nav-link:hover { color: #fff; }
+    .nav-link {
+      color: var(--nx-text); text-decoration: none;
+      font-size: 0.92rem; font-weight: 450;
+      position: relative; padding: 0.25rem 0;
+      transition: color 0.2s ease;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; right: 100%; bottom: -2px;
+      height: 1px; background: var(--nx-text);
+      transition: right 0.35s cubic-bezier(.25,.46,.45,.94);
+    }
+    .nav-link:hover::after { right: 0; }
 
-    /* ── HERO GLOWS ── */
-    .hero-glow {
-      position: absolute; border-radius: 50%;
-      filter: blur(100px); pointer-events: none;
+    /* ── LOGO WORDMARK ── */
+    .brand-mark {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      color: var(--nx-text); text-decoration: none;
     }
-    .hero-glow-1 {
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(10,132,255,0.14) 0%, transparent 70%);
-      top: -200px; left: -150px;
-    }
-    .hero-glow-2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(34,212,238,0.1) 0%, transparent 70%);
-      top: 50px; right: -100px;
-    }
-    @keyframes glowPulse { 0%,100%{opacity:.4;transform:scale(1)} 50%{opacity:.7;transform:scale(1.06)} }
-    .glow-pulse { animation: glowPulse 9s ease-in-out infinite; }
-
-    /* ── GRID OVERLAY ── */
-    .grid-bg {
-      position: absolute; inset: 0; opacity: 0.025; pointer-events: none;
-      background-image: linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* ── GRADIENT TEXT ── */
-    .gradient-text {
-      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.75) 40%, #22d4ee 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-
-    /* ── GLASS CARD ── */
-    .glass-card {
-      background: var(--nx-card);
-      border: 1px solid var(--nx-border);
-      transition: border-color 0.3s ease, background 0.3s ease;
-    }
-    .glass-card-hover:hover {
-      border-color: rgba(10,132,255,0.3);
-      background: rgba(255,255,255,0.06);
+    .brand-mark svg { height: 26px; width: 26px; transition: transform 0.4s cubic-bezier(.25,.46,.45,.94); }
+    .brand-mark:hover svg { transform: rotate(-6deg) scale(1.04); }
+    .brand-wordmark {
+      font-family: 'Fraunces', serif;
+      font-weight: 500; font-size: 1.15rem;
+      letter-spacing: -0.01em;
     }
 
     /* ── BUTTONS ── */
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: #0a84ff; color: #fff; border: none; border-radius: 980px;
-      font-family: inherit; font-weight: 600; font-size: 0.9rem; padding: 0.75rem 1.75rem;
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.925rem;
+      padding: 0.72rem 1.35rem; border-radius: 999px;
       cursor: pointer; text-decoration: none;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 0 24px rgba(10,132,255,0.28);
+      border: 1px solid transparent;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+      white-space: nowrap;
     }
-    .btn-primary:hover { background: #0071e3; transform: scale(1.01); box-shadow: 0 0 36px rgba(10,132,255,0.42); }
+    .btn-primary { background: var(--nx-text); color: var(--nx-bg); }
+    .btn-primary:hover { background: var(--nx-accent); color: #fff; }
+    .btn-primary .arrow { transition: transform 0.3s cubic-bezier(.25,.46,.45,.94); }
+    .btn-primary:hover .arrow { transform: translateX(3px); }
 
-    .btn-secondary {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: transparent; color: var(--nx-text); border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 980px; font-family: inherit; font-weight: 500; font-size: 0.9rem;
-      padding: 0.75rem 1.75rem; cursor: pointer; text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
+    .btn-secondary { background: transparent; color: var(--nx-text); border-color: var(--nx-border-strong); }
+    .btn-secondary:hover { border-color: var(--nx-text); background: var(--nx-text); color: var(--nx-bg); }
+
+    .btn-ghost { background: transparent; color: var(--nx-text); padding: 0.5rem 0; }
+    .btn-ghost::after {
+      content: ''; display: block; height: 1px; background: var(--nx-text);
+      transform-origin: left; transform: scaleX(1);
+      transition: transform 0.3s ease;
     }
-    .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.35); }
+    .btn-ghost:hover { color: var(--nx-accent); }
+    .btn-ghost:hover::after { transform: scaleX(0.6); background: var(--nx-accent); }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.02em; color: var(--nx-muted);
+    }
+    .eyebrow::before {
+      content: ''; width: 20px; height: 1px; background: var(--nx-muted);
+    }
+
+    /* ── HERO ── */
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 8.5vw, 7.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      font-variation-settings: 'opsz' 144;
+    }
+    .hero-title em {
+      font-style: italic; font-weight: 400;
+      color: var(--nx-accent);
+    }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      color: var(--nx-text);
+      font-variation-settings: 'opsz' 144;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--nx-accent);
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--nx-surface);
+      border: 1px solid var(--nx-border);
+      border-radius: 20px;
+      transition: border-color 0.3s ease, transform 0.4s cubic-bezier(.25,.46,.45,.94), box-shadow 0.4s ease;
+    }
+    .card-hover:hover {
+      border-color: var(--nx-border-strong);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px -20px rgba(20, 20, 19, 0.18);
+    }
+
+    /* ── DEPT/ACCORDION ── */
+    .dept-details { overflow: hidden; }
+    .dept-details summary::-webkit-details-marker,
+    .dept-details summary::marker { display: none; content: ''; }
+    .dept-details summary { list-style: none; }
+    .dept-details[open] { border-color: var(--nx-text); }
+    .dept-chevron {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 999px;
+      background: transparent; border: 1px solid var(--nx-border);
+      transition: transform 0.35s ease, background 0.25s ease, border-color 0.25s ease;
+      flex-shrink: 0;
+    }
+    .dept-details[open] .dept-chevron {
+      transform: rotate(180deg);
+      background: var(--nx-text); border-color: var(--nx-text); color: var(--nx-bg);
+    }
+    .dept-summary:hover .dept-chevron { border-color: var(--nx-text); }
+    .dept-name { transition: color 0.25s ease; }
+    .dept-summary:hover .dept-name { color: var(--nx-accent); }
+
+    /* ── PROJECT REPO CARD ── */
+    .repo-card {
+      background: var(--nx-bg);
+      border: 1px solid var(--nx-border);
+      border-radius: 16px;
+      padding: 1.6rem;
+      transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+      display: flex; flex-direction: column; gap: 0.9rem;
+      position: relative; overflow: hidden;
+    }
+    .repo-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--nx-accent);
+      transform: scaleY(0); transform-origin: top;
+      transition: transform 0.4s cubic-bezier(.25,.46,.45,.94);
+    }
+    .repo-card:hover { border-color: var(--nx-text); transform: translateY(-2px); }
+    .repo-card:hover::before { transform: scaleY(1); }
+
+    .repo-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.25rem; letter-spacing: -0.01em; color: var(--nx-text); }
+    .repo-link { color: var(--nx-muted); font-size: 0.82rem; font-family: 'JetBrains Mono', ui-monospace, monospace; transition: color 0.2s ease; text-decoration: none; }
+    .repo-link:hover { color: var(--nx-accent); }
+
+    .tag {
+      display: inline-flex; align-items: center; padding: 0.22rem 0.65rem;
+      border-radius: 999px; font-size: 0.72rem; font-weight: 500;
+      background: var(--nx-alt); color: var(--nx-muted);
+      border: 1px solid var(--nx-border);
+    }
+    .tag.tag-accent { background: var(--nx-accent-soft); color: var(--nx-accent); border-color: transparent; }
+
+    /* ── DEPT ICON TILE ── */
+    .dept-tile {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--nx-alt); color: var(--nx-text);
+      flex-shrink: 0; transition: background 0.3s ease, color 0.3s ease;
+    }
+    .dept-details[open] .dept-tile { background: var(--nx-text); color: var(--nx-bg); }
 
     /* ── STEP NUMBER ── */
     .step-number {
-      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
-      background: rgba(10,132,255,0.1); border: 1px solid rgba(10,132,255,0.3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.78rem; font-weight: 700; color: #0a84ff;
-    }
-
-    /* ── STAT PILL ── */
-    .stat-pill {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px; padding: 1.125rem 1.375rem;
-    }
-
-    /* ── DEPT ACCORDION ── */
-    .dept-details summary::-webkit-details-marker,
-    .dept-details summary::marker { display: none; content: ''; }
-    .dept-details[open] { border-color: rgba(10,132,255,0.35); background: rgba(10,132,255,0.03); }
-    .dept-chevron {
-      transition: transform 0.3s ease;
       display: inline-flex; align-items: center; justify-content: center;
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(255,255,255,0.05); flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 999px;
+      background: transparent; border: 1px solid var(--nx-border-strong);
+      font-family: 'Fraunces', serif; font-weight: 400; font-size: 0.92rem;
+      color: var(--nx-text); flex-shrink: 0;
     }
-    .dept-details[open] .dept-chevron { transform: rotate(180deg); background: rgba(10,132,255,0.15); }
-    .dept-summary:hover .dept-name { color: var(--nx-cyan); }
 
-    /* ── FORM INPUTS ── */
+    /* ── FORM ── */
     .nx-input {
-      width: 100%; background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
-      padding: 0.875rem 1.125rem; color: var(--nx-text);
-      font-family: inherit; font-size: 0.925rem; outline: none;
-      transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
+      width: 100%;
+      background: var(--nx-bg);
+      border: 1px solid var(--nx-border);
+      border-radius: 12px;
+      padding: 0.85rem 1.1rem;
+      color: var(--nx-text);
+      font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      -webkit-appearance: none;
     }
     .nx-input::placeholder { color: var(--nx-subtle); }
-    .nx-input:focus { border-color: rgba(10,132,255,0.6); background: rgba(10,132,255,0.05); }
-    .nx-input option { background: #1c1c1e; color: var(--nx-text); }
+    .nx-input:focus { border-color: var(--nx-text); background: var(--nx-surface); }
 
-    /* ── FORM STATUS ── */
-    [data-form-status] { min-height: 1.5rem; font-size: 0.875rem; }
-    [data-form-status][data-state='success'] { color: #32d74b; }
-    [data-form-status][data-state='error']   { color: #ff453a; }
-    [data-form-status][data-state='pending'] { color: #ffd60a; }
+    [data-form-status] { min-height: 1.5rem; font-size: 0.88rem; color: var(--nx-muted); }
+    [data-form-status][data-state='success'] { color: #2F7D3A; }
+    [data-form-status][data-state='error']   { color: #A4372F; }
+    [data-form-status][data-state='pending'] { color: var(--nx-accent); }
 
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.65s cubic-bezier(.25,.46,.45,.94), transform 0.65s cubic-bezier(.25,.46,.45,.94);
-    }
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(.25,.46,.45,.94), transform 0.8s cubic-bezier(.25,.46,.45,.94); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 0.1s; }
-    .reveal-d2 { transition-delay: 0.2s; }
-    .reveal-d3 { transition-delay: 0.3s; }
-    .reveal-d4 { transition-delay: 0.4s; }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+
+    /* ── LOGO MARK ANIMATION ── */
+    @keyframes markFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .hero-mark { animation: markFloat 6s ease-in-out infinite; color: var(--nx-text); }
+
+    /* ── SUBTLE DIVIDER ── */
+    .divider { height: 1px; background: var(--nx-border); width: 100%; }
+
+    /* ── NOISE / GRAIN (very subtle editorial texture) ── */
+    .grain::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0 0.07 0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      opacity: 0.18; mix-blend-mode: multiply;
+    }
+
+    /* ── MARQUEE (for departments sticker strip) ── */
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { display: inline-flex; gap: 3rem; white-space: nowrap; animation: marquee 38s linear infinite; }
+    .marquee-item {
+      font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--nx-text); letter-spacing: -0.02em;
+      display: inline-flex; align-items: center; gap: 3rem;
+    }
+    .marquee-dot { color: var(--nx-accent); font-size: 1.5rem; }
 
     /* ── SCROLL ARROW ── */
     @keyframes scrollBounce { 0%,100%{transform:translateY(0);opacity:.5} 50%{transform:translateY(6px);opacity:1} }
-    .scroll-arrow { animation: scrollBounce 2s ease-in-out infinite; }
+    .scroll-arrow { animation: scrollBounce 2.4s ease-in-out infinite; color: var(--nx-muted); }
+
+    /* ── NEWS CARD ── */
+    .news-card {
+      display: flex; flex-direction: column; gap: 1rem;
+      padding: 1.8rem 1.6rem;
+      border-top: 1px solid var(--nx-border);
+      transition: background 0.3s ease, padding 0.3s ease;
+      position: relative;
+    }
+    .news-card:hover { background: var(--nx-surface); }
+    .news-card .news-arrow { transition: transform 0.35s cubic-bezier(.25,.46,.45,.94); color: var(--nx-muted); }
+    .news-card:hover .news-arrow { transform: translate(3px, -3px); color: var(--nx-accent); }
+
+    /* ── LINK UNDERLINE ── */
+    .link-underline { position: relative; color: var(--nx-text); text-decoration: none; font-weight: 500; }
+    .link-underline::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -2px;
+      height: 1px; background: var(--nx-text);
+      transform: scaleX(1); transform-origin: right;
+      transition: transform 0.4s cubic-bezier(.25,.46,.45,.94);
+    }
+    .link-underline:hover::after { transform: scaleX(0); }
 
     /* ── REDUCED MOTION ── */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .glow-pulse, .scroll-arrow { animation: none; }
+      .hero-mark, .scroll-arrow, .marquee-track { animation: none; }
     }
-
-    /* ── HERO WORDMARK ── */
-    .hero-wordmark {
-      font-size: clamp(5rem, 20vw, 13rem);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      line-height: 0.9;
-      text-transform: uppercase;
-      background: linear-gradient(160deg, #ffffff 30%, rgba(255,255,255,0.55) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #000; }
-    ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #444; }
-
-    /* ── DOT ACCENT ── */
-    .dot-accent { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--nx-cyan); flex-shrink: 0; margin-top: 7px; }
-
-    /* ── PROJECT CARD HOVER ── */
-    .project-card { transition: border-color 0.3s ease, transform 0.3s ease; }
-    .project-card:hover { border-color: rgba(34,212,238,0.4); transform: translateY(-2px); }
-
-    /* ── SECTION SUBTLE BG ── */
-    .bg-surface { background-color: #050507; }
   </style>
+
   <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
   <script type="importmap">
     {
@@ -229,467 +363,518 @@
   <script defer src="assets/index-C5rxl4P4.js"></script>
 </head>
 
-<body>
+<body class="bg-nx-bg text-nx-text">
 
   <!-- ═══════════ NAV ═══════════ -->
-  <nav id="nav" class="fixed top-0 z-50 w-full border-b border-transparent">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-12">
-      <a href="#" class="text-base font-bold tracking-[0.14em] text-white">NEUXORA</a>
-      <div class="hidden items-center gap-8 md:flex">
-        <a href="#nosotros"      class="nav-link">Nosotros</a>
-        <a href="#departamentos" class="nav-link">Departamentos</a>
-        <a href="#casos"         class="nav-link">Proyectos</a>
-        <a href="#contacto"      class="nav-link">Contacto</a>
+  <nav id="nav" class="fixed top-0 z-50 w-full">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 lg:px-10">
+      <a href="#" class="brand-mark" aria-label="Neuxora">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/></svg>
+        <span class="brand-wordmark">Neuxora</span>
+      </a>
+      <div class="hidden items-center gap-9 md:flex">
+        <a href="#nosotros"    class="nav-link">Sobre nosotros</a>
+        <a href="#proyectos"   class="nav-link">Proyectos</a>
+        <a href="#investigacion" class="nav-link">Investigación</a>
+        <a href="#noticias"    class="nav-link">Noticias</a>
+        <a href="#carreras"    class="nav-link">Carreras</a>
       </div>
-      <a href="#contacto" class="btn-primary px-5 py-2.5 text-sm">Agendar diagnóstico</a>
+      <a href="#contacto" class="btn btn-primary">
+        Contactar
+        <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </nav>
 
   <!-- ═══════════ HERO ═══════════ -->
-  <header id="hero" class="relative flex min-h-screen items-center overflow-hidden">
-    <div class="hero-glow hero-glow-1 glow-pulse" aria-hidden="true"></div>
-    <div class="hero-glow hero-glow-2 glow-pulse" style="animation-delay:4s" aria-hidden="true"></div>
-    <div class="grid-bg" aria-hidden="true"></div>
+  <header id="hero" class="relative overflow-hidden">
+    <div class="mx-auto max-w-6xl px-6 pb-24 pt-40 lg:px-10 lg:pt-48">
 
-    <div class="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-36 lg:px-12">
-      <div class="max-w-5xl">
-        <div class="reveal mb-6 flex items-center gap-3">
-          <span class="h-px w-10 bg-nx-cyan opacity-80"></span>
-          <span class="text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">León, Gto. · Agencia IA</span>
-        </div>
+      <div class="reveal mb-10">
+        <span class="eyebrow">León, Gto. · Agencia de IA</span>
+      </div>
 
-        <h1 class="reveal reveal-d1 hero-wordmark">NEUXORA</h1>
+      <h1 class="reveal reveal-d1 hero-title max-w-5xl">
+        Hacemos lo imposible,<br>
+        porque lo difícil<br>
+        <em>lo hace cualquiera.</em>
+      </h1>
 
-        <p class="reveal reveal-d2 mt-6 text-2xl font-semibold leading-snug tracking-tight text-white md:text-3xl">
-          Hacemos lo imposible,<br>
-          <span class="gradient-text">porque lo difícil lo hace cualquiera.</span>
+      <div class="reveal reveal-d2 mt-12 grid max-w-4xl gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
+        <p class="text-lg leading-relaxed text-nx-text/80">
+          Neuxora es una agencia de desarrollo de IA y software a medida. Transformamos los problemas más complejos en soluciones reales para salud, educación e investigación.
         </p>
-
-        <p class="reveal reveal-d3 mt-6 max-w-xl text-lg leading-relaxed text-[#a1a1a6]">
-          Transformamos los problemas más complejos en soluciones tecnológicas con IA. Entendemos a las personas detrás del problema antes de escribir una sola línea de código.
-        </p>
-
-        <div class="reveal reveal-d4 mt-10 flex flex-wrap gap-4">
-          <a href="#contacto" data-cta-target="hero-primary" data-cta-location="hero" class="btn-primary">Agendá tu diagnóstico</a>
-          <a href="https://wa.me/524622722089" target="_blank" rel="noopener" data-cta-target="hero-whatsapp" data-cta-location="hero" class="btn-secondary">Hablar con el equipo</a>
-        </div>
-
-        <div class="reveal reveal-d4 mt-12 flex flex-wrap gap-4" style="transition-delay:0.5s">
-          <div class="stat-pill">
-            <p class="text-2xl font-bold text-white">7 días</p>
-            <p class="mt-0.5 text-xs uppercase tracking-wider text-[#6e6e73]">Diagnóstico Línea A</p>
-          </div>
-          <div class="stat-pill">
-            <p class="text-2xl font-bold text-white">&lt; 24 h</p>
-            <p class="mt-0.5 text-xs uppercase tracking-wider text-[#6e6e73]">Tiempo de respuesta</p>
-          </div>
-          <div class="stat-pill">
-            <p class="text-2xl font-bold text-white">3</p>
-            <p class="mt-0.5 text-xs uppercase tracking-wider text-[#6e6e73]">Departamentos activos</p>
-          </div>
+        <div class="flex flex-col items-start gap-4">
+          <a href="#nosotros" class="btn btn-primary">
+            Conocé a Neuxora
+            <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#proyectos" class="btn btn-secondary">Ver nuestros proyectos</a>
         </div>
       </div>
 
-      <div class="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2" aria-hidden="true">
-        <span class="text-xs uppercase tracking-widest text-[#6e6e73]">Scroll</span>
-        <svg class="scroll-arrow h-4 w-4 text-[#6e6e73]" viewBox="0 0 16 16" fill="none">
-          <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <div class="reveal reveal-d3 mt-20 flex items-end justify-between gap-6">
+        <div class="hero-mark">
+          <svg width="120" height="120" viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/></svg>
+        </div>
+        <div class="flex flex-col items-center gap-2" aria-hidden="true">
+          <span class="text-xs uppercase tracking-[0.22em] text-nx-muted">Scroll</span>
+          <svg class="scroll-arrow h-4 w-4" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee -->
+    <div class="overflow-hidden border-y border-nx-border py-6">
+      <div class="marquee-track">
+        <span class="marquee-item">Salud <span class="marquee-dot">✦</span> Educación <span class="marquee-dot">✦</span> Investigación <span class="marquee-dot">✦</span> IA aplicada <span class="marquee-dot">✦</span> Software a medida <span class="marquee-dot">✦</span></span>
+        <span class="marquee-item">Salud <span class="marquee-dot">✦</span> Educación <span class="marquee-dot">✦</span> Investigación <span class="marquee-dot">✦</span> IA aplicada <span class="marquee-dot">✦</span> Software a medida <span class="marquee-dot">✦</span></span>
       </div>
     </div>
   </header>
 
   <main>
 
-    <!-- ═══════════ NOSOTROS ═══════════ -->
-    <section id="nosotros" class="border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
+    <!-- ═══════════ SOBRE NOSOTROS (reemplaza Claude) ═══════════ -->
+    <section id="nosotros" class="px-6 py-28 lg:px-10 lg:py-36">
       <div class="mx-auto max-w-6xl">
-        <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
 
+        <div class="grid gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-24">
           <div class="reveal">
-            <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Quiénes somos</p>
-            <h2 class="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl">
-              No empezamos a programar hasta entender tu operación.
+            <span class="eyebrow">Sobre nosotros</span>
+            <h2 class="section-title mt-6">
+              Construimos IA<br>con propósito,<br><em>no con modas.</em>
             </h2>
-            <p class="mt-6 text-lg leading-relaxed text-[#a1a1a6]">
-              Somos una agencia tecnológica con un propósito claro: transformar los problemas más complejos en soluciones inteligentes. No somos consultores de slides. Escuchamos, auditamos y diseñamos contigo.
+          </div>
+
+          <div class="reveal reveal-d1 space-y-6">
+            <p class="text-xl leading-relaxed text-nx-text/85 font-light">
+              Somos una agencia tecnológica con un propósito claro: <span class="font-medium text-nx-text">transformar los problemas más complejos en soluciones inteligentes.</span> No somos consultores de slides. Escuchamos, auditamos y diseñamos contigo.
             </p>
-            <p class="mt-4 text-lg leading-relaxed text-[#a1a1a6]">
-              Cada proyecto que tomamos tiene personas detrás. Niños que necesitan sillas de ruedas bien medidas. Médicos que pierden horas llenando expedientes. Investigadores que necesitan datos en tiempo real. <span class="font-medium text-white">Eso es lo que nos mueve.</span>
+            <p class="text-lg leading-relaxed text-nx-muted">
+              Cada proyecto que tomamos tiene personas detrás. Niños que necesitan sillas de ruedas bien medidas. Médicos que pierden horas llenando expedientes. Investigadores que necesitan datos en tiempo real. Eso es lo que nos mueve.
             </p>
-            <p class="mt-6 text-base font-semibold text-white">Si ya te dijeron que era imposible, dejá que lo intentemos nosotros.</p>
+            <p class="text-lg leading-relaxed text-nx-text font-medium italic font-display">
+              Si ya te dijeron que era imposible, dejá que lo intentemos nosotros.
+            </p>
+
+            <div class="mt-10 grid gap-5 sm:grid-cols-3">
+              <div class="card p-6">
+                <p class="font-display text-4xl font-normal tracking-tight text-nx-text">7 días</p>
+                <p class="mt-2 text-sm text-nx-muted">Diagnóstico profundo inicial</p>
+              </div>
+              <div class="card p-6">
+                <p class="font-display text-4xl font-normal tracking-tight text-nx-text">&lt; 24h</p>
+                <p class="mt-2 text-sm text-nx-muted">Tiempo de respuesta</p>
+              </div>
+              <div class="card p-6">
+                <p class="font-display text-4xl font-normal tracking-tight text-nx-text">3</p>
+                <p class="mt-2 text-sm text-nx-muted">Departamentos activos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divisiones / Departamentos -->
+        <div class="mt-28">
+          <div class="reveal mb-12 max-w-3xl">
+            <span class="eyebrow">Divisiones</span>
+            <h3 class="section-title mt-6">Tres disciplinas, <em>un objetivo.</em></h3>
+            <p class="mt-5 text-lg text-nx-muted">Armamos squads cruzando medicina, educación e investigación para mover agujas rápido y sin interrumpir tu operación.</p>
           </div>
 
           <div class="space-y-4">
-            <div class="glass-card glass-card-hover reveal reveal-d1 rounded-2xl p-6">
-              <div class="flex items-start gap-4">
-                <div class="step-number">01</div>
-                <div>
-                  <h3 class="font-semibold text-white">Diagnóstico profundo</h3>
-                  <p class="mt-1.5 text-sm leading-relaxed text-[#a1a1a6]">Mapeamos procesos, datasets sensibles y stakeholders para detectar dónde la IA genera impacto inmediato.</p>
+
+            <!-- C-MED -->
+            <details class="dept-details card reveal">
+              <summary class="dept-summary flex cursor-pointer items-center gap-5 p-7 select-none">
+                <div class="dept-tile">
+                  <img src="assets/icon-cmed.svg" alt="" class="h-7 w-7" style="color: inherit"/>
+                </div>
+                <div class="flex-1">
+                  <p class="eyebrow mb-2">Salud</p>
+                  <h4 class="dept-name font-display text-2xl font-medium tracking-tight">C-MED</h4>
+                  <p class="mt-1 text-sm text-nx-muted">Transformando la atención médica con IA</p>
+                </div>
+                <div class="dept-chevron" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </summary>
+              <div class="border-t border-nx-border px-7 pb-8 pt-6">
+                <div class="grid gap-8 md:grid-cols-2">
+                  <div>
+                    <h5 class="mb-4 font-display text-lg">Capacidades</h5>
+                    <ul class="space-y-3 text-nx-muted">
+                      <li>— Apps médicas con <span class="text-nx-text">análisis de consultas por voz</span> para generar expedientes clínicos.</li>
+                      <li>— Sistemas de <span class="text-nx-text">medición estandarizada</span> para brigadas clínicas en campo.</li>
+                      <li>— Plataformas de <span class="text-nx-text">trazabilidad regulatoria</span> para dispositivos médicos personalizados.</li>
+                    </ul>
+                  </div>
+                  <div class="rounded-2xl bg-nx-alt p-6">
+                    <p class="eyebrow mb-4">Por qué importa</p>
+                    <p class="text-nx-muted">Los médicos pierden hasta el 40% de su tiempo en tareas administrativas. Nuestro objetivo: devolvérselo para que se concentren en <span class="text-nx-text font-medium">sus pacientes</span>.</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="glass-card glass-card-hover reveal reveal-d2 rounded-2xl p-6">
-              <div class="flex items-start gap-4">
-                <div class="step-number">02</div>
-                <div>
-                  <h3 class="font-semibold text-white">Prototipos brutalmente honestos</h3>
-                  <p class="mt-1.5 text-sm leading-relaxed text-[#a1a1a6]">Construimos MVPs funcionales en semanas para validar hipótesis con usuarios reales antes del despliegue masivo.</p>
+            </details>
+
+            <!-- Educación -->
+            <details class="dept-details card reveal reveal-d1">
+              <summary class="dept-summary flex cursor-pointer items-center gap-5 p-7 select-none">
+                <div class="dept-tile">
+                  <img src="assets/icon-educacion.svg" alt="" class="h-7 w-7"/>
+                </div>
+                <div class="flex-1">
+                  <p class="eyebrow mb-2">Educación</p>
+                  <h4 class="dept-name font-display text-2xl font-medium tracking-tight">Educación</h4>
+                  <p class="mt-1 text-sm text-nx-muted">Plataformas inteligentes para potenciar el aprendizaje</p>
+                </div>
+                <div class="dept-chevron" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </summary>
+              <div class="border-t border-nx-border px-7 pb-8 pt-6">
+                <div class="grid gap-8 md:grid-cols-2">
+                  <div>
+                    <h5 class="mb-4 font-display text-lg">Capacidades</h5>
+                    <ul class="space-y-3 text-nx-muted">
+                      <li>— <span class="text-nx-text">Plataformas adaptativas</span> con IA que personalizan el aprendizaje por alumno.</li>
+                      <li>— Herramientas de <span class="text-nx-text">gestión educativa</span> para coordinadores e instituciones.</li>
+                      <li>— Analytics de <span class="text-nx-text">rendimiento y deserción</span> en tiempo real.</li>
+                    </ul>
+                  </div>
+                  <div class="rounded-2xl bg-nx-alt p-6">
+                    <p class="eyebrow mb-4">Por qué importa</p>
+                    <p class="text-nx-muted">La tecnología educativa bien implementada cierra brechas de aprendizaje que llevan décadas abiertas. <span class="text-nx-text font-medium">La IA hace posible personalizar para cada estudiante.</span></p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="glass-card glass-card-hover reveal reveal-d3 rounded-2xl p-6">
-              <div class="flex items-start gap-4">
-                <div class="step-number">03</div>
-                <div>
-                  <h3 class="font-semibold text-white">Ciclo vivo</h3>
-                  <p class="mt-1.5 text-sm leading-relaxed text-[#a1a1a6]">Operamos squads que mantienen, miden y evolucionan la solución junto con tu equipo. No desaparecemos después del handoff.</p>
+            </details>
+
+            <!-- Investigación -->
+            <details class="dept-details card reveal reveal-d2">
+              <summary class="dept-summary flex cursor-pointer items-center gap-5 p-7 select-none">
+                <div class="dept-tile">
+                  <img src="assets/icon-investigacion.svg" alt="" class="h-7 w-7"/>
+                </div>
+                <div class="flex-1">
+                  <p class="eyebrow mb-2">IA & Industria</p>
+                  <h4 class="dept-name font-display text-2xl font-medium tracking-tight">Investigación</h4>
+                  <p class="mt-1 text-sm text-nx-muted">Modelos de ML / DL a medida para retos complejos</p>
+                </div>
+                <div class="dept-chevron" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </summary>
+              <div class="border-t border-nx-border px-7 pb-8 pt-6">
+                <div class="grid gap-8 md:grid-cols-2">
+                  <div>
+                    <h5 class="mb-4 font-display text-lg">Capacidades</h5>
+                    <ul class="space-y-3 text-nx-muted">
+                      <li>— Modelos de <span class="text-nx-text">Machine Learning y Deep Learning</span> entrenados sobre datos de tu operación.</li>
+                      <li>— Soluciones para <span class="text-nx-text">retos industriales y manufactura</span>: visión computacional, predicción de fallas.</li>
+                      <li>— <span class="text-nx-text">Simulaciones científicas</span> y modelado de datos experimentales.</li>
+                    </ul>
+                  </div>
+                  <div class="rounded-2xl bg-nx-alt p-6">
+                    <p class="eyebrow mb-4">Nuestro laboratorio</p>
+                    <p class="text-nx-muted">No aplicamos modelos genéricos. <span class="text-nx-text font-medium">Diseñamos y entrenamos desde cero</span> sobre los datos de tu industria, con benchmarks reales y sin promesas vacías.</p>
+                  </div>
                 </div>
               </div>
+            </details>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ NUESTROS PROYECTOS (reemplaza API) ═══════════ -->
+    <section id="proyectos" class="bg-nx-alt px-6 py-28 lg:px-10 lg:py-36">
+      <div class="mx-auto max-w-6xl">
+
+        <div class="grid gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-24">
+          <div class="reveal">
+            <span class="eyebrow">Nuestros proyectos</span>
+            <h2 class="section-title mt-6">Código <em>abierto,</em><br>impacto real.</h2>
+          </div>
+          <div class="reveal reveal-d1">
+            <p class="text-xl leading-relaxed text-nx-text/85 font-light">
+              Nuestros proyectos viven en <a href="https://github.com/NeuxoraAI" target="_blank" rel="noopener" class="link-underline">GitHub / NeuxoraAI</a>. Están organizados por departamento — salud, educación e investigación — y cada uno responde a un problema real planteado por una persona real.
+            </p>
+          </div>
+        </div>
+
+        <!-- C-MED projects -->
+        <div class="mt-20 reveal">
+          <div class="mb-6 flex items-center gap-4">
+            <div class="dept-tile"><img src="assets/icon-cmed.svg" alt="" class="h-7 w-7"/></div>
+            <div>
+              <p class="eyebrow">Salud</p>
+              <h3 class="font-display text-3xl font-medium tracking-tight mt-1">C-MED</h3>
             </div>
           </div>
+
+          <div class="grid gap-5 md:grid-cols-3">
+
+            <article class="repo-card">
+              <div class="flex items-start justify-between gap-3">
+                <h4 class="repo-title">Expediente Inteligente</h4>
+                <svg class="text-nx-muted" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3h8v8m0-8L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+              <p class="text-sm leading-relaxed text-nx-muted">Expediente clínico digital con IA: captura por voz, resúmenes automáticos y trazabilidad integral para consultorios y clínicas.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag tag-accent">Proyecto estrella</span>
+                <span class="tag">IA · Voz</span>
+                <span class="tag">Salud</span>
+              </div>
+              <a href="https://github.com/NeuxoraAI/Expediente-Inteligente" target="_blank" rel="noopener" class="repo-link mt-auto">github.com/NeuxoraAI/Expediente-Inteligente ↗</a>
+            </article>
+
+            <article class="repo-card">
+              <div class="flex items-start justify-between gap-3">
+                <h4 class="repo-title">medscan-CLI</h4>
+                <svg class="text-nx-muted" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3h8v8m0-8L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+              <p class="text-sm leading-relaxed text-nx-muted">Herramienta de línea de comandos para análisis y procesamiento de documentos médicos con modelos de lenguaje especializados.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag">CLI</span>
+                <span class="tag">NLP médico</span>
+              </div>
+              <a href="https://github.com/NeuxoraAI/medscan-CLI" target="_blank" rel="noopener" class="repo-link mt-auto">github.com/NeuxoraAI/medscan-CLI ↗</a>
+            </article>
+
+            <article class="repo-card">
+              <div class="flex items-start justify-between gap-3">
+                <h4 class="repo-title">Sillas Rotary</h4>
+                <svg class="text-nx-muted" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3h8v8m0-8L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+              <p class="text-sm leading-relaxed text-nx-muted">App de medición estandarizada para brigadas clínicas — captura antropométrica para fabricación de sillas de ruedas infantiles con trazabilidad completa.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag">Impacto social</span>
+                <span class="tag">Brigadas</span>
+              </div>
+              <a href="https://github.com/NeuxoraAI/Sillas-Rotary" target="_blank" rel="noopener" class="repo-link mt-auto">github.com/NeuxoraAI/Sillas-Rotary ↗</a>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Educación projects -->
+        <div class="mt-20 reveal">
+          <div class="mb-6 flex items-center gap-4">
+            <div class="dept-tile"><img src="assets/icon-educacion.svg" alt="" class="h-7 w-7"/></div>
+            <div>
+              <p class="eyebrow">Educación</p>
+              <h3 class="font-display text-3xl font-medium tracking-tight mt-1">EDU</h3>
+            </div>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-3">
+
+            <article class="repo-card md:col-span-2">
+              <div class="flex items-start justify-between gap-3">
+                <h4 class="repo-title">openstudy</h4>
+                <svg class="text-nx-muted" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3h8v8m0-8L3 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+              <p class="text-sm leading-relaxed text-nx-muted">Plataforma abierta de estudio asistida por IA: generación de material, seguimiento adaptativo y analytics para estudiantes e instituciones.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag tag-accent">Proyecto estrella</span>
+                <span class="tag">Open Source</span>
+                <span class="tag">IA educativa</span>
+              </div>
+              <a href="https://github.com/NeuxoraAI/openstudy" target="_blank" rel="noopener" class="repo-link mt-auto">github.com/NeuxoraAI/openstudy ↗</a>
+            </article>
+
+            <article class="repo-card flex items-center justify-center text-center">
+              <div>
+                <svg class="mx-auto mb-3 text-nx-subtle" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v16M3 11h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <p class="font-display text-lg text-nx-text">Próximos proyectos</p>
+                <p class="mt-1 text-xs text-nx-muted">En desarrollo activo</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Investigación projects -->
+        <div class="mt-20 reveal">
+          <div class="mb-6 flex items-center gap-4">
+            <div class="dept-tile"><img src="assets/icon-investigacion.svg" alt="" class="h-7 w-7"/></div>
+            <div>
+              <p class="eyebrow">IA & Industria</p>
+              <h3 class="font-display text-3xl font-medium tracking-tight mt-1">Investigación</h3>
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <p class="text-sm leading-relaxed text-nx-muted">Laboratorio activo en modelos de ML/DL para industria y ciencia. ¿Tenés un reto que nadie pudo resolver? Ese es nuestro trabajo.</p>
+            <a href="#contacto" class="btn-ghost self-start text-sm">Presentar tu reto</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ INVESTIGACIÓN (Research) ═══════════ -->
+    <section id="investigacion" class="px-6 py-28 lg:px-10 lg:py-36">
+      <div class="mx-auto max-w-6xl">
+
+        <div class="grid gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-24">
+          <div class="reveal">
+            <span class="eyebrow">Investigación</span>
+            <h2 class="section-title mt-6">Hipótesis primero,<br><em>código después.</em></h2>
+          </div>
+          <div class="reveal reveal-d1">
+            <p class="text-xl leading-relaxed text-nx-text/85 font-light">
+              Creemos en la IA aplicada que parte de preguntas científicas honestas. Nuestra investigación se ancla en colaboraciones universitarias, proyectos de impacto social y problemas industriales donde los modelos genéricos no alcanzan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Research cards / método -->
+        <div class="mt-16 grid gap-6 md:grid-cols-3">
+
+          <article class="card card-hover reveal p-8">
+            <div class="step-number mb-6">01</div>
+            <h3 class="font-display text-2xl font-medium tracking-tight">Diagnóstico</h3>
+            <p class="mt-3 text-sm leading-relaxed text-nx-muted">Mapeamos procesos, datos y stakeholders en 7 días. NDA firmado desde el día cero.</p>
+          </article>
+
+          <article class="card card-hover reveal reveal-d1 p-8">
+            <div class="step-number mb-6">02</div>
+            <h3 class="font-display text-2xl font-medium tracking-tight">Diseño de solución</h3>
+            <p class="mt-3 text-sm leading-relaxed text-nx-muted">Arquitectura técnica, plan de datos y roadmap validado con vos antes de escribir código.</p>
+          </article>
+
+          <article class="card card-hover reveal reveal-d2 p-8">
+            <div class="step-number mb-6">03</div>
+            <h3 class="font-display text-2xl font-medium tracking-tight">Desarrollo en sprints</h3>
+            <p class="mt-3 text-sm leading-relaxed text-nx-muted">Iteramos en ciclos cortos con demos reales. Sin sorpresas, sin humo.</p>
+          </article>
+
+          <article class="card card-hover reveal reveal-d1 p-8">
+            <div class="step-number mb-6">04</div>
+            <h3 class="font-display text-2xl font-medium tracking-tight">Despliegue y validación</h3>
+            <p class="mt-3 text-sm leading-relaxed text-nx-muted">Lanzamos en producción con monitoreo activo y criterios de éxito medibles.</p>
+          </article>
+
+          <article class="card card-hover reveal reveal-d2 p-8">
+            <div class="step-number mb-6">05</div>
+            <h3 class="font-display text-2xl font-medium tracking-tight">Mantenimiento vivo</h3>
+            <p class="mt-3 text-sm leading-relaxed text-nx-muted">Seguimos midiendo, ajustando y evolucionando la solución junto a tu equipo.</p>
+          </article>
+
+          <article class="card reveal reveal-d3 p-8 bg-nx-text text-nx-bg">
+            <p class="eyebrow text-nx-bg/70">¿Qué recibís?</p>
+            <h3 class="mt-5 font-display text-2xl font-medium tracking-tight">Diagnóstico gratuito · 7 días</h3>
+            <p class="mt-3 text-sm leading-relaxed text-nx-bg/75">Mapa de procesos, arquitectura propuesta, impacto estimado y roadmap a 90 días. NDA firmado, sin costo inicial.</p>
+            <a href="#contacto" class="btn btn-secondary mt-6 !border-nx-bg/40 !text-nx-bg hover:!bg-nx-bg hover:!text-nx-text">Reservar diagnóstico</a>
+          </article>
 
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ DEPARTAMENTOS ═══════════ -->
-    <section id="departamentos" class="bg-surface border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
+    <!-- ═══════════ NOTICIAS ═══════════ -->
+    <section id="noticias" class="bg-nx-alt px-6 py-28 lg:px-10 lg:py-36">
       <div class="mx-auto max-w-6xl">
 
-        <div class="reveal mx-auto mb-16 max-w-2xl text-center">
-          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Departamentos</p>
-          <h2 class="text-4xl font-bold tracking-tight text-white md:text-5xl">Tres disciplinas.<br>Un solo objetivo.</h2>
-          <p class="mt-5 text-lg text-[#a1a1a6]">Armamos squads cruzando medicina, educación e investigación para mover agujas rápido y sin interrumpir tu operación.</p>
+        <div class="reveal mb-16 flex flex-wrap items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <span class="eyebrow">Noticias</span>
+            <h2 class="section-title mt-6">Lo último desde <em>Neuxora.</em></h2>
+          </div>
+          <a href="#contacto" class="btn-ghost text-sm">Recibir novedades</a>
         </div>
 
-        <div class="space-y-4">
+        <div class="border-b border-nx-border reveal">
 
-          <!-- C-MED -->
-          <details class="dept-details glass-card reveal rounded-2xl transition-all duration-300">
-            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
-              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(10,132,255,0.2)] bg-[rgba(10,132,255,0.1)]">
-                <img src="assets/icon-cmed.svg" alt="" class="h-6 w-6" />
-              </div>
-              <div class="flex-1">
-                <p class="mb-1 text-xs uppercase tracking-[0.3em] text-nx-cyan">Salud</p>
-                <h3 class="dept-name text-xl font-bold text-white transition-colors duration-200">C-MED</h3>
-                <p class="mt-0.5 text-sm text-[#6e6e73]">Transformando la atención médica con IA</p>
-              </div>
-              <div class="dept-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </summary>
-            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
-              <div class="grid gap-5 md:grid-cols-2">
-                <div>
-                  <h4 class="mb-3 text-base font-semibold text-white">Capacidades</h4>
-                  <ul class="space-y-3">
-                    <li class="flex items-start gap-3">
-                      <span class="dot-accent"></span>
-                      <span class="text-sm text-[#a1a1a6]">Apps médicas con <span class="text-white">análisis de consultas por voz</span> para generar expedientes clínicos digitales automáticamente</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="dot-accent"></span>
-                      <span class="text-sm text-[#a1a1a6]">Sistemas de <span class="text-white">medición estandarizada</span> para brigadas clínicas en campo</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="dot-accent"></span>
-                      <span class="text-sm text-[#a1a1a6]">Plataformas de <span class="text-white">trazabilidad regulatoria</span> para dispositivos médicos personalizados</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="rounded-xl border border-[rgba(10,132,255,0.15)] bg-[rgba(10,132,255,0.04)] p-5">
-                  <p class="mb-3 text-xs uppercase tracking-[0.3em] text-nx-cyan">Por qué importa</p>
-                  <p class="text-sm leading-relaxed text-[#a1a1a6]">Los médicos pierden hasta el 40% de su tiempo en tareas administrativas. Nuestro objetivo: devolvérselo para que se concentren en lo que importa. <span class="text-white">Sus pacientes.</span></p>
-                </div>
-              </div>
+          <a href="https://github.com/NeuxoraAI/Expediente-Inteligente" target="_blank" rel="noopener" class="news-card">
+            <div class="flex items-center gap-4 text-xs text-nx-muted">
+              <span class="tag">Producto</span>
+              <span>Abril · 2026</span>
             </div>
-          </details>
+            <div class="flex items-start justify-between gap-6">
+              <h3 class="font-display text-2xl font-normal tracking-tight text-nx-text md:text-3xl">Expediente Inteligente entra a pruebas con C-MED</h3>
+              <svg class="news-arrow mt-2 flex-shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M6 5h11v11m0-11L5 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <p class="max-w-3xl text-nx-muted">Arranca la fase piloto del expediente clínico con IA: captura por voz, resúmenes automáticos y trazabilidad integral para la práctica médica.</p>
+          </a>
 
-          <!-- EDU-IA -->
-          <details class="dept-details glass-card reveal reveal-d1 rounded-2xl transition-all duration-300">
-            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
-              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(34,212,238,0.15)] bg-[rgba(34,212,238,0.07)]">
-                <img src="assets/icon-educacion.svg" alt="" class="h-6 w-6" />
-              </div>
-              <div class="flex-1">
-                <p class="mb-1 text-xs uppercase tracking-[0.3em] text-nx-cyan">Educación</p>
-                <h3 class="dept-name text-xl font-bold text-white transition-colors duration-200">EDU-IA</h3>
-                <p class="mt-0.5 text-sm text-[#6e6e73]">Plataformas inteligentes para potenciar el aprendizaje</p>
-              </div>
-              <div class="dept-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </summary>
-            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
-              <div class="grid gap-5 md:grid-cols-2">
-                <div>
-                  <h4 class="mb-3 text-base font-semibold text-white">Capacidades</h4>
-                  <ul class="space-y-3">
-                    <li class="flex items-start gap-3">
-                      <span class="dot-accent"></span>
-                      <span class="text-sm text-[#a1a1a6]"><span class="text-white">Plataformas adaptativas</span> con IA que personalizan el aprendizaje por alumno</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="dot-accent"></span>
-                      <span class="text-sm text-[#a1a1a6]">Herramientas de <span class="text-white">gestión educativa</span> para coordinadores e instituciones</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="dot-accent"></span>
-                      <span class="text-sm text-[#a1a1a6]">Analytics de <span class="text-white">rendimiento y deserción</span> en tiempo real</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="rounded-xl border border-[rgba(34,212,238,0.12)] bg-[rgba(34,212,238,0.04)] p-5">
-                  <p class="mb-3 text-xs uppercase tracking-[0.3em] text-nx-cyan">Por qué importa</p>
-                  <p class="text-sm leading-relaxed text-[#a1a1a6]">La tecnología educativa bien implementada puede cerrar brechas de aprendizaje que llevan décadas abiertas. <span class="text-white">La IA hace posible personalizar para cada estudiante.</span></p>
-                </div>
-              </div>
+          <a href="https://github.com/NeuxoraAI/Sillas-Rotary" target="_blank" rel="noopener" class="news-card">
+            <div class="flex items-center gap-4 text-xs text-nx-muted">
+              <span class="tag">Impacto</span>
+              <span>Marzo · 2026</span>
             </div>
-          </details>
+            <div class="flex items-start justify-between gap-6">
+              <h3 class="font-display text-2xl font-normal tracking-tight text-nx-text md:text-3xl">Torre Vida UG: 200 sillas de ruedas con medición estandarizada</h3>
+              <svg class="news-arrow mt-2 flex-shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M6 5h11v11m0-11L5 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <p class="max-w-3xl text-nx-muted">Colaboración con Rotary y el Ecosistema VIDA-UG: la app de brigadas clínicas lleva captura antropométrica y trazabilidad a niños con discapacidad motriz.</p>
+          </a>
 
-          <!-- INVESTIGACIÓN -->
-          <details class="dept-details glass-card reveal reveal-d2 rounded-2xl transition-all duration-300">
-            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
-              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)]">
-                <img src="assets/icon-investigacion.svg" alt="" class="h-6 w-6" />
-              </div>
-              <div class="flex-1">
-                <p class="mb-1 text-xs uppercase tracking-[0.3em] text-nx-cyan">IA & Industria</p>
-                <h3 class="dept-name text-xl font-bold text-white transition-colors duration-200">Investigación</h3>
-                <p class="mt-0.5 text-sm text-[#6e6e73]">Modelos de ML / DL a medida para retos complejos</p>
-              </div>
-              <div class="dept-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </summary>
-            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
-              <div class="grid gap-5 md:grid-cols-2">
-                <div>
-                  <h4 class="mb-3 text-base font-semibold text-white">Capacidades</h4>
-                  <ul class="space-y-3">
-                    <li class="flex items-start gap-3">
-                      <span class="dot-accent"></span>
-                      <span class="text-sm text-[#a1a1a6]">Modelos de <span class="text-white">Machine Learning y Deep Learning</span> entrenados sobre datos de tu operación</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="dot-accent"></span>
-                      <span class="text-sm text-[#a1a1a6]">Soluciones para <span class="text-white">retos industriales y manufactura</span>: visión computacional, predicción de fallas</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="dot-accent"></span>
-                      <span class="text-sm text-[#a1a1a6]"><span class="text-white">Simulaciones científicas complejas</span> y modelado de datos experimentales</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] p-5">
-                  <p class="mb-3 text-xs uppercase tracking-[0.3em] text-nx-cyan">Nuestro laboratorio</p>
-                  <p class="text-sm leading-relaxed text-[#a1a1a6]">No aplicamos modelos genéricos. <span class="text-white">Diseñamos y entrenamos modelos desde cero</span> sobre los datos de tu industria, con benchmarks reales y sin promesas vacías.</p>
-                </div>
-              </div>
+          <a href="https://github.com/NeuxoraAI/openstudy" target="_blank" rel="noopener" class="news-card">
+            <div class="flex items-center gap-4 text-xs text-nx-muted">
+              <span class="tag">Open Source</span>
+              <span>Febrero · 2026</span>
             </div>
-          </details>
+            <div class="flex items-start justify-between gap-6">
+              <h3 class="font-display text-2xl font-normal tracking-tight text-nx-text md:text-3xl">openstudy es ahora público en GitHub</h3>
+              <svg class="news-arrow mt-2 flex-shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M6 5h11v11m0-11L5 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <p class="max-w-3xl text-nx-muted">Liberamos la base de nuestra plataforma de estudio asistida por IA: generación de material, seguimiento adaptativo y contribución abierta.</p>
+          </a>
 
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ MÉTODO ═══════════ -->
-    <section id="metodo" class="border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
-      <div class="mx-auto max-w-6xl">
-        <div class="grid gap-16 lg:grid-cols-[1fr_360px] lg:items-start">
-
-          <div>
-            <div class="reveal">
-              <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Método Línea A</p>
-              <h2 class="text-4xl font-bold tracking-tight text-white md:text-5xl">Cómo<br>trabajamos.</h2>
-              <p class="mt-5 text-lg leading-relaxed text-[#a1a1a6]">Diagnóstico obsesivo. Sprints visibles. Entregamos y nos quedamos hasta que funcione de verdad.</p>
-            </div>
-            <div class="mt-12 space-y-6">
-              <div class="reveal flex items-start gap-5">
-                <div class="step-number">01</div>
-                <div class="pt-1">
-                  <h3 class="font-semibold text-white">Diagnóstico</h3>
-                  <p class="mt-1 text-sm text-[#a1a1a6]">Mapeamos procesos, datos y stakeholders en 7 días. NDA firmado desde el día cero.</p>
-                </div>
-              </div>
-              <div class="reveal reveal-d1 flex items-start gap-5">
-                <div class="step-number">02</div>
-                <div class="pt-1">
-                  <h3 class="font-semibold text-white">Diseño de solución</h3>
-                  <p class="mt-1 text-sm text-[#a1a1a6]">Arquitectura técnica, plan de datos y roadmap validado contigo antes de escribir código.</p>
-                </div>
-              </div>
-              <div class="reveal reveal-d2 flex items-start gap-5">
-                <div class="step-number">03</div>
-                <div class="pt-1">
-                  <h3 class="font-semibold text-white">Desarrollo en sprints</h3>
-                  <p class="mt-1 text-sm text-[#a1a1a6]">Iteramos en ciclos cortos con demos reales. Sin sorpresas, sin humo.</p>
-                </div>
-              </div>
-              <div class="reveal reveal-d3 flex items-start gap-5">
-                <div class="step-number">04</div>
-                <div class="pt-1">
-                  <h3 class="font-semibold text-white">Despliegue y validación</h3>
-                  <p class="mt-1 text-sm text-[#a1a1a6]">Lanzamos en producción con monitoreo activo y criterios de éxito medibles.</p>
-                </div>
-              </div>
-              <div class="reveal reveal-d4 flex items-start gap-5">
-                <div class="step-number">05</div>
-                <div class="pt-1">
-                  <h3 class="font-semibold text-white">Mantenimiento vivo</h3>
-                  <p class="mt-1 text-sm text-[#a1a1a6]">Seguimos midiendo, ajustando y evolucionando la solución junto a tu equipo.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="reveal reveal-d2">
-            <div class="glass-card sticky top-24 rounded-2xl p-7">
-              <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">¿Qué recibís en el diagnóstico?</p>
-              <ul class="space-y-3.5">
-                <li class="flex items-start gap-3"><span class="dot-accent"></span><span class="text-sm text-[#a1a1a6]">Mapa de procesos y puntos de dolor identificados</span></li>
-                <li class="flex items-start gap-3"><span class="dot-accent"></span><span class="text-sm text-[#a1a1a6]">Propuesta de arquitectura técnica con alternativas</span></li>
-                <li class="flex items-start gap-3"><span class="dot-accent"></span><span class="text-sm text-[#a1a1a6]">Estimación de impacto y riesgos reales</span></li>
-                <li class="flex items-start gap-3"><span class="dot-accent"></span><span class="text-sm text-[#a1a1a6]">Roadmap de 90 días accionable</span></li>
-              </ul>
-              <p class="mt-6 text-xs uppercase tracking-[0.3em] text-[#6e6e73]">7 días · NDA firmado · sin costo inicial</p>
-              <div class="mt-6">
-                <a href="#contacto" data-cta-target="diagnostico" data-cta-location="metodo" class="btn-primary w-full text-center text-sm">Reservar diagnóstico</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════ PROYECTOS ═══════════ -->
-    <section id="casos" class="bg-surface border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
+    <!-- ═══════════ CARRERAS ═══════════ -->
+    <section id="carreras" class="px-6 py-28 lg:px-10 lg:py-36">
       <div class="mx-auto max-w-6xl">
 
-        <div class="reveal mx-auto mb-16 max-w-2xl text-center">
-          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Proyectos realizados</p>
-          <h2 class="text-4xl font-bold tracking-tight text-white md:text-5xl">Impacto real.<br>Explorá por departamento.</h2>
-          <p class="mt-5 text-lg text-[#a1a1a6]">Cada proyecto que tomamos tiene personas detrás. Esto es lo que hicimos.</p>
-        </div>
-
-        <div class="space-y-4">
-
-          <!-- C-MED projects -->
-          <details class="dept-details glass-card reveal rounded-2xl transition-all duration-300" open>
-            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
-              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(10,132,255,0.2)] bg-[rgba(10,132,255,0.1)]">
-                <img src="assets/icon-cmed.svg" alt="" class="h-6 w-6" />
-              </div>
-              <div class="flex-1">
-                <p class="mb-0.5 text-xs uppercase tracking-[0.3em] text-nx-cyan">Departamento</p>
-                <h3 class="dept-name text-xl font-bold text-white">C-MED · Salud</h3>
-                <p class="mt-0.5 text-sm text-[#6e6e73]">1 proyecto · Más en desarrollo</p>
-              </div>
-              <div class="dept-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </summary>
-            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
-              <div class="grid gap-5 md:grid-cols-2">
-                <div class="project-card glass-card rounded-xl p-6" style="background:rgba(10,132,255,0.05);border-color:rgba(10,132,255,0.2)">
-                  <div class="mb-4 flex items-center gap-2">
-                    <span class="text-xs uppercase tracking-[0.3em] text-nx-cyan">Proyecto estrella</span>
-                    <span class="h-px flex-1 bg-[rgba(10,132,255,0.2)]"></span>
-                  </div>
-                  <h4 class="text-lg font-bold text-white">Torre Vida UG</h4>
-                  <p class="mt-1 text-sm text-[#a1a1a6]">App de medición para sillas de ruedas infantiles</p>
-                  <div class="mt-4 h-px bg-[rgba(255,255,255,0.06)]"></div>
-                  <p class="mt-4 text-sm leading-relaxed text-[#a1a1a6]">
-                    Diseño e implementación de una app móvil para la captura estandarizada de medidas corporales en brigadas clínicas. <span class="text-white">200 sillas de ruedas para niños con discapacidad motriz</span>, con trazabilidad completa y cero margen de error.
-                  </p>
-                  <div class="mt-5 flex flex-wrap gap-2">
-                    <span class="rounded-full border border-[rgba(10,132,255,0.25)] bg-[rgba(10,132,255,0.1)] px-3 py-1 text-xs text-nx-cyan">C-MED</span>
-                    <span class="rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] px-3 py-1 text-xs text-[#a1a1a6]">IA aplicada</span>
-                    <span class="rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] px-3 py-1 text-xs text-[#a1a1a6]">Impacto social</span>
-                  </div>
-                </div>
-                <div class="glass-card flex min-h-[200px] flex-col items-center justify-center rounded-xl p-6 text-center">
-                  <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(255,255,255,0.05)]">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/></svg>
-                  </div>
-                  <p class="text-sm font-medium text-white">Próximos proyectos</p>
-                  <p class="mt-1 text-xs text-[#6e6e73]">en desarrollo</p>
-                </div>
-              </div>
+        <div class="grid gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-24">
+          <div class="reveal">
+            <span class="eyebrow">Carreras</span>
+            <h2 class="section-title mt-6">Trabajá en<br>lo que <em>importa.</em></h2>
+          </div>
+          <div class="reveal reveal-d1 space-y-6">
+            <p class="text-xl leading-relaxed text-nx-text/85 font-light">
+              Neuxora es un equipo chico, técnico y obsesionado con resolver problemas reales. Buscamos gente que entienda la diferencia entre un demo y un sistema que funciona en producción para un médico, un profesor o un investigador.
+            </p>
+            <p class="text-lg leading-relaxed text-nx-muted">
+              Si te interesa IA aplicada con impacto social y querés crecer al lado de un equipo que no suelta el problema hasta resolverlo — hablá con nosotros.
+            </p>
+            <div class="pt-2">
+              <a href="mailto:cmed.beta@gmail.com?subject=Quiero%20unirme%20a%20Neuxora" class="btn btn-primary">
+                Enviar tu interés
+                <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
             </div>
-          </details>
-
-          <!-- EDU-IA projects -->
-          <details class="dept-details glass-card reveal reveal-d1 rounded-2xl transition-all duration-300">
-            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
-              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(34,212,238,0.15)] bg-[rgba(34,212,238,0.07)]">
-                <img src="assets/icon-educacion.svg" alt="" class="h-6 w-6" />
-              </div>
-              <div class="flex-1">
-                <p class="mb-0.5 text-xs uppercase tracking-[0.3em] text-nx-cyan">Departamento</p>
-                <h3 class="dept-name text-xl font-bold text-white">EDU-IA · Educación</h3>
-                <p class="mt-0.5 text-sm text-[#6e6e73]">Proyectos de impacto en desarrollo</p>
-              </div>
-              <div class="dept-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </summary>
-            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
-              <div class="rounded-xl border border-[rgba(34,212,238,0.1)] bg-[rgba(34,212,238,0.03)] p-6 text-center">
-                <p class="text-sm font-medium text-white">Próximos proyectos de impacto en desarrollo</p>
-                <p class="mt-2 text-sm text-[#6e6e73]">Estamos trabajando en soluciones para instituciones educativas. Si tenés un proyecto, contanos.</p>
-                <a href="#contacto" class="btn-secondary mt-5 inline-flex px-5 py-2.5 text-xs">Trabajar con nosotros</a>
-              </div>
-            </div>
-          </details>
-
-          <!-- INVESTIGACIÓN projects -->
-          <details class="dept-details glass-card reveal reveal-d2 rounded-2xl transition-all duration-300">
-            <summary class="dept-summary flex cursor-pointer list-none items-center gap-5 p-7 text-left select-none">
-              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)]">
-                <img src="assets/icon-investigacion.svg" alt="" class="h-6 w-6" />
-              </div>
-              <div class="flex-1">
-                <p class="mb-0.5 text-xs uppercase tracking-[0.3em] text-nx-cyan">Departamento</p>
-                <h3 class="dept-name text-xl font-bold text-white">Investigación · IA & Industria</h3>
-                <p class="mt-0.5 text-sm text-[#6e6e73]">Proyectos de impacto en desarrollo</p>
-              </div>
-              <div class="dept-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="#a1a1a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </summary>
-            <div class="border-t border-[rgba(255,255,255,0.06)] px-7 pb-7 pt-6">
-              <div class="glass-card rounded-xl p-6 text-center">
-                <p class="text-sm font-medium text-white">Próximos proyectos de impacto en desarrollo</p>
-                <p class="mt-2 text-sm text-[#6e6e73]">Laboratorio activo en modelos de ML/DL para industria. ¿Tenés un reto que nadie pudo resolver? Ese es nuestro trabajo.</p>
-                <a href="#contacto" class="btn-secondary mt-5 inline-flex px-5 py-2.5 text-xs">Presentar tu reto</a>
-              </div>
-            </div>
-          </details>
-
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ═══════════ CONTACTO ═══════════ -->
-    <section id="contacto" class="border-t border-[rgba(255,255,255,0.06)] px-6 py-28 lg:px-12">
+    <section id="contacto" class="bg-nx-text px-6 py-28 text-nx-bg lg:px-10 lg:py-36">
       <div class="mx-auto max-w-6xl">
 
-        <div class="reveal mx-auto mb-16 max-w-xl text-center">
-          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-nx-cyan">Contacto</p>
-          <h2 class="text-4xl font-bold tracking-tight text-white md:text-5xl">¿Listo para destrabar tu proyecto imposible?</h2>
-          <p class="mt-5 text-lg text-[#a1a1a6]">Te respondemos en menos de 24 horas con un plan de diagnóstico, entregables y riesgos claros.</p>
+        <div class="reveal mx-auto mb-16 max-w-3xl text-center">
+          <span class="eyebrow" style="color: rgba(240,238,230,0.65)"><span style="background: rgba(240,238,230,0.65)"></span></span>
+          <h2 class="section-title mt-6 text-nx-bg">¿Listo para destrabar<br>tu proyecto <em style="color: #E09B7F">imposible?</em></h2>
+          <p class="mt-6 text-lg text-nx-bg/75">Te respondemos en menos de 24 horas con un plan de diagnóstico, entregables y riesgos claros.</p>
         </div>
 
-        <div class="grid gap-8 lg:grid-cols-[1fr_340px] lg:items-start">
+        <div class="grid gap-10 lg:grid-cols-[1fr_360px] lg:items-start">
 
           <!-- FORM -->
-          <div class="reveal glass-card rounded-2xl p-8">
-            <h3 class="mb-6 text-xl font-bold text-white">Mandanos tu brief</h3>
+          <div class="reveal rounded-3xl p-8 lg:p-10" style="background: rgba(240,238,230,0.06); border: 1px solid rgba(240,238,230,0.12)">
+            <h3 class="mb-6 font-display text-2xl font-medium tracking-tight text-nx-bg">Mandanos tu brief</h3>
             <form id="contacto-form" name="contacto-linea-a" method="POST"
               action="https://formspree.io/f/REEMPLAZAR_FORM_ID"
               data-form-name="contacto-linea-a" data-form-provider="formspree"
@@ -702,71 +887,71 @@
               </div>
               <div class="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label for="contacto-nombre" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Nombre completo</label>
-                  <input id="contacto-nombre" name="nombre" type="text" required class="nx-input" placeholder="Ej. Ana Torres" />
+                  <label for="contacto-nombre" class="mb-2 block text-sm text-nx-bg/75">Nombre completo</label>
+                  <input id="contacto-nombre" name="nombre" type="text" required class="nx-input" style="background: rgba(240,238,230,0.05); border-color: rgba(240,238,230,0.15); color: #F0EEE6" placeholder="Ej. Ana Torres" />
                 </div>
                 <div>
-                  <label for="contacto-email" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Email laboral</label>
-                  <input id="contacto-email" name="email" type="email" required class="nx-input" placeholder="nombre@empresa.com" />
+                  <label for="contacto-email" class="mb-2 block text-sm text-nx-bg/75">Email laboral</label>
+                  <input id="contacto-email" name="email" type="email" required class="nx-input" style="background: rgba(240,238,230,0.05); border-color: rgba(240,238,230,0.15); color: #F0EEE6" placeholder="nombre@empresa.com" />
                 </div>
               </div>
               <div class="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label for="contacto-telefono" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Teléfono / WhatsApp</label>
-                  <input id="contacto-telefono" name="telefono" type="tel" required class="nx-input" placeholder="+52 462 000 0000" />
+                  <label for="contacto-telefono" class="mb-2 block text-sm text-nx-bg/75">Teléfono / WhatsApp</label>
+                  <input id="contacto-telefono" name="telefono" type="tel" required class="nx-input" style="background: rgba(240,238,230,0.05); border-color: rgba(240,238,230,0.15); color: #F0EEE6" placeholder="+52 462 000 0000" />
                 </div>
                 <div>
-                  <label for="contacto-sector" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Sector / Industria</label>
-                  <select id="contacto-sector" name="sector" required data-sector-select class="nx-input"></select>
+                  <label for="contacto-sector" class="mb-2 block text-sm text-nx-bg/75">Sector / Industria</label>
+                  <select id="contacto-sector" name="sector" required data-sector-select class="nx-input" style="background: rgba(240,238,230,0.05); border-color: rgba(240,238,230,0.15); color: #F0EEE6"></select>
                 </div>
               </div>
               <div>
-                <label for="contacto-mensaje" class="mb-2 block text-sm font-medium text-[#a1a1a6]">Mensaje</label>
-                <textarea id="contacto-mensaje" name="mensaje" rows="4" required class="nx-input" placeholder="Contanos qué necesitás destrabar"></textarea>
+                <label for="contacto-mensaje" class="mb-2 block text-sm text-nx-bg/75">Mensaje</label>
+                <textarea id="contacto-mensaje" name="mensaje" rows="4" required class="nx-input" style="background: rgba(240,238,230,0.05); border-color: rgba(240,238,230,0.15); color: #F0EEE6" placeholder="Contanos qué necesitás destrabar"></textarea>
               </div>
               <div class="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
-                <button type="submit" data-form-submit class="btn-primary sm:w-auto">Enviar brief</button>
-                <p class="text-sm" data-form-status role="status"></p>
+                <button type="submit" data-form-submit class="btn btn-secondary !bg-nx-bg !text-nx-text !border-nx-bg hover:!bg-nx-accent hover:!border-nx-accent hover:!text-nx-bg">
+                  Enviar brief
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <p class="text-sm text-nx-bg/70" data-form-status role="status"></p>
               </div>
             </form>
-            <p class="mt-5 text-xs text-[#6e6e73]">Firmamos NDA antes de ver tus datos sensibles.</p>
+            <p class="mt-5 text-xs text-nx-bg/55">Firmamos NDA antes de ver tus datos sensibles.</p>
           </div>
 
           <!-- INFO -->
           <div class="reveal reveal-d1 space-y-4">
-            <div class="glass-card rounded-2xl p-6">
-              <div class="space-y-4">
+            <div class="rounded-3xl p-8" style="background: rgba(240,238,230,0.06); border: 1px solid rgba(240,238,230,0.12)">
+              <div class="space-y-5">
                 <div>
-                  <p class="mb-1 text-xs uppercase tracking-[0.3em] text-[#6e6e73]">Teléfono</p>
-                  <a href="tel:+524622722089" class="text-lg font-semibold text-white transition-colors hover:text-nx-cyan">+52 462 272 2089</a>
+                  <p class="mb-1 text-xs uppercase tracking-[0.2em] text-nx-bg/55">Teléfono</p>
+                  <a href="tel:+524622722089" class="font-display text-2xl font-medium text-nx-bg transition-colors hover:text-nx-accent">+52 462 272 2089</a>
                 </div>
-                <div class="h-px bg-[rgba(255,255,255,0.06)]"></div>
+                <div style="height:1px;background:rgba(240,238,230,0.12)"></div>
                 <div>
-                  <p class="mb-1 text-xs uppercase tracking-[0.3em] text-[#6e6e73]">Email</p>
-                  <a href="mailto:cmed.beta@gmail.com" class="text-base font-semibold text-white transition-colors hover:text-nx-cyan">cmed.beta@gmail.com</a>
+                  <p class="mb-1 text-xs uppercase tracking-[0.2em] text-nx-bg/55">Email</p>
+                  <a href="mailto:cmed.beta@gmail.com" class="text-base font-medium text-nx-bg transition-colors hover:text-nx-accent">cmed.beta@gmail.com</a>
                 </div>
-                <div class="h-px bg-[rgba(255,255,255,0.06)]"></div>
+                <div style="height:1px;background:rgba(240,238,230,0.12)"></div>
                 <div>
-                  <p class="mb-1 text-xs uppercase tracking-[0.3em] text-[#6e6e73]">Horario</p>
-                  <p class="text-base font-semibold text-white">Lun–Sáb · 09:00–20:00 h</p>
+                  <p class="mb-1 text-xs uppercase tracking-[0.2em] text-nx-bg/55">Horario</p>
+                  <p class="text-base font-medium text-nx-bg">Lun – Sáb · 09:00–20:00</p>
                 </div>
               </div>
               <div class="mt-6 grid gap-3">
                 <a href="https://wa.me/524622722089" target="_blank" rel="noopener"
                   data-cta-target="contact-whatsapp" data-cta-location="contacto"
-                  class="btn-primary text-center text-sm">Hablar por WhatsApp</a>
-                <a href="mailto:cmed.beta@gmail.com"
-                  data-cta-target="contact-email" data-cta-location="contacto"
-                  class="btn-secondary text-center text-sm">Enviar correo directo</a>
+                  class="btn btn-secondary !border-nx-bg/30 !text-nx-bg hover:!bg-nx-bg hover:!text-nx-text w-full">Hablar por WhatsApp</a>
               </div>
             </div>
 
-            <div class="glass-card rounded-2xl p-6">
-              <p class="mb-4 text-sm font-semibold text-white">¿Sin tiempo? Escaneá el QR.</p>
+            <div class="rounded-3xl p-6" style="background: rgba(240,238,230,0.06); border: 1px solid rgba(240,238,230,0.12)">
+              <p class="mb-4 text-sm font-medium text-nx-bg">¿Sin tiempo? Escaneá el QR.</p>
               <div class="flex items-center gap-4">
-                <img src="assets/qr-whatsapp.svg" alt="QR para WhatsApp de NEUXORA"
-                  class="h-24 w-24 flex-shrink-0 rounded-xl border border-[rgba(255,255,255,0.1)] bg-white/5 p-1.5" loading="lazy" />
-                <p class="text-xs text-[#6e6e73]">Abrí WhatsApp directamente escaneando este código.</p>
+                <img src="assets/qr-whatsapp.svg" alt="QR para WhatsApp de Neuxora"
+                  class="h-24 w-24 flex-shrink-0 rounded-xl bg-nx-bg p-1.5" loading="lazy" />
+                <p class="text-xs text-nx-bg/65">Abrí WhatsApp directamente escaneando este código.</p>
               </div>
             </div>
           </div>
@@ -786,14 +971,54 @@
     <img data-asset-key="qrWhatsapp"       src="assets/qr-whatsapp.svg"       data-placeholder="qr-whatsapp"       alt="" />
   </div>
 
-  <footer class="border-t border-[rgba(255,255,255,0.06)] px-6 py-10">
-    <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
-      <span class="text-base font-bold tracking-[0.14em] text-white">NEUXORA</span>
-      <p class="text-xs text-[#6e6e73]">© <span id="year">2026</span> NEUXORA · Todos los derechos reservados.</p>
-      <div class="flex gap-6">
-        <a href="#nosotros"      class="text-xs text-[#6e6e73] transition-colors hover:text-white">Nosotros</a>
-        <a href="#departamentos" class="text-xs text-[#6e6e73] transition-colors hover:text-white">Departamentos</a>
-        <a href="#contacto"      class="text-xs text-[#6e6e73] transition-colors hover:text-white">Contacto</a>
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="border-t border-nx-border px-6 py-16 lg:px-10">
+    <div class="mx-auto max-w-6xl">
+      <div class="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+
+        <div>
+          <a href="#" class="brand-mark">
+            <svg viewBox="0 0 40 40" aria-hidden="true" style="height:32px;width:32px;"><path fill="currentColor" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/></svg>
+            <span class="brand-wordmark" style="font-size:1.3rem">Neuxora</span>
+          </a>
+          <p class="mt-4 max-w-xs text-sm text-nx-muted">IA aplicada para operaciones críticas. León, Gto. · México.</p>
+        </div>
+
+        <div>
+          <p class="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-nx-muted">Navegación</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#nosotros" class="text-nx-text hover:text-nx-accent transition-colors">Sobre nosotros</a></li>
+            <li><a href="#proyectos" class="text-nx-text hover:text-nx-accent transition-colors">Proyectos</a></li>
+            <li><a href="#investigacion" class="text-nx-text hover:text-nx-accent transition-colors">Investigación</a></li>
+            <li><a href="#noticias" class="text-nx-text hover:text-nx-accent transition-colors">Noticias</a></li>
+            <li><a href="#carreras" class="text-nx-text hover:text-nx-accent transition-colors">Carreras</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-nx-muted">Proyectos</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="https://github.com/NeuxoraAI/Expediente-Inteligente" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">Expediente Inteligente</a></li>
+            <li><a href="https://github.com/NeuxoraAI/medscan-CLI" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">medscan-CLI</a></li>
+            <li><a href="https://github.com/NeuxoraAI/Sillas-Rotary" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">Sillas Rotary</a></li>
+            <li><a href="https://github.com/NeuxoraAI/openstudy" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">openstudy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-nx-muted">Contacto</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="tel:+524622722089" class="text-nx-text hover:text-nx-accent transition-colors">+52 462 272 2089</a></li>
+            <li><a href="mailto:cmed.beta@gmail.com" class="text-nx-text hover:text-nx-accent transition-colors">cmed.beta@gmail.com</a></li>
+            <li><a href="https://github.com/NeuxoraAI" target="_blank" rel="noopener" class="text-nx-text hover:text-nx-accent transition-colors">github.com/NeuxoraAI</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider mt-12"></div>
+      <div class="mt-6 flex flex-col items-start justify-between gap-3 text-xs text-nx-muted sm:flex-row sm:items-center">
+        <p>© <span id="year">2026</span> Neuxora · Todos los derechos reservados.</p>
+        <p>Hacemos lo imposible, porque lo difícil lo hace cualquiera.</p>
       </div>
     </div>
   </footer>

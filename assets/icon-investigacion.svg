@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" role="img" aria-label="Ícono Investigación">
-  <g fill="none" stroke="#4FE4D8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="34" cy="34" r="16" />
     <path d="M44 44 L64 64" />
     <path d="M30 26 H38" />
