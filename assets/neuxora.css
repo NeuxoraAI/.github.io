@@ -351,18 +351,26 @@ body {
 .link-underline:hover::after { transform: scaleX(0); transform-origin: left; }
 
 /* === REVEAL ANIMATIONS === */
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.85s var(--nx-ease), transform 0.85s var(--nx-ease); }
-.reveal.visible { opacity: 1; transform: none; }
-.reveal-d1 { transition-delay: 0.08s; }
-.reveal-d2 { transition-delay: 0.16s; }
-.reveal-d3 { transition-delay: 0.24s; }
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(4px);
+  transition: opacity 0.9s var(--nx-ease), transform 0.9s var(--nx-ease), filter 0.9s var(--nx-ease);
+}
+.reveal.visible { opacity: 1; transform: none; filter: blur(0); }
+.reveal-d1 { transition-delay: 0.10s; }
+.reveal-d2 { transition-delay: 0.20s; }
+.reveal-d3 { transition-delay: 0.30s; }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
-.hero-in   { opacity: 0; animation: fadeUp 1s var(--nx-ease) forwards; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+  to   { opacity: 1; transform: none;             filter: blur(0);    }
+}
+.hero-in   { opacity: 0; animation: fadeUp 1.2s var(--nx-ease-brand) forwards; }
 .hero-in-1 { animation-delay: 0.05s; }
-.hero-in-2 { animation-delay: 0.18s; }
-.hero-in-3 { animation-delay: 0.34s; }
-.hero-in-4 { animation-delay: 0.50s; }
+.hero-in-2 { animation-delay: 0.22s; }
+.hero-in-3 { animation-delay: 0.40s; }
+.hero-in-4 { animation-delay: 0.58s; }
 
 /* === MARQUEE === */
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -396,10 +404,10 @@ body {
 
 /* === REDUCED MOTION === */
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .hero-in { opacity: 1; transform: none; transition: none; animation: none; }
+  .reveal, .hero-in { opacity: 1; transform: none; filter: none; transition: none; animation: none; }
   .marquee-track { animation: none; }
   .os-wrap, .os-wrap.in-view { padding: 0; transition: none; }
-  .os-wrap .featured-project, .os-wrap.in-view .featured-project { border-radius: 20px; transition: none; }
+  .os-wrap .featured-project, .os-wrap.in-view .featured-project { border-radius: 20px; transform: none; transition: none; }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -408,8 +416,8 @@ body {
 
 /* Outer wrapper: horizontal padding collapses on scroll */
 .os-wrap {
-  padding: 0 clamp(1rem, 5vw, 4rem);
-  transition: padding 1.1s cubic-bezier(.76, 0, .24, 1);
+  padding: 0 clamp(2rem, 12vw, 10rem);
+  transition: padding 1.5s cubic-bezier(.76, 0, .24, 1);
 }
 .os-wrap.in-view {
   padding: 0;
@@ -422,14 +430,18 @@ body {
   justify-content: center;
   text-align: center;
   background: var(--nx-dark);
-  border-radius: 28px;
+  border-radius: 32px;
   padding: clamp(4rem, 9vw, 7rem) clamp(2rem, 6vw, 5rem);
   position: relative;
   overflow: hidden;
-  transition: border-radius 1.1s cubic-bezier(.76, 0, .24, 1);
+  transform: scale(0.97);
+  transition:
+    border-radius 1.5s cubic-bezier(.76, 0, .24, 1),
+    transform     1.5s cubic-bezier(.76, 0, .24, 1);
 }
 .os-wrap.in-view .featured-project {
   border-radius: 20px;
+  transform: scale(1);
 }
 .featured-project::before {
   content: '';
