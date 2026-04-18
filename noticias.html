@@ -5,15 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Noticias — Neuxora</title>
   <meta name="description" content="Noticias y anuncios de Neuxora. Novedades sobre nuestros proyectos de IA en salud, educación e investigación." />
+  <meta name="theme-color" content="#fcf9f3" />
+  <meta name="author" content="Neuxora" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://neuxora.com/noticias.html" />
+
+  <meta property="og:site_name"   content="Neuxora" />
+  <meta property="og:title"       content="Noticias — Neuxora" />
+  <meta property="og:description" content="Noticias y anuncios de Neuxora. Novedades sobre nuestros proyectos de IA en salud, educación e investigación." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://neuxora.com/noticias.html" />
+  <meta property="og:locale"      content="es_MX" />
+  <meta property="og:image"       content="https://neuxora.com/assets/og-image.png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"   content="Neuxora — Software a medida desde la ciencia" />
+
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Noticias — Neuxora" />
+  <meta name="twitter:description" content="Noticias y anuncios de Neuxora. Novedades sobre nuestros proyectos de IA en salud, educación e investigación." />
+  <meta name="twitter:image"       content="https://neuxora.com/assets/og-image.png" />
+
   <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/logo-n.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/neuxora.css" />
+  <script defer src="assets/nav.js"></script>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Saltar al contenido</a>
 
 <!-- NAV -->
 <nav id="nav">
@@ -27,8 +52,19 @@
       <a href="investigacion.html" class="nav-link">Investigación</a>
       <a href="noticias.html"      class="nav-link active">Noticias</a>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
   </div>
 </nav>
+
+<aside class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Menú de navegación">
+  <nav class="mobile-menu-list">
+    <a href="areas.html"         class="mobile-menu-link">Áreas</a>
+    <a href="investigacion.html" class="mobile-menu-link">Investigación</a>
+    <a href="noticias.html"      class="mobile-menu-link" aria-current="page">Noticias</a>
+  </nav>
+</aside>
 
 <!-- ═══════════ HERO ═══════════ -->
 <header style="padding-top: clamp(8rem, 18vw, 14rem); padding-bottom: clamp(4rem, 8vw, 7rem); border-bottom:1px solid var(--nx-border);">
@@ -49,7 +85,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
 <!-- ═══════════ NOTICIAS ═══════════ -->
 <section class="u-section">

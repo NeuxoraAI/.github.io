@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Neuxora — Software a medida desde la ciencia">
+  <defs>
+    <radialGradient id="blob1" cx="85%" cy="15%" r="55%">
+      <stop offset="0%"  stop-color="#99405E" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#99405E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="15%" cy="90%" r="45%">
+      <stop offset="0%"  stop-color="#CC785C" stop-opacity="0.22"/>
+      <stop offset="60%" stop-color="#CC785C" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&amp;family=Fraunces:opsz,wght@9..144,300;9..144,400&amp;display=swap');
+      .wordmark  { font-family: 'Fraunces', 'Georgia', serif; font-weight: 300; font-size: 170px; letter-spacing: -4px; fill: #1C1C18; font-variation-settings: 'opsz' 144; }
+      .italic    { font-style: italic; font-weight: 400; }
+      .tagline   { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 400; font-size: 34px; letter-spacing: -0.4px; fill: #5A5A53; }
+      .eyebrow   { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 500; font-size: 20px; letter-spacing: 3px; text-transform: uppercase; fill: #8A8A80; }
+      .url       { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 500; font-size: 22px; fill: #1C1C18; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="630" fill="#FCF9F3"/>
+  <rect width="1200" height="630" fill="url(#blob1)"/>
+  <rect width="1200" height="630" fill="url(#blob2)"/>
+
+  <!-- N monogram -->
+  <g transform="translate(80,80)">
+    <svg width="64" height="64" viewBox="0 0 40 40">
+      <path fill="#1C1C18" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/>
+    </svg>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="80" y="260" class="eyebrow">Consultora científica de software</text>
+
+  <!-- Wordmark -->
+  <text x="80" y="400" class="wordmark">Neuxora</text>
+
+  <!-- Tagline -->
+  <text x="80" y="475" class="tagline">Software a medida <tspan class="italic">desde la ciencia.</tspan></text>
+
+  <!-- URL + locale at bottom -->
+  <g>
+    <line x1="80" y1="540" x2="1120" y2="540" stroke="#1C1C18" stroke-opacity="0.12" stroke-width="1"/>
+    <text x="80" y="580" class="url">neuxora.com</text>
+    <text x="1120" y="580" class="url" text-anchor="end">León · Gto · México</text>
+  </g>
+</svg>
