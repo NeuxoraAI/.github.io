@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://neuxora.com/sitemap.xml
+Sitemap: https://neuxoraai.github.io/.github.io/sitemap.xml

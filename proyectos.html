@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyectos | Neuxora</title>
+  <meta name="description" content="Sistemas, herramientas y prototipos construidos por Neuxora, con evidencia pública y límites declarados.">
+  <meta name="theme-color" content="#f5f0e6"><meta name="robots" content="index, follow">
+  <meta property="og:site_name" content="Neuxora"><meta property="og:title" content="Proyectos | Neuxora"><meta property="og:description" content="Sistemas y herramientas descritos por su problema, implementación, evidencia y límites."><meta property="og:type" content="website"><meta property="og:locale" content="es_MX">
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Proyectos | Neuxora"><meta name="twitter:description" content="Sistemas y herramientas descritos por su problema, implementación, evidencia y límites.">
+  <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/neuxora.css"><script defer src="assets/nav.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <nav id="nav" aria-label="Navegación principal"><div class="nav-inner"><a class="brand-mark" href="index.html" aria-label="Neuxora, inicio"><svg viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/></svg><span class="brand-wordmark">Neuxora</span></a><div class="nav-links"><a class="nav-link" href="proyectos.html" aria-current="page">Proyectos</a><a class="nav-link" href="investigacion.html">Investigación</a><a class="nav-link" href="noticias.html">Cuaderno</a><a class="nav-link" href="neuxora.html">Neuxora</a><span class="language-indicator" aria-label="Idioma actual: español">ES</span></div><button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span></button></div></nav>
+  <aside class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Menú móvil"><nav class="mobile-menu-list"><a class="mobile-menu-link" href="proyectos.html" aria-current="page">Proyectos</a><a class="mobile-menu-link" href="investigacion.html">Investigación</a><a class="mobile-menu-link" href="noticias.html">Cuaderno</a><a class="mobile-menu-link" href="neuxora.html">Neuxora</a><span class="mobile-language">ES · Español de México</span></nav></aside>
+
+  <main id="main">
+    <header class="hero"><div class="container hero-grid"><div><span class="hero-kicker">Índice de proyectos</span><h1 class="page-title">Sistemas para contextos concretos.</h1></div><p class="hero-lede">Este índice reúne implementaciones y prototipos con evidencia pública. Describe lo construido sin convertir una función técnica en un resultado social o clínico.</p></div></header>
+
+    <section class="section paper-light" aria-labelledby="indice-proyectos"><div class="container"><span class="eyebrow">Proyectos</span><h2 class="section-title" id="indice-proyectos">Trabajo verificable.</h2><div class="project-list reveal">
+      <a class="project-row" href="proyecto-sillas-rotary.html"><span class="number">01</span><h3>Sillas Rotary</h3><p>Aplicación mobile-first para registrar formularios, fotografías y expedientes de trabajo de campo. Caso editorial disponible.</p><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="project-row" href="https://github.com/NeuxoraAI/WebDiabetes-DM-2026-06/tree/develop" target="_blank" rel="noopener noreferrer"><span class="number">02</span><h3>WebDiabetes DM</h3><p>Prototipo web para registrar información longitudinal, cuestionarios y mensajes entre perfiles de paciente y médico.</p><span class="arrow" aria-hidden="true">↗</span></a>
+      <a class="project-row" id="medscan" href="https://github.com/NeuxoraAI/medscan-CLI" target="_blank" rel="noopener noreferrer"><span class="number">03</span><h3>medscan CLI</h3><p>Herramienta de terminal que procesa imágenes, estructura datos con un proveedor externo y los guarda en SQLite.</p><span class="arrow" aria-hidden="true">↗</span></a>
+    </div></div></section>
+
+    <section class="section" aria-labelledby="lectura-estados"><div class="container editorial-grid"><div><span class="eyebrow">Cómo leer el índice</span><h2 class="section-title" id="lectura-estados">El estado importa.</h2></div><div class="evidence-grid reveal">
+      <article class="evidence-item"><span class="evidence-label">Implementación</span><h3>Sistema construido</h3><p>Existe código o una interfaz que permite revisar el flujo descrito.</p></article>
+      <article class="evidence-item"><span class="evidence-label">Prototipo</span><h3>Hipótesis operativa</h3><p>La herramienta permite probar una forma de trabajo, pero no se presenta como producto consolidado.</p></article>
+      <article class="evidence-item"><span class="evidence-label">Efecto</span><h3>Resultado no asumido</h3><p>Sin un protocolo y datos de evaluación, no atribuimos mejoras organizacionales o clínicas al sistema.</p></article>
+    </div></div></section>
+
+    <section class="section dark-section" aria-labelledby="limites-proyectos"><div class="container grid-2"><div><span class="eyebrow">Límites del índice</span><h2 class="display-quote" id="limites-proyectos">Código público es evidencia de implementación, no de adopción.</h2></div><div><p class="hero-lede">Los repositorios permiten revisar componentes, documentación y decisiones técnicas. No prueban por sí solos cuántas personas usaron un sistema, si cambió un proceso o si produjo un beneficio clínico.</p><p style="margin-top:2rem"><a class="button-link internal" href="investigacion.html">Revisar la investigación</a></p></div></div></section>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer-grid"><div><a class="brand-mark" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><path fill="currentColor" d="M7 6h5.2l15.6 20.6V6H33v28h-5.2L12.2 13.4V34H7z"/></svg><span class="brand-wordmark">Neuxora</span></a><p>Investigación aplicada y sistemas construidos desde Guanajuato, México.</p></div><div><span class="footer-label">Explorar</span><a class="footer-link" href="proyectos.html">Proyectos</a><a class="footer-link" href="investigacion.html">Investigación</a><a class="footer-link" href="noticias.html">Cuaderno</a><a class="footer-link" href="neuxora.html">Neuxora</a></div><div><span class="footer-label">Contacto</span><a class="footer-link" href="mailto:neuxoraia@gmail.com">neuxoraia@gmail.com</a><a class="footer-link" href="https://github.com/NeuxoraAI" target="_blank" rel="noopener noreferrer">GitHub</a></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Neuxora</span><span>ES · México</span></div></div></footer>
+</body>
+</html>
