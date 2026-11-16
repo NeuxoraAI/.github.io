@@ -1,0 +1,638 @@
+/* ==========================================================================
+   Neuxora Design System — 05 Cosmos
+   Space-themed motion layer: page transitions, button sheen, twinkling skies,
+   shooting stars, orbit illustration and trajectory details.
+   ========================================================================== */
+
+:root {
+  --spectrum: linear-gradient(90deg, #5b6cff, #965feb 35%, #d97757 70%, #e8a84a);
+  --glow-violet: rgba(150, 95, 235, 0.32);
+}
+
+/* Cross-page fade between documents (browsers without support just navigate). */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 320ms;
+  animation-timing-function: var(--ease-out);
+}
+
+/* Scroll progress: a spectrum line that fills under the nav as the page scrolls. */
+@supports (animation-timeline: scroll()) {
+  #nav::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 -1px;
+    height: 2px;
+    background: var(--spectrum);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    animation: scrollProgress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes scrollProgress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Buttons: light sweep, colored glow and a tactile press. */
+.btn,
+.button-link,
+.nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after,
+.button-link::after,
+.nav-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(170, 150, 255, 0.38) 50%, transparent 70%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.btn:hover::after,
+.button-link:hover::after,
+.nav-cta:hover::after {
+  transform: translateX(120%);
+  transition: transform 700ms var(--ease-out);
+}
+
+.btn-primary:hover,
+.button-link:hover,
+.nav-cta:hover {
+  opacity: 1;
+  box-shadow: 0 8px 26px var(--glow-violet), 0 2px 8px rgba(217, 119, 87, 0.18);
+}
+
+.btn:active,
+.button-link:active,
+.nav-cta:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 80ms;
+}
+
+/* Section eyebrows read as small stars. */
+.eyebrow:not(:has(.kicker-dot))::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--spectrum);
+  box-shadow: 0 0 0 3px rgba(150, 95, 235, 0.14);
+}
+
+/* Cards pick up a faint violet halo on hover. */
+.card-panel:hover,
+.process-step:hover {
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px rgba(150, 95, 235, 0.22), 0 18px 44px rgba(110, 96, 255, 0.1);
+}
+
+/* Process steps sit on one dashed trajectory. */
+.process-grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.process-grid::before {
+  content: "";
+  position: absolute;
+  inset: 2.75rem 0 auto;
+  z-index: -1;
+  border-top: 1.5px dashed rgba(150, 95, 235, 0.45);
+}
+
+.process-num {
+  background: var(--spectrum);
+  color: #ffffff;
+}
+
+.process-step .icon-badge {
+  transition: transform var(--motion-base) var(--ease);
+}
+
+.process-step:hover .icon-badge {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+/* Photos zoom gently inside their frame. */
+.showcase-media {
+  overflow: hidden;
+}
+
+.showcase-media img,
+figure img {
+  transition: transform 900ms var(--ease-out);
+}
+
+figure:hover img {
+  transform: scale(1.04);
+}
+
+/* Night sky: stars breathe, and a shooting star crosses now and then. */
+.section-dark::before,
+.footer::before,
+.showcase::before,
+.hero--dark::before {
+  animation: starTwinkle 7s ease-in-out infinite alternate;
+}
+
+.section-dark,
+.footer {
+  overflow: hidden;
+}
+
+.section-dark::after,
+.footer::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  left: 62%;
+  z-index: -1;
+  width: 150px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(160, 150, 255, 0.5) 40%, transparent);
+  opacity: 0;
+  transform: rotate(-24deg) translateX(0);
+  animation: shootingStar 11s ease-in infinite 2s;
+  pointer-events: none;
+}
+
+.footer::after {
+  top: 30%;
+  left: 30%;
+  animation-delay: 6.5s;
+}
+
+@keyframes starTwinkle {
+  from {
+    opacity: 0.72;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    transform: rotate(-24deg) translateX(0);
+  }
+  2% {
+    opacity: 1;
+  }
+  9% {
+    opacity: 0;
+    transform: rotate(-24deg) translateX(-460px);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-24deg) translateX(-460px);
+  }
+}
+
+/* Orbit illustration: planet, tilted orbits and moons (motion lives in the SVG). */
+.orbit-art {
+  position: absolute;
+  z-index: -1;
+  width: clamp(18rem, 38vw, 32rem);
+  height: auto;
+  color: currentColor;
+  pointer-events: none;
+}
+
+.orbit-art .orbit-planet {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: planetFloat 9s ease-in-out infinite alternate;
+}
+
+@keyframes planetFloat {
+  from {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+
+.section-dark .orbit-art {
+  right: -9rem;
+  top: -11rem;
+  opacity: 0.75;
+}
+
+.cta-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.cta-panel .orbit-art {
+  right: -8rem;
+  top: -11rem;
+  opacity: 0.55;
+}
+
+@media (max-width: 900px) {
+  .process-grid::before {
+    display: none;
+  }
+
+  .section-dark .orbit-art,
+  .cta-panel .orbit-art {
+    opacity: 0.35;
+  }
+}
+
+/* Dark-universe hero for inner pages: night sky, nebula glow and the particle galaxy on top. */
+.hero--dark {
+  isolation: isolate;
+  background:
+    radial-gradient(70% 90% at 85% 0%, rgba(104, 96, 255, 0.28), transparent 70%),
+    radial-gradient(55% 80% at 0% 100%, rgba(217, 119, 87, 0.16), transparent 70%),
+    #0b0c10;
+  color: var(--ink-on-dark);
+  padding-bottom: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.hero--dark .page-title {
+  color: var(--ink-on-dark);
+}
+
+.hero--dark .hero-lede,
+.hero--dark .breadcrumb,
+.hero--dark .breadcrumb a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero--dark .hero-kicker {
+  border-color: var(--line-dark-strong);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink-on-dark);
+}
+
+.hero--dark .text-link {
+  color: var(--ink-on-dark);
+}
+
+/* Over a dark hero the nav starts transparent with light ink, then turns solid on scroll. */
+body:has(.hero--dark) #nav:not(.scrolled) {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+body:has(.hero--dark) #nav:not(.scrolled) .brand-mark,
+body:has(.hero--dark) #nav:not(.scrolled) .brand-mark svg {
+  color: var(--ink-on-dark);
+}
+
+body:has(.hero--dark) #nav:not(.scrolled) .nav-link {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+body:has(.hero--dark) #nav:not(.scrolled) .nav-link:hover,
+body:has(.hero--dark) #nav:not(.scrolled) .nav-link[aria-current="page"] {
+  color: #ffffff;
+}
+
+body:has(.hero--dark) #nav:not(.scrolled) .nav-cta {
+  background: var(--bg-surface);
+  color: var(--ink-primary);
+}
+
+/* Headlines assemble word by word, each one rising out of a soft blur. */
+.word-reveal .word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(0.35em);
+  animation: wordIn 800ms var(--ease-out) forwards;
+  animation-delay: calc(var(--word-index) * 70ms + 120ms);
+}
+
+@keyframes wordIn {
+  to {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/* Intro statement: one large sentence between the hero and the services. */
+.statement {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+}
+
+.statement-text {
+  max-width: 58rem;
+  margin: 0 auto;
+  font: 500 clamp(1.6rem, 3.4vw, 2.75rem)/1.22 var(--font-display);
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--ink-primary);
+}
+
+/* Logo: lands on load, tilts on hover, and keeps a small satellite in orbit. */
+.brand-mark {
+  position: relative;
+}
+
+.brand-mark svg {
+  animation: logoLand 900ms var(--ease-out) both;
+  transition: transform var(--motion-base) var(--ease);
+}
+
+.brand-mark:hover svg {
+  transform: rotate(-10deg) scale(1.12);
+}
+
+.brand-mark::before {
+  content: "";
+  position: absolute;
+  left: 0.7rem;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px;
+  border-radius: 50%;
+  background: var(--spectrum);
+  animation: logoOrbit 7s linear infinite;
+}
+
+.brand-mark:hover::before {
+  animation-duration: 1.4s;
+}
+
+.brand-wordmark {
+  transition: letter-spacing var(--motion-base) var(--ease);
+}
+
+.brand-mark:hover .brand-wordmark {
+  letter-spacing: 0.01em;
+}
+
+@keyframes logoLand {
+  from {
+    transform: translateY(-10px) rotate(-90deg) scale(0.6);
+  }
+}
+
+@keyframes logoOrbit {
+  from {
+    transform: rotate(0deg) translateX(1.05rem);
+  }
+  to {
+    transform: rotate(360deg) translateX(1.05rem);
+  }
+}
+
+/* Buttons, second pass: spectrum outline, breathing hero call to action, lively icons and pills. */
+.btn-secondary:hover,
+.button-link.secondary:hover {
+  border-color: transparent;
+  background: linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box, var(--spectrum) border-box;
+}
+
+.section-dark .btn-secondary:hover {
+  background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box, var(--spectrum) border-box;
+}
+
+.hero .btn-primary {
+  animation: ctaBreath 3.4s ease-in-out infinite;
+}
+
+@keyframes ctaBreath {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(150, 95, 235, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(150, 95, 235, 0.14), 0 8px 26px rgba(110, 96, 255, 0.22);
+  }
+}
+
+.btn .ui-icon,
+.nav-cta .ui-icon,
+.cta-option-arrow .ui-icon {
+  transition: transform var(--motion-base) var(--ease);
+}
+
+.nav-cta:hover .ui-icon {
+  transform: rotate(-12deg) scale(1.15);
+}
+
+.cta-option {
+  transition: transform var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease), box-shadow var(--motion-fast) var(--ease);
+}
+
+.cta-option:hover {
+  transform: translateX(4px);
+  border-color: rgba(150, 95, 235, 0.45);
+  box-shadow: 0 6px 20px rgba(110, 96, 255, 0.12);
+}
+
+.cta-option:hover .cta-option-arrow .ui-icon {
+  transform: translateX(4px);
+}
+
+.filter-btn:active,
+.showcase-tab:active,
+.showcase-action:active,
+[data-service-tab]:active {
+  transform: scale(0.95);
+}
+
+/* Modals (native <dialog>): contact and photo lightbox. */
+.modal {
+  width: min(100% - 2rem, 32rem);
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  color: var(--ink-primary);
+  box-shadow: 0 30px 80px rgba(18, 19, 23, 0.35), 0 0 0 1px rgba(150, 95, 235, 0.18);
+  overflow: auto;
+}
+
+.modal[open] {
+  animation: modalIn 320ms var(--ease-out);
+}
+
+.modal::backdrop {
+  background: rgba(18, 19, 23, 0.6);
+  backdrop-filter: blur(6px);
+  animation: backdropIn 240ms ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+}
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--line-light-strong);
+  border-radius: 50%;
+  background: var(--bg-surface);
+  color: var(--ink-primary);
+  cursor: pointer;
+  transition: transform var(--motion-base) var(--ease), background var(--motion-fast) var(--ease);
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+  background: var(--bg-subtle);
+}
+
+.modal-title {
+  margin-bottom: 0.75rem;
+  font: 600 clamp(1.5rem, 3vw, 1.9rem)/1.15 var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+.modal-copy {
+  margin-bottom: 1.5rem;
+  color: var(--ink-secondary);
+}
+
+.modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line-light);
+  font-size: 0.9rem;
+}
+
+.modal-meta {
+  margin-left: auto;
+  color: var(--ink-muted);
+}
+
+.modal--media {
+  width: min(100% - 2rem, 68rem);
+  padding: 0.75rem;
+  background: var(--bg-dark);
+  border-color: var(--line-dark);
+  color: var(--ink-on-dark);
+}
+
+.modal--media img {
+  display: block;
+  width: 100%;
+  max-height: calc(100dvh - 8rem);
+  object-fit: contain;
+  border-radius: calc(var(--radius-lg) - 0.5rem);
+}
+
+.modal-caption {
+  margin: 0.75rem 0.5rem 0.25rem;
+  color: var(--ink-on-dark-muted);
+  font-size: 0.9rem;
+}
+
+.is-zoomable {
+  cursor: zoom-in;
+}
+
+/* Back to top */
+.to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  color: var(--ink-on-dark);
+  box-shadow: 0 8px 24px rgba(18, 19, 23, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity var(--motion-base) var(--ease), transform var(--motion-base) var(--ease), visibility var(--motion-base), box-shadow var(--motion-base) var(--ease);
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px var(--glow-violet);
+}
+
+/* Several links at the foot of one card (a case with its external mentions). */
+.card-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+/* Home hero in the dark universe: light headline, inverted buttons, framed showcase. */
+.hero--dark .hero-title {
+  color: var(--ink-on-dark);
+}
+
+.hero--dark .btn-primary {
+  background: var(--bg-surface);
+  border-color: var(--bg-surface);
+  color: var(--ink-primary);
+}
+
+.hero--dark .btn-secondary {
+  background: transparent;
+  border-color: var(--line-dark-strong);
+  color: var(--ink-on-dark);
+}
+
+.hero--dark .btn-secondary:hover {
+  background: linear-gradient(#0b0c10, #0b0c10) padding-box, var(--spectrum) border-box;
+}
+
+.hero--dark .showcase {
+  border: 1px solid var(--line-dark-strong);
+  background-color: #14151b;
+}
